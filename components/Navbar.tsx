@@ -70,7 +70,7 @@ const Navbar = () => {
               height={44}
               className={cn(
                 "w-auto object-contain transition-all duration-300",
-                isSticky ? "h-11" : "h-14",
+                isSticky ? "md:h-11 h-8" : "md:h-14 h-10",
               )}
               priority
             />
@@ -133,7 +133,7 @@ const Navbar = () => {
           <Button
             nativeButton={false}
             render={<Link href="#contact" />}
-            className="group h-10 rounded-full px-5 font-medium hover:bg-primary/80 cursor-pointer"
+            className="group h-10 rounded-full px-5 font-medium bg-[#E11D48] hover:bg-[#BE123C] text-white shadow-md shadow-rose-950/30 cursor-pointer"
           >
             Enquire Now
             <ChevronRight className="size-4 transition-all group-hover:translate-x-0.5 duration-300" />
@@ -243,7 +243,7 @@ const Navbar = () => {
                   <Button
                     nativeButton={false}
                     render={<Link href="#contact" />}
-                    className="group h-10 w-full rounded-full px-5 font-medium hover:bg-primary/80 cursor-pointer"
+                    className="group h-10 w-full rounded-full px-5 font-medium bg-[#E11D48] hover:bg-[#BE123C] text-white shadow-md shadow-rose-950/30 cursor-pointer"
                   >
                     Enquire Now
                     <ChevronRight className="size-4 transition-all group-hover:translate-x-0.5 duration-300" />

@@ -43,7 +43,7 @@ const Hero = () => {
               WA Owned & Operated
             </Badge>
             <div className="flex flex-col gap-2">
-              <h1 className="text-3xl sm:text-4xl lg:text-5xl font-medium tracking-tight text-foreground">
+              <h1 className="text-3xl sm:text-4xl lg:text-6xl font-medium tracking-tight text-foreground">
                 Take your foiling to the next level
               </h1>
               <p className="text-sm sm:text-base font-normal tracking-wide text-foreground/80">
@@ -62,7 +62,7 @@ const Hero = () => {
               <Button
                 nativeButton={false}
                 render={<Link href="#brands" />}
-                className="group h-10 w-full rounded-full px-5 font-medium text-foreground bg-background hover:bg-background/80 sm:w-fit cursor-pointer"
+                className="group h-10 w-full rounded-full px-6 font-medium text-white bg-[#E11D48] hover:bg-[#BE123C] shadow-lg shadow-rose-950/40 sm:w-fit cursor-pointer"
               >
                 Explore Brands
                 <ArrowUpRight className="size-4 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
@@ -70,7 +70,7 @@ const Hero = () => {
               <Button
                 nativeButton={false}
                 render={<Link href="#wa-stock" />}
-                className="group h-10 w-full rounded-full px-5 font-medium hover:bg-primary/90 sm:w-fit cursor-pointer"
+                className="group h-10 w-full rounded-full px-6 font-medium text-white border border-white/20 bg-white/10 hover:bg-white/20 backdrop-blur-md sm:w-fit cursor-pointer"
               >
                 View WA Stock
                 <ArrowUpRight className="size-4 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />

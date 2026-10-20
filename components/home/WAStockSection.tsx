@@ -98,114 +98,104 @@ const WAStockSection = () => {
             </p>
           </div>
 
-          <div className="flex items-center gap-4">
-            <Link
-              href="#wa-stock"
-              className="group flex items-center gap-1.5 text-sm font-medium text-white/80 hover:text-white transition-colors cursor-pointer mr-2"
+          <div className="flex items-center gap-2">
+            <button
+              id="stock-prev-btn"
+              aria-label="Previous Products"
+              type="button"
+              className="flex size-9 items-center justify-center rounded-full border border-white/15 bg-white/5 text-white/80 hover:bg-white/15 hover:text-white transition-all cursor-pointer"
             >
-              See all
-              <ArrowRight className="size-4 transition-transform duration-200 group-hover:translate-x-1" />
-            </Link>
-
-            <div className="flex items-center gap-2">
-              <button
-                id="stock-prev-btn"
-                aria-label="Previous Products"
-                type="button"
-                className="flex size-9 items-center justify-center rounded-full border border-white/15 bg-white/5 text-white/80 hover:bg-white/15 hover:text-white transition-all cursor-pointer"
-              >
-                <ChevronLeft className="size-4" />
-              </button>
-              <button
-                id="stock-next-btn"
-                aria-label="Next Products"
-                type="button"
-                className="flex size-9 items-center justify-center rounded-full border border-white/15 bg-white/5 text-white/80 hover:bg-white/15 hover:text-white transition-all cursor-pointer"
-              >
-                <ChevronRight className="size-4" />
-              </button>
-            </div>
+              <ChevronLeft className="size-4" />
+            </button>
+            <button
+              id="stock-next-btn"
+              aria-label="Next Products"
+              type="button"
+              className="flex size-9 items-center justify-center rounded-full border border-white/15 bg-white/5 text-white/80 hover:bg-white/15 hover:text-white transition-all cursor-pointer"
+            >
+              <ChevronRight className="size-4" />
+            </button>
           </div>
         </div>
 
         <div className="w-full min-h-[340px]">
           {mounted ? (
             <Swiper
-            modules={[Navigation]}
-            spaceBetween={20}
-            slidesPerView={1.2}
-            navigation={{
-              prevEl: "#stock-prev-btn",
-              nextEl: "#stock-next-btn",
-            }}
-            breakpoints={{
-              540: {
-                slidesPerView: 2,
-                spaceBetween: 20,
-              },
-              768: {
-                slidesPerView: 3,
-                spaceBetween: 24,
-              },
-              1024: {
-                slidesPerView: 4,
-                spaceBetween: 24,
-              },
-            }}
-            className="w-full !overflow-visible"
-          >
-            {stockProducts.map((product) => (
-              <SwiperSlide key={product.id}>
-                <div className="flex flex-col gap-3 group">
-                  <div className="relative w-full h-64 sm:h-72 rounded-2xl bg-[#ECECEC] p-6 flex items-center justify-center overflow-hidden transition-all duration-300 group-hover:shadow-xl group-hover:shadow-white/5">
-                    {product.badge && (
-                      <span
-                        className={`absolute top-3.5 left-3.5 z-10 rounded-full px-2.5 py-0.5 text-xs font-semibold ${product.badgeColor}`}
-                      >
-                        {product.badge}
-                      </span>
-                    )}
-
-                    <div className="relative w-full h-full">
-                      <Image
-                        src={product.image}
-                        alt={product.name}
-                        fill
-                        sizes="(max-width: 640px) 80vw, (max-width: 1024px) 33vw, 25vw"
-                        className="object-contain transition-transform duration-500 group-hover:scale-105 select-none"
-                      />
-                    </div>
-                  </div>
-
-                  <div className="flex items-center justify-between gap-3 px-1 pt-1">
-                    <div className="flex flex-col gap-0.5 min-w-0">
-                      <h3 className="text-base font-medium text-white truncate group-hover:text-rose-400 transition-colors">
-                        {product.name}
-                      </h3>
-                      <div className="flex items-center gap-2">
-                        <span className="text-base font-semibold text-white">
-                          {product.price}
+              modules={[Navigation]}
+              spaceBetween={20}
+              slidesPerView={1}
+              navigation={{
+                prevEl: "#stock-prev-btn",
+                nextEl: "#stock-next-btn",
+              }}
+              breakpoints={{
+                640: {
+                  slidesPerView: 2,
+                  spaceBetween: 20,
+                },
+                768: {
+                  slidesPerView: 3,
+                  spaceBetween: 24,
+                },
+                1024: {
+                  slidesPerView: 4,
+                  spaceBetween: 24,
+                },
+              }}
+              className="w-full"
+            >
+              {stockProducts.map((product) => (
+                <SwiperSlide key={product.id}>
+                  <div className="flex flex-col gap-3 group">
+                    <div className="relative w-full h-64 sm:h-72 rounded-2xl bg-[#ECECEC] p-6 flex items-center justify-center overflow-hidden transition-all duration-300 group-hover:shadow-xl group-hover:shadow-white/5">
+                      {product.badge && (
+                        <span
+                          className={`absolute top-3.5 left-3.5 z-10 rounded-full px-2.5 py-0.5 text-xs font-semibold ${product.badgeColor}`}
+                        >
+                          {product.badge}
                         </span>
-                        {product.originalPrice && (
-                          <span className="text-xs font-normal text-white/40 line-through">
-                            {product.originalPrice}
-                          </span>
-                        )}
+                      )}
+
+                      <div className="relative w-full h-full">
+                        <Image
+                          src={product.image}
+                          alt={product.name}
+                          fill
+                          sizes="(max-width: 640px) 100vw, (max-width: 768px) 50vw, (max-width: 1024px) 33vw, 25vw"
+                          className="object-contain transition-transform duration-500 group-hover:scale-105 select-none"
+                        />
                       </div>
                     </div>
 
-                    <Link
-                      href="#contact"
-                      aria-label={`Enquire about ${product.name}`}
-                      className="shrink-0 flex size-9 items-center justify-center rounded-full bg-white/10 hover:bg-[#E11D48] text-white transition-all duration-300 hover:scale-105 cursor-pointer shadow-sm"
-                    >
-                      <Plus className="size-4" />
-                    </Link>
+                    <div className="flex items-center justify-between gap-3 px-1 pt-1">
+                      <div className="flex flex-col gap-0.5 min-w-0">
+                        <h3 className="text-base font-medium text-white truncate group-hover:text-rose-400 transition-colors">
+                          {product.name}
+                        </h3>
+                        <div className="flex items-center gap-2">
+                          <span className="text-base font-semibold text-white">
+                            {product.price}
+                          </span>
+                          {product.originalPrice && (
+                            <span className="text-xs font-normal text-white/40 line-through">
+                              {product.originalPrice}
+                            </span>
+                          )}
+                        </div>
+                      </div>
+
+                      <Link
+                        href="#contact"
+                        aria-label={`Enquire about ${product.name}`}
+                        className="shrink-0 flex size-9 items-center justify-center rounded-full bg-white/10 hover:bg-[#E11D48] text-white transition-all duration-300 hover:scale-105 cursor-pointer shadow-sm"
+                      >
+                        <Plus className="size-4" />
+                      </Link>
+                    </div>
                   </div>
-                </div>
-              </SwiperSlide>
-            ))}
-          </Swiper>
+                </SwiperSlide>
+              ))}
+            </Swiper>
           ) : (
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 w-full">
               {stockProducts.slice(0, 4).map((product) => (
@@ -216,7 +206,7 @@ const WAStockSection = () => {
                         src={product.image}
                         alt={product.name}
                         fill
-                        sizes="(max-width: 640px) 80vw, (max-width: 1024px) 33vw, 25vw"
+                        sizes="(max-width: 640px) 100vw, (max-width: 768px) 50vw, (max-width: 1024px) 33vw, 25vw"
                         className="object-contain"
                       />
                     </div>
@@ -241,9 +231,10 @@ const WAStockSection = () => {
           <Button
             nativeButton={false}
             render={<Link href="#wa-stock" />}
-            className="h-11 rounded-full px-8 bg-[#E11D48] hover:bg-[#BE123C] text-white font-medium cursor-pointer shadow-lg shadow-rose-950/40"
+            className="group h-11 rounded-full px-8 bg-[#E11D48] hover:bg-[#BE123C] text-white font-medium cursor-pointer shadow-lg shadow-rose-950/40 inline-flex items-center gap-2"
           >
-            More products
+            <span>More products</span>
+            <ArrowRight className="size-4 transition-transform duration-300 group-hover:translate-x-1" />
           </Button>
         </div>
       </div>

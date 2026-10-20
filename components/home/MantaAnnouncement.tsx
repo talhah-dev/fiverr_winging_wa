@@ -5,10 +5,11 @@ import { ArrowUpRight, BatteryCharging, Waves } from "lucide-react";
 
 const MantaAnnouncement = () => {
   return (
-    <section className="relative w-full bg-black py-20 lg:py-28 text-white overflow-hidden border-t border-white/10">
-      <div className="absolute -top-40 right-0 w-96 h-96 bg-cyan-500/10 rounded-full blur-3xl pointer-events-none" />
-      <div className="absolute -bottom-40 left-0 w-96 h-96 bg-rose-500/10 rounded-full blur-3xl pointer-events-none" />
-
+    <section
+      id="manta"
+      className="relative w-full bg-black py-20 lg:py-28 text-white overflow-hidden border-t border-white/10"
+    >
+    
       <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 xl:px-16">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-stretch">
           <div className="flex flex-col items-start justify-center text-left gap-6 w-full">

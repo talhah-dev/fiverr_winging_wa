@@ -1,5 +1,6 @@
 "use client";
 
+import { useEffect, useState } from "react";
 import Image from "next/image";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay, Navigation, Pagination } from "swiper/modules";
@@ -19,6 +20,29 @@ const sliderImages = [
 ];
 
 const HomeSlider = () => {
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  if (!mounted) {
+    return (
+      <section className="relative w-full bg-black overflow-hidden py-4 sm:py-6">
+        <div className="relative w-full h-[280px] sm:h-[400px] md:h-[500px] lg:h-[600px] xl:h-[660px]">
+          <Image
+            src={sliderImages[0]}
+            alt="Winging WA Foiling"
+            fill
+            sizes="100vw"
+            className="object-cover"
+            priority
+          />
+        </div>
+      </section>
+    );
+  }
+
   return (
     <section className="relative w-full bg-black overflow-hidden py-4 sm:py-6">
       <div className="relative w-full group">

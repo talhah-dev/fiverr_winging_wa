@@ -11,6 +11,11 @@ export const metadata: Metadata = {
   title: "Winging WA | AFS Foils & Manta Foil Assist Australia",
   description:
     "WingingWA is the Australian distributor for AFS Foils and the Western Australian dealer for Manta Foil Assist.",
+  icons: {
+    icon: "/favicon.png",
+    shortcut: "/favicon.png",
+    apple: "/favicon.png",
+  },
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {

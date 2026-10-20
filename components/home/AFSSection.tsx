@@ -51,7 +51,7 @@ const AFSSection = () => {
 
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch">
           <div className="lg:col-span-5 flex flex-col justify-between rounded-3xl border border-white/10 bg-gradient-to-b from-white/[0.06] to-white/[0.02] p-8 sm:p-10 relative overflow-hidden group">
-          
+
             <div className="flex flex-col gap-4 relative z-10">
               <span className="text-xs font-semibold uppercase tracking-wider text-rose-400">
                 Flagship Carbon Foils & Wings
@@ -76,13 +76,13 @@ const AFSSection = () => {
               </div>
             </div>
 
-            <div className="flex flex-col gap-3 relative z-10">
+            <div className="flex flex-col gap-3 relative z-10 w-full">
 
-              <div className="flex flex-wrap gap-3 pt-2">
+              <div className="flex flex-wrap gap-3 pt-2 w-full">
                 <Button
                   nativeButton={false}
                   render={<Link href="#wa-stock" />}
-                  className="h-11 rounded-full px-6 bg-[#E11D48] hover:bg-[#BE123C] text-white font-medium cursor-pointer shadow-lg shadow-rose-950/40 inline-flex items-center gap-2 group/btn"
+                  className="h-11 md:w-auto w-full rounded-full px-6 bg-[#E11D48] hover:bg-[#BE123C] text-white font-medium cursor-pointer shadow-lg shadow-rose-950/40 inline-flex items-center gap-2 group/btn"
                 >
                   <span>Explore In-Stock AFS</span>
                   <ArrowUpRight className="size-4 transition-transform duration-300 group-hover/btn:translate-x-0.5 group-hover/btn:-translate-y-0.5" />
@@ -92,7 +92,7 @@ const AFSSection = () => {
                   nativeButton={false}
                   variant="outline"
                   render={<Link href="#contact" />}
-                  className="h-11 rounded-full px-6 border-white/20 bg-white/5 hover:bg-white/10 text-white font-medium cursor-pointer inline-flex items-center gap-2"
+                  className="h-11 md:w-auto w-full rounded-full px-6 border-white/20 bg-white/5 hover:bg-white/10 text-white font-medium cursor-pointer inline-flex items-center gap-2"
                 >
                   <span>Enquire Pricing</span>
                 </Button>
@@ -108,9 +108,8 @@ const AFSSection = () => {
                 return (
                   <div
                     key={cat.title}
-                    className={`flex flex-col justify-between rounded-2xl border border-white/10 bg-white/[0.03] p-6 hover:bg-white/[0.06] hover:border-white/20 transition-all duration-300 group ${
-                      isLast ? "sm:col-span-2 md:col-span-2" : ""
-                    }`}
+                    className={`flex flex-col justify-between rounded-2xl border border-white/10 bg-white/[0.03] p-6 hover:bg-white/[0.06] hover:border-white/20 transition-all duration-300 group ${isLast ? "sm:col-span-2 md:col-span-2" : ""
+                      }`}
                   >
                     <div className="flex flex-col gap-3">
                       <div className="flex size-10 items-center justify-center rounded-xl bg-rose-500/15 text-rose-400 group-hover:bg-rose-500 group-hover:text-white transition-colors duration-300">

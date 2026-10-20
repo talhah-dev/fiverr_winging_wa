@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { Swiper, SwiperSlide } from "swiper/react";
-import { Navigation } from "swiper/modules";
+import { Autoplay, Navigation } from "swiper/modules";
 import { ArrowRight, ChevronLeft, ChevronRight, Plus } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
@@ -121,7 +121,14 @@ const WAStockSection = () => {
         <div className="w-full min-h-[340px]">
           {mounted ? (
             <Swiper
-              modules={[Navigation]}
+              modules={[Navigation, Autoplay]}
+              loop={true}
+              speed={800}
+              autoplay={{
+                delay: 3500,
+                disableOnInteraction: false,
+                pauseOnMouseEnter: true,
+              }}
               spaceBetween={20}
               slidesPerView={1}
               navigation={{

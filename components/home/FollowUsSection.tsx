@@ -6,20 +6,23 @@ const videos = [
   },
   {
     id: "TVg2BPqwQsk",
-    title: "The TakeOff Flow & TakeOff Air | Manta Foils",
+    title: "Manta Foil Assist in Action",
     src: "https://www.youtube.com/embed/TVg2BPqwQsk?si=sHPgPqni-JHZDPW8",
   },
 ];
 
 const FollowUsSection = () => {
   return (
-    <section className="relative w-full bg-black py-20 lg:py-24 text-white overflow-hidden border-t border-white/10">
+    <section className="relative w-full bg-[#ECEEF2] py-20 lg:py-24 text-slate-900 overflow-hidden border-t border-slate-300/80">
       <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 xl:px-16 flex flex-col gap-10 sm:gap-12">
         <div className="flex flex-col gap-1.5">
-          <h2 className="text-2xl sm:text-3xl lg:text-4xl font-semibold tracking-tight text-white">
+          <span className="text-xs font-bold tracking-wider uppercase text-rose-600">
+            Community & Reviews
+          </span>
+          <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold tracking-tight text-slate-900">
             Follow Us On Facebook Winging WA
           </h2>
-          <p className="text-sm sm:text-base text-white/60 font-normal">
+          <p className="text-sm sm:text-base text-slate-600 font-normal">
             Catch the latest reviews, sessions, and gear updates from our community
           </p>
         </div>
@@ -28,7 +31,7 @@ const FollowUsSection = () => {
           {videos.map((video) => (
             <div
               key={video.id}
-              className="relative w-full aspect-video rounded-2xl overflow-hidden border border-white/10 bg-white/5 shadow-2xl group transition-all duration-300 hover:border-white/20"
+              className="relative w-full aspect-video rounded-2xl overflow-hidden border border-slate-300 bg-white shadow-md group transition-all duration-300 hover:shadow-xl"
             >
               <iframe
                 src={video.src}

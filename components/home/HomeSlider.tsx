@@ -1,103 +1,32 @@
 "use client";
 
-import { useEffect, useState } from "react";
-import Image from "next/image";
-import { Swiper, SwiperSlide } from "swiper/react";
-import { Autoplay, Navigation, Pagination } from "swiper/modules";
-import { ChevronLeft, ChevronRight } from "lucide-react";
-
-import "swiper/css";
-import "swiper/css/navigation";
-import "swiper/css/pagination";
-
-const sliderImages = [
-  "/slider/1.avif",
-  "/slider/2.avif",
-  "/slider/3.avif",
-  "/slider/4.avif",
-  "/slider/5.avif",
-  "/slider/6.avif",
-];
-
 const HomeSlider = () => {
-  const [mounted, setMounted] = useState(false);
-
-  useEffect(() => {
-    setMounted(true);
-  }, []);
-
-  if (!mounted) {
-    return (
-      <section className="relative w-full bg-black overflow-hidden py-4 sm:py-6">
-        <div className="relative w-full h-[280px] sm:h-[400px] md:h-[500px] lg:h-[600px] xl:h-[660px]">
-          <Image
-            src={sliderImages[0]}
-            alt="Winging WA Foiling"
-            fill
-            sizes="100vw"
-            className="object-cover"
-            priority
-          />
-        </div>
-      </section>
-    );
-  }
-
   return (
-    <section className="relative w-full bg-black overflow-hidden py-4 sm:py-6">
-      <div className="relative w-full group">
-        <Swiper
-          modules={[Navigation, Autoplay, Pagination]}
-          loop={true}
-          speed={800}
-          autoplay={{
-            delay: 4000,
-            disableOnInteraction: false,
-          }}
-          navigation={{
-            prevEl: "#slider-prev-btn",
-            nextEl: "#slider-next-btn",
-          }}
-          pagination={{
-            clickable: true,
-            bulletActiveClass: "!bg-white !w-8 !rounded-full transition-all",
-            bulletClass: "inline-block size-2.5 rounded-full bg-white/40 mx-1 cursor-pointer transition-all",
-          }}
-          className="w-full"
-        >
-          {sliderImages.map((src, index) => (
-            <SwiperSlide key={src}>
-              <div className="relative w-full h-[280px] sm:h-[400px] md:h-[500px] lg:h-[600px] xl:h-[660px]">
-                <Image
-                  src={src}
-                  alt={`Winging WA Foiling ${index + 1}`}
-                  fill
-                  sizes="100vw"
-                  className="object-cover select-none"
-                  priority={index === 0}
-                />
-              </div>
-            </SwiperSlide>
-          ))}
-        </Swiper>
-
-        <button
-          id="slider-prev-btn"
-          aria-label="Previous Slide"
-          type="button"
-          className="absolute left-3 sm:left-6 lg:left-10 top-1/2 -translate-y-1/2 z-20 flex size-11 sm:size-14 items-center justify-center rounded-full bg-black/35 hover:bg-black/70 text-white backdrop-blur-md transition-all duration-300 hover:scale-105 cursor-pointer border border-white/20 shadow-lg"
-        >
-          <ChevronLeft className="size-6 sm:size-8" />
-        </button>
-
-        <button
-          id="slider-next-btn"
-          aria-label="Next Slide"
-          type="button"
-          className="absolute right-3 sm:right-6 lg:right-10 top-1/2 -translate-y-1/2 z-20 flex size-11 sm:size-14 items-center justify-center rounded-full bg-black/35 hover:bg-black/70 text-white backdrop-blur-md transition-all duration-300 hover:scale-105 cursor-pointer border border-white/20 shadow-lg"
-        >
-          <ChevronRight className="size-6 sm:size-8" />
-        </button>
+    <section className="relative w-full bg-[#EAECEF] overflow-hidden py-6 sm:py-10 px-4 sm:px-6 lg:px-8 xl:px-16">
+      <div className="relative mx-auto max-w-7xl">
+        <div className="relative w-full h-[280px] sm:h-[420px] md:h-[520px] lg:h-[620px] rounded-3xl overflow-hidden border border-slate-300/80 shadow-xl bg-slate-950">
+          <video
+            autoPlay
+            loop
+            muted
+            playsInline
+            className="w-full h-full object-cover"
+          >
+            <source
+              src="https://www.mantafoils.com/wp-content/uploads/2026/10/Website-Home-Banner-10Sec-dg.mp4"
+              type="video/mp4"
+            />
+          </video>
+          <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-black/20 pointer-events-none" />
+          <div className="absolute bottom-6 left-6 sm:bottom-8 sm:left-8 z-10 flex flex-col gap-1 text-white">
+            <span className="rounded-full bg-white/20 px-3 py-1 text-xs font-semibold tracking-wider uppercase backdrop-blur-md w-fit border border-white/20">
+              Manta Foils Action
+            </span>
+            <p className="text-lg sm:text-2xl font-bold tracking-tight drop-shadow-md">
+              Electrify Your Foiling Experience
+            </p>
+          </div>
+        </div>
       </div>
     </section>
   );

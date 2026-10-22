@@ -18,11 +18,11 @@ const footerSections: FooterData[] = [
     links: [
       {
         title: "Available Inventory",
-        href: "#wa-stock",
+        href: "/#wa-stock",
       },
       {
         title: "Enquire Stock",
-        href: "tel:0487042694",
+        href: "/contact",
       },
     ],
   },
@@ -31,19 +31,36 @@ const footerSections: FooterData[] = [
     links: [
       {
         title: "AFS Foils (Distributor)",
-        href: "#afs",
+        href: "/#afs",
       },
       {
         title: "Manta Foil Assist (WA Dealer)",
-        href: "#manta",
+        href: "/#manta",
       },
       {
         title: "TakeOff Evo",
-        href: "#manta",
+        href: "/#manta",
       },
       {
         title: "Manta Backpack",
-        href: "#manta",
+        href: "/#manta",
+      },
+    ],
+  },
+  {
+    title: "Contact",
+    links: [
+      {
+        title: "Send a Message",
+        href: "/contact",
+      },
+      {
+        title: "Arrange a Demo",
+        href: "/contact",
+      },
+      {
+        title: "Call 0487 042 694",
+        href: "tel:0487042694",
       },
     ],
   },
@@ -55,7 +72,7 @@ const Footer = () => {
       <div className="max-w-7xl xl:px-16 lg:px-8 px-4 mx-auto">
         <div className="flex flex-col gap-8 sm:gap-12">
           <div className="grid grid-cols-2 sm:grid-cols-4 md:grid-cols-7 lg:grid-cols-12 gap-x-8 gap-y-10">
-            <div className="col-span-full lg:col-span-5">
+            <div className="col-span-full lg:col-span-4">
               <div className="flex flex-col gap-5">
                 <Link href="/" className="flex items-center">
                   <Image
@@ -96,10 +113,8 @@ const Footer = () => {
               </div>
             </div>
 
-            <div className="col-span-1 lg:block hidden" />
-
             {footerSections.map(({ title, links }, index) => (
-              <div key={index} className="col-span-2">
+              <div key={index} className="col-span-1 sm:col-span-2">
                 <div className="flex flex-col gap-4">
                   <p className="text-base font-bold text-white tracking-wide">
                     {title}
@@ -120,7 +135,7 @@ const Footer = () => {
               </div>
             ))}
 
-            <div className="col-span-full sm:col-span-4 lg:col-span-4">
+            <div className="col-span-full sm:col-span-4 lg:col-span-2">
               <div className="flex flex-col gap-4">
                 <p className="text-base font-bold text-white tracking-wide">
                   Contact Details
@@ -145,7 +160,7 @@ const Footer = () => {
                     <Mail className="size-4 text-[#E11D48]" />
                     <Link
                       href="mailto:mark@mmarine.com.au"
-                      className="hover:text-white transition-colors font-medium"
+                      className="hover:text-white transition-colors font-medium truncate"
                     >
                       mark@mmarine.com.au
                     </Link>

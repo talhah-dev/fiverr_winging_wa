@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { Button } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
 import {
@@ -19,26 +20,27 @@ import { ChevronDown, ChevronRight, Equal, Phone, X } from "lucide-react";
 interface NavItem {
   title: string;
   href: string;
-  isActive?: boolean;
   subLinks?: { title: string; href: string }[];
 }
 
 const navLinks: NavItem[] = [
-  { title: "Home", href: "/", isActive: true },
+  { title: "Home", href: "/" },
   {
     title: "Brands",
-    href: "#brands",
+    href: "/#brands",
     subLinks: [
-      { title: "AFS Foils", href: "#afs" },
-      { title: "Manta Foil Assist", href: "#manta" },
+      { title: "AFS Foils", href: "/#afs" },
+      { title: "Manta Foil Assist", href: "/#manta" },
     ],
   },
-  { title: "WA Stock", href: "#wa-stock" },
-  { title: "Contact", href: "#contact" },
+  { title: "WA Stock", href: "/#wa-stock" },
+  { title: "Contact", href: "/contact" },
 ];
 
 const Navbar = () => {
   const [isSticky, setIsSticky] = useState(false);
+  const pathname = usePathname();
+  const isHomePage = pathname === "/";
 
   useEffect(() => {
     const handleScroll = () => setIsSticky(window.scrollY > 40);
@@ -46,11 +48,13 @@ const Navbar = () => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  const showGlassBackground = isSticky || !isHomePage;
+
   return (
     <nav
       className={cn(
         "fixed inset-x-0 top-0 z-50 w-full transition-all duration-300",
-        isSticky
+        showGlassBackground
           ? "bg-white/95 text-slate-900 shadow-md shadow-slate-900/5 backdrop-blur-lg border-b border-slate-200"
           : "bg-gradient-to-b from-black/70 via-black/30 to-transparent text-white",
       )}
@@ -58,7 +62,7 @@ const Navbar = () => {
       <div
         className={cn(
           "mx-auto flex w-full max-w-7xl items-center justify-between gap-4 px-4 transition-all duration-300 lg:px-8 xl:px-16",
-          isSticky ? "py-3.5" : "py-5",
+          showGlassBackground ? "py-3.5" : "py-5",
         )}
       >
         <div className="flex items-center gap-4 lg:gap-6">
@@ -70,7 +74,7 @@ const Navbar = () => {
               height={44}
               className={cn(
                 "w-auto object-contain transition-all duration-300",
-                isSticky ? "h-9 md:h-10" : "h-10 md:h-12",
+                showGlassBackground ? "h-9 md:h-10" : "h-10 md:h-12",
               )}
               priority
             />
@@ -79,18 +83,23 @@ const Navbar = () => {
             orientation="vertical"
             className={cn(
               "hidden h-6 my-auto lg:block",
-              isSticky ? "bg-slate-300" : "bg-white/30",
+              showGlassBackground ? "bg-slate-300" : "bg-white/30",
             )}
           />
           <div className="hidden items-center gap-1 lg:flex">
-            {navLinks.map((link) =>
-              link.subLinks ? (
+            {navLinks.map((link) => {
+              const isCurrent =
+                link.href === "/"
+                  ? pathname === "/"
+                  : pathname === link.href || pathname.startsWith(`${link.href}/`);
+
+              return link.subLinks ? (
                 <div key={link.title} className="relative group">
                   <button
                     type="button"
                     className={cn(
                       "flex items-center gap-1 rounded-full px-3.5 py-1.5 text-sm font-semibold whitespace-nowrap transition-colors cursor-pointer",
-                      isSticky
+                      showGlassBackground
                         ? "text-slate-700 hover:text-slate-950 hover:bg-slate-100"
                         : "text-white/85 hover:text-white hover:bg-white/10",
                     )}
@@ -118,19 +127,19 @@ const Navbar = () => {
                   href={link.href}
                   className={cn(
                     "rounded-full px-3.5 py-1.5 text-sm font-semibold whitespace-nowrap transition-colors",
-                    isSticky
-                      ? link.isActive
+                    showGlassBackground
+                      ? isCurrent
                         ? "bg-slate-100 text-slate-950 font-bold"
                         : "text-slate-700 hover:text-slate-950 hover:bg-slate-100"
-                      : link.isActive
+                      : isCurrent
                       ? "bg-white/20 text-white font-bold backdrop-blur-sm"
                       : "text-white/85 hover:text-white hover:bg-white/10",
                   )}
                 >
                   {link.title}
                 </Link>
-              ),
-            )}
+              );
+            })}
           </div>
         </div>
 
@@ -139,7 +148,7 @@ const Navbar = () => {
             href="tel:0487042694"
             className={cn(
               "flex items-center gap-2 whitespace-nowrap text-sm font-semibold transition-colors",
-              isSticky
+              showGlassBackground
                 ? "text-slate-800 hover:text-[#E11D48]"
                 : "text-white hover:text-white/80",
             )}
@@ -149,7 +158,7 @@ const Navbar = () => {
           </Link>
           <Button
             nativeButton={false}
-            render={<Link href="tel:0487042694" />}
+            render={<Link href="/contact" />}
             className="group h-10 rounded-full px-5 font-semibold bg-[#E11D48] hover:bg-[#BE123C] text-white shadow-md shadow-rose-950/20 cursor-pointer inline-flex items-center gap-1.5"
           >
             <span>Enquire Now</span>
@@ -164,7 +173,7 @@ const Navbar = () => {
                 size="icon"
                 className={cn(
                   "h-10 w-10 rounded-full lg:hidden cursor-pointer",
-                  isSticky
+                  showGlassBackground
                     ? "bg-slate-100 text-slate-800 hover:bg-slate-200"
                     : "bg-white/20 text-white hover:bg-white/30 backdrop-blur-md",
                 )}
@@ -204,8 +213,13 @@ const Navbar = () => {
             </SheetHeader>
 
             <div className="flex flex-col gap-1.5 pt-4">
-              {navLinks.map((link) =>
-                link.subLinks ? (
+              {navLinks.map((link) => {
+                const isCurrent =
+                  link.href === "/"
+                    ? pathname === "/"
+                    : pathname === link.href || pathname.startsWith(`${link.href}/`);
+
+                return link.subLinks ? (
                   <div key={link.title} className="flex flex-col gap-1">
                     <span className="px-3 pt-2 text-xs font-bold tracking-wider text-slate-400 uppercase">
                       {link.title}
@@ -234,7 +248,7 @@ const Navbar = () => {
                         href={link.href}
                         className={cn(
                           "rounded-lg px-3 py-2 text-base font-semibold",
-                          link.isActive
+                          isCurrent
                             ? "bg-slate-100 text-slate-950"
                             : "text-slate-700 hover:bg-slate-100 hover:text-slate-950",
                         )}
@@ -243,8 +257,8 @@ const Navbar = () => {
                       </Link>
                     }
                   />
-                ),
-              )}
+                );
+              })}
             </div>
 
             <div className="mt-auto flex flex-col gap-3 pt-6 border-t border-slate-200">
@@ -264,7 +278,7 @@ const Navbar = () => {
                 render={
                   <Button
                     nativeButton={false}
-                    render={<Link href="tel:0487042694" />}
+                    render={<Link href="/contact" />}
                     className="group h-11 w-full rounded-full px-5 font-semibold bg-[#E11D48] hover:bg-[#BE123C] text-white shadow-md shadow-rose-950/20 cursor-pointer"
                   >
                     Enquire Now

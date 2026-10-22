@@ -162,10 +162,10 @@ const WAStockSection = () => {
               {stockProducts.map((product) => (
                 <SwiperSlide key={product.id}>
                   <div className="flex flex-col gap-3 group">
-                    <div className="relative w-full h-64 sm:h-72 rounded-2xl bg-white border border-slate-200/80 p-6 flex items-center justify-center overflow-hidden transition-all duration-300 group-hover:shadow-lg group-hover:border-slate-300 shadow-xs">
+                    <div className="relative w-full h-64 sm:h-72 rounded-2xl bg-white border border-slate-200/80 flex items-center justify-center overflow-hidden transition-all duration-300 group-hover:shadow-lg group-hover:border-slate-300 shadow-xs">
                       {product.badge && (
                         <span
-                          className={`absolute top-3.5 left-3.5 z-10 rounded-full px-2.5 py-0.5 text-xs font-semibold border ${product.badgeColor}`}
+                          className={`absolute top-3.5 left-3.5 z-10 rounded-full px-2.5 py-0.5 text-xs font-semibold border backdrop-blur-md ${product.badgeColor}`}
                         >
                           {product.badge}
                         </span>
@@ -177,7 +177,11 @@ const WAStockSection = () => {
                           alt={product.name}
                           fill
                           sizes="(max-width: 640px) 100vw, (max-width: 768px) 50vw, (max-width: 1024px) 33vw, 25vw"
-                          className="object-contain transition-transform duration-500 group-hover:scale-105 select-none"
+                          className={`${
+                            product.image.endsWith(".jpg")
+                              ? "object-cover"
+                              : "object-contain"
+                          } transition-transform duration-500 group-hover:scale-105 select-none`}
                         />
                       </div>
                     </div>
@@ -218,14 +222,18 @@ const WAStockSection = () => {
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 w-full">
               {stockProducts.slice(0, 4).map((product) => (
                 <div key={product.id} className="flex flex-col gap-3">
-                  <div className="relative w-full h-64 sm:h-72 rounded-2xl bg-white border border-slate-200 p-6 flex items-center justify-center overflow-hidden">
+                  <div className="relative w-full h-64 sm:h-72 rounded-2xl bg-white border border-slate-200 flex items-center justify-center overflow-hidden">
                     <div className="relative w-full h-full">
                       <Image
                         src={product.image}
                         alt={product.name}
                         fill
                         sizes="(max-width: 640px) 100vw, (max-width: 768px) 50vw, (max-width: 1024px) 33vw, 25vw"
-                        className="object-contain"
+                        className={
+                          product.image.endsWith(".jpg")
+                            ? "object-cover"
+                            : "object-contain"
+                        }
                       />
                     </div>
                   </div>
@@ -248,10 +256,10 @@ const WAStockSection = () => {
         <div className="flex justify-center pt-4">
           <Button
             nativeButton={false}
-            render={<Link href="tel:0487042694" />}
+            render={<Link href="/wa-stock" />}
             className="group h-11 rounded-full px-8 bg-[#E11D48] hover:bg-[#BE123C] text-white font-medium cursor-pointer shadow-md shadow-rose-900/20 inline-flex items-center gap-2"
           >
-            <span>Enquire Available Inventory</span>
+            <span>View Full WA Inventory</span>
             <ArrowRight className="size-4 transition-transform duration-300 group-hover:translate-x-1" />
           </Button>
         </div>

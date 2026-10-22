@@ -77,7 +77,7 @@ const MantaAnnouncement = () => {
             <div className="flex flex-wrap items-center gap-4 pt-2">
               <Button
                 nativeButton={false}
-                render={<Link href="#wa-stock" />}
+                render={<Link href="/wa-stock" />}
                 className="h-11 rounded-full px-7 bg-[#E11D48] hover:bg-[#BE123C] text-white font-medium cursor-pointer shadow-md shadow-rose-900/20 w-full sm:w-fit inline-flex items-center gap-2"
               >
                 <span>View In-Stock Manta Gear</span>

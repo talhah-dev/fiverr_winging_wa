@@ -89,7 +89,7 @@ const AFSSection = () => {
               <div className="flex flex-wrap gap-3 pt-2 w-full">
                 <Button
                   nativeButton={false}
-                  render={<Link href="#wa-stock" />}
+                  render={<Link href="/wa-stock" />}
                   className="h-11 md:w-auto w-full rounded-full px-6 bg-[#E11D48] hover:bg-[#BE123C] text-white font-medium cursor-pointer shadow-md shadow-rose-900/20 inline-flex items-center gap-2 group/btn"
                 >
                   <span>Explore In-Stock AFS</span>

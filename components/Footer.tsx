@@ -17,8 +17,12 @@ const footerSections: FooterData[] = [
     title: "WA Stock",
     links: [
       {
-        title: "Available Inventory",
-        href: "/#wa-stock",
+        title: "All Available Inventory",
+        href: "/wa-stock",
+      },
+      {
+        title: "Foil Sets & Wings",
+        href: "/wa-stock",
       },
       {
         title: "Enquire Stock",

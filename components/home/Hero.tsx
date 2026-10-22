@@ -62,7 +62,7 @@ const Hero = () => {
               </Button>
               <Button
                 nativeButton={false}
-                render={<Link href="#wa-stock" />}
+                render={<Link href="/wa-stock" />}
                 className="group h-11 w-full rounded-full px-7 font-medium text-white border border-white/25 bg-white/10 hover:bg-white/20 backdrop-blur-md sm:w-fit cursor-pointer inline-flex items-center justify-center gap-2"
               >
                 View WA Stock

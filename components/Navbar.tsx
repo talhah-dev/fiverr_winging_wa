@@ -183,7 +183,7 @@ const Navbar = () => {
                 render={
                   <Link href="/" className="flex items-center">
                     <Image
-                      src="/favicon.png"
+                      src="/logo.png"
                       alt="Winging WA"
                       width={140}
                       height={38}
@@ -261,6 +261,7 @@ const Navbar = () => {
                 }
               />
               <SheetClose
+                nativeButton={false}
                 render={
                   <Button
                     nativeButton={false}

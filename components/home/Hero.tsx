@@ -2,9 +2,7 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { Button } from "@/components/ui/button";
 import { motion } from "motion/react";
-import { ArrowUpRight } from "lucide-react";
 
 const fadeIn = {
   initial: { opacity: 0, y: 20 },
@@ -33,10 +31,10 @@ const Hero = () => {
           {...fadeIn}
           className="flex flex-col items-center text-center gap-2 max-w-4xl mx-auto"
         >
-          <h1 className="text-3xl max-w-xl sm:text-5xl lg:text-7xl font-bold tracking-tight text-white  drop-shadow-[0_3px_16px_rgba(0,0,0,0.9)]">
+          <h1 className="text-5xl md:leading-none leading-tight max-w-xl sm:text-4xl lg:text-7xl font-bold tracking-tight text-white  drop-shadow-[0_3px_16px_rgba(0,0,0,0.9)]">
             Take Your Foiling to the next level
           </h1>
-          <p className="text-base sm:text-lg lg:text-xl font-bold tracking-wide text-[#E11D48] drop-shadow-[0_2px_10px_rgba(0,0,0,0.9)]">
+          <p className=" text-lg lg:text-xl font-bold tracking-wide text-[#E11D48] drop-shadow-[0_2px_10px_rgba(0,0,0,0.9)]">
             ParaWing. Wing. Prone. Pump. Downwind. Foil Assist
           </p>
         </motion.div>
@@ -69,25 +67,6 @@ const Hero = () => {
                 WingingWA delivers high-performance foils, Wings, and foil assist systems. We are Australian Distributor for AFS and the WA dealer for Manta Foil Assist.
               </p>
             </div>
-
-            {/* <div className="flex flex-wrap items-center justify-center gap-3 pt-1">
-              <Button
-                nativeButton={false}
-                render={<Link href="#afs" />}
-                className="group h-10 rounded-full px-6 font-medium text-white bg-[#E11D48] hover:bg-[#BE123C] shadow-lg shadow-rose-950/40 cursor-pointer"
-              >
-                <span>Explore Brands</span>
-                <ArrowUpRight className="size-4 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
-              </Button>
-              <Button
-                nativeButton={false}
-                render={<Link href="/wa-stock" />}
-                className="group h-10 rounded-full px-6 font-medium text-white border border-white/20 bg-black/30 hover:bg-black/50 backdrop-blur-md cursor-pointer"
-              >
-                <span>View WA Stock</span>
-                <ArrowUpRight className="size-4 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
-              </Button>
-            </div> */}
           </div>
 
           <div className="flex items-center justify-center shrink-0 order-3">

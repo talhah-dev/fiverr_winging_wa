@@ -7,7 +7,7 @@ const MantaAnnouncement = () => {
   return (
     <section
       id="manta"
-      className="relative w-full bg-black py-20 lg:py-28 text-white overflow-hidden border-t border-white/10"
+      className="relative w-full bg-[#4A505B] py-20 lg:py-28 text-white overflow-hidden border-t border-white/15"
     >
       <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 xl:px-16">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-stretch">
@@ -74,7 +74,7 @@ const MantaAnnouncement = () => {
                 className="object-cover transition-transform duration-700 group-hover:scale-105"
                 priority
               />
-              <div className="relative z-10 w-full p-6 sm:p-8 flex justify-center items-center bg-gradient-to-t from-black/85 via-black/35 to-transparent">
+              <div className="relative z-10 w-full p-6 sm:p-8 flex justify-center items-center bg-gradient-to-t from-[#4A505B]/90 via-[#4A505B]/40 to-transparent">
                 <Image
                   src="/TakeOff-Evo-Logo-white.webp"
                   alt="TakeOff Evo"

@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { motion } from "motion/react";
@@ -7,14 +8,13 @@ import { ArrowUpRight } from "lucide-react";
 
 const fadeIn = {
   initial: { opacity: 0, y: 20 },
-  whileInView: { opacity: 1, y: 0 },
-  viewport: { once: true },
+  animate: { opacity: 1, y: 0 },
   transition: { duration: 0.7, ease: [0.21, 0.47, 0.32, 0.98] as const },
 };
 
 const Hero = () => {
   return (
-    <section className="dark relative flex min-h-screen w-full flex-col overflow-hidden bg-background">
+    <section className="dark relative flex min-h-screen w-full flex-col justify-between overflow-hidden bg-[#4A505B]">
       <video
         autoPlay
         loop
@@ -27,48 +27,86 @@ const Hero = () => {
           type="video/mp4"
         />
       </video>
-      <div className="absolute inset-0 z-1 bg-linear-to-t from-black/80 via-black/30 to-black/50" />
 
-      <div className="relative z-10 mx-auto flex w-full max-w-7xl flex-1 flex-col justify-end px-4 pt-28 pb-10 lg:px-8 lg:pb-16 xl:px-16">
+      <div className="relative z-10 mx-auto flex w-full max-w-7xl flex-1 flex-col justify-between px-4 pt-32 pb-10 sm:pb-12 lg:px-8 lg:pt-36 lg:pb-14 xl:px-16">
         <motion.div
           {...fadeIn}
-          className="flex w-full flex-col gap-4 lg:gap-8 lg:flex-row lg:items-end lg:justify-between"
+          className="flex flex-col items-center text-center gap-2 max-w-4xl mx-auto"
         >
-          <div className="flex flex-col gap-4 max-w-137">
-            <div className="flex flex-col gap-2">
-              <h1 className="text-3xl sm:text-4xl lg:text-6xl font-medium tracking-tight text-foreground">
-                Take your foiling to the next level
-              </h1>
-              <p className="text-sm sm:text-base font-normal tracking-wide text-foreground/80">
-                Prone • Wing • Downwind • Wake • eFoil
-              </p>
-            </div>
+          <h1 className="text-3xl sm:text-5xl lg:text-6xl font-bold tracking-tight text-white drop-shadow-[0_3px_16px_rgba(0,0,0,0.9)]">
+            Take Your Foiling to the next level
+          </h1>
+          <p className="text-base sm:text-lg lg:text-xl font-bold tracking-wide text-[#E11D48] drop-shadow-[0_2px_10px_rgba(0,0,0,0.9)]">
+            ParaWing. Wing. Prone. Pump. Downwind. Foil Assist
+          </p>
+        </motion.div>
+
+        <motion.div
+          initial={{ opacity: 0, y: 25 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.7, delay: 0.2 }}
+          className="w-full flex flex-col md:flex-row items-center justify-between gap-6 lg:gap-8 pt-16"
+        >
+          <div className="flex items-center justify-center shrink-0 order-2 md:order-1">
+            <Link
+              href="#afs"
+              className="group relative flex items-center justify-center p-2 rounded-2xl bg-black/40 hover:bg-black/60 backdrop-blur-md border border-white/20 transition-all duration-300 hover:scale-105 shadow-xl"
+            >
+              <Image
+                src="/afs-badge.png"
+                alt="AFS Foils"
+                width={190}
+                height={88}
+                className="h-12 sm:h-14 lg:h-16 w-auto object-contain rounded-lg"
+                priority
+              />
+            </Link>
           </div>
 
-          <div className="flex flex-col gap-3 sm:gap-4 lg:gap-8 max-w-122.5 lg:shrink-0">
-            <p className="text-base sm:text-lg text-foreground">
-              WingingWA delivers high-performance foils, wings and foil-assist
-              systems. We’re the Australian distributor for AFS Foils and the
-              Western Australian dealer for Manta Foil Assist.
-            </p>
-            <div className="flex flex-col gap-3 sm:flex-row sm:items-center">
+          <div className="flex flex-col items-center text-center gap-3 max-w-2xl mx-auto order-1 md:order-2">
+            <div className="flex flex-col gap-1">
+              <p className="text-base sm:text-lg font-semibold text-white drop-shadow-[0_2px_12px_rgba(0,0,0,0.95)] leading-snug">
+                WingingWA delivers high-performance foils, Wings, and foil assist systems
+              </p>
+              <p className="text-sm sm:text-base font-medium text-white/95 drop-shadow-[0_2px_12px_rgba(0,0,0,0.95)]">
+                We are Australian Distributor for AFS and the WA dealer for Manta Foil Assist.
+              </p>
+            </div>
+
+            <div className="flex flex-wrap items-center justify-center gap-3 pt-1">
               <Button
                 nativeButton={false}
                 render={<Link href="#afs" />}
-                className="group h-10 w-full rounded-full px-6 font-medium text-white bg-[#E11D48] hover:bg-[#BE123C] shadow-lg shadow-rose-950/40 sm:w-fit cursor-pointer"
+                className="group h-10 rounded-full px-6 font-medium text-white bg-[#E11D48] hover:bg-[#BE123C] shadow-lg shadow-rose-950/40 cursor-pointer"
               >
-                Explore Brands
+                <span>Explore Brands</span>
                 <ArrowUpRight className="size-4 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
               </Button>
               <Button
                 nativeButton={false}
                 render={<Link href="/wa-stock" />}
-                className="group h-10 w-full rounded-full px-6 font-medium text-white border border-white/20 bg-white/10 hover:bg-white/20 backdrop-blur-md sm:w-fit cursor-pointer"
+                className="group h-10 rounded-full px-6 font-medium text-white border border-white/20 bg-black/30 hover:bg-black/50 backdrop-blur-md cursor-pointer"
               >
-                View WA Stock
+                <span>View WA Stock</span>
                 <ArrowUpRight className="size-4 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
               </Button>
             </div>
+          </div>
+
+          <div className="flex items-center justify-center shrink-0 order-3">
+            <Link
+              href="#manta"
+              className="group relative flex items-center justify-center p-3 rounded-2xl bg-black/40 hover:bg-black/60 backdrop-blur-md border border-white/20 transition-all duration-300 hover:scale-105 shadow-xl"
+            >
+              <Image
+                src="/manta-badge-white.png"
+                alt="Manta Foils"
+                width={200}
+                height={75}
+                className="h-10 sm:h-12 lg:h-14 w-auto object-contain"
+                priority
+              />
+            </Link>
           </div>
         </motion.div>
       </div>

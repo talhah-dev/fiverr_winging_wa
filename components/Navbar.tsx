@@ -5,7 +5,6 @@ import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { Button } from "@/components/ui/button";
-import { Separator } from "@/components/ui/separator";
 import {
   Sheet,
   SheetClose,
@@ -47,12 +46,16 @@ const Navbar = () => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  const isHomePage = pathname === "/";
+
   return (
     <nav
       className={cn(
         "dark fixed inset-x-0 top-0 z-50 w-full transition-all duration-300",
         isSticky
-          ? "bg-black/85 shadow-lg shadow-black/30 backdrop-blur-lg border-b border-white/10"
+          ? isHomePage
+            ? "bg-[#4A505B]/90 shadow-lg shadow-black/20 backdrop-blur-lg border-b border-white/15"
+            : "bg-black/85 shadow-lg shadow-black/30 backdrop-blur-lg border-b border-white/10"
           : "bg-transparent",
       )}
     >
@@ -62,91 +65,96 @@ const Navbar = () => {
           isSticky ? "py-4 md:py-5" : "py-4 md:py-6",
         )}
       >
-        <div className="flex items-center gap-4 lg:gap-6">
+        <div className="hidden lg:flex items-center gap-1 flex-1 justify-start">
+          {navLinks.map((link) => {
+            const isCurrent =
+              link.href === "/"
+                ? pathname === "/"
+                : pathname === link.href || pathname.startsWith(`${link.href}/`);
+
+            return link.subLinks ? (
+              <div key={link.title} className="relative group">
+                <button
+                  type="button"
+                  className="flex items-center gap-1 rounded-full px-3.5 py-1.5 text-sm font-medium whitespace-nowrap text-white/80 hover:text-white transition-colors cursor-pointer"
+                >
+                  {link.title}
+                  <ChevronDown className="size-4 transition-transform duration-200 group-hover:rotate-180" />
+                </button>
+                <div className="invisible absolute top-full left-0 z-50 pt-2 opacity-0 transition-all duration-200 group-hover:visible group-hover:opacity-100">
+                  <div
+                    className={cn(
+                      "min-w-48 rounded-xl border p-1.5 shadow-2xl backdrop-blur-md",
+                      isHomePage
+                        ? "border-white/15 bg-[#4A505B]/95"
+                        : "border-white/10 bg-black/95",
+                    )}
+                  >
+                    {link.subLinks.map((sub) => (
+                      <Link
+                        key={sub.title}
+                        href={sub.href}
+                        className="block rounded-lg px-3 py-2 text-sm font-medium text-white/80 hover:text-white hover:bg-white/10 transition-colors"
+                      >
+                        {sub.title}
+                      </Link>
+                    ))}
+                  </div>
+                </div>
+              </div>
+            ) : (
+              <Link
+                key={link.title}
+                href={link.href}
+                className={cn(
+                  "rounded-full px-3.5 py-1.5 text-sm font-medium whitespace-nowrap transition-colors",
+                  isCurrent
+                    ? "bg-white/20 text-white font-semibold backdrop-blur-sm"
+                    : "text-white/80 hover:text-white hover:bg-white/10",
+                )}
+              >
+                {link.title}
+              </Link>
+            );
+          })}
+        </div>
+
+        <div className="flex lg:flex-1 items-center justify-start lg:justify-center">
           <Link href="/" className="shrink-0 flex items-center">
             <Image
-              src="/favicon.png"
+              src="/logo.png"
               alt="Winging WA"
               width={160}
               height={44}
               className={cn(
                 "w-auto object-contain transition-all duration-300",
-                isSticky ? "h-9 md:h-11" : "h-10 md:h-13",
+                isSticky ? "h-10 md:h-12" : "h-12 md:h-15",
               )}
               priority
             />
           </Link>
-          <Separator
-            orientation="vertical"
-            className="hidden h-6 my-auto lg:block bg-white/20"
-          />
-          <div className="hidden items-center gap-1 lg:flex">
-            {navLinks.map((link) => {
-              const isCurrent =
-                link.href === "/"
-                  ? pathname === "/"
-                  : pathname === link.href || pathname.startsWith(`${link.href}/`);
+        </div>
 
-              return link.subLinks ? (
-                <div key={link.title} className="relative group">
-                  <button
-                    type="button"
-                    className="flex items-center gap-1 rounded-full px-3.5 py-1.5 text-sm font-medium whitespace-nowrap text-white/80 hover:text-white transition-colors cursor-pointer"
-                  >
-                    {link.title}
-                    <ChevronDown className="size-4 transition-transform duration-200 group-hover:rotate-180" />
-                  </button>
-                  <div className="invisible absolute top-full left-0 z-50 pt-2 opacity-0 transition-all duration-200 group-hover:visible group-hover:opacity-100">
-                    <div className="min-w-48 rounded-xl border border-white/10 bg-black/95 p-1.5 shadow-2xl backdrop-blur-md">
-                      {link.subLinks.map((sub) => (
-                        <Link
-                          key={sub.title}
-                          href={sub.href}
-                          className="block rounded-lg px-3 py-2 text-sm font-medium text-white/80 hover:text-white hover:bg-white/10 transition-colors"
-                        >
-                          {sub.title}
-                        </Link>
-                      ))}
-                    </div>
-                  </div>
-                </div>
-              ) : (
-                <Link
-                  key={link.title}
-                  href={link.href}
-                  className={cn(
-                    "rounded-full px-3.5 py-1.5 text-sm font-medium whitespace-nowrap transition-colors",
-                    isCurrent
-                      ? "bg-white/20 text-white font-semibold backdrop-blur-sm"
-                      : "text-white/80 hover:text-white hover:bg-white/10",
-                  )}
-                >
-                  {link.title}
-                </Link>
-              );
-            })}
+        <div className="flex lg:flex-1 items-center justify-end gap-6">
+          <div className="hidden items-center gap-6 lg:flex">
+            <Link
+              href="tel:0487042694"
+              className="flex items-center gap-2 whitespace-nowrap text-white text-sm font-medium transition-colors hover:text-white/80"
+            >
+              <Phone className="size-4.5" />
+              <span>0487 042 694</span>
+            </Link>
+            <Button
+              nativeButton={false}
+              render={<Link href="/contact" />}
+              className="group h-10 rounded-full px-5 font-medium bg-[#E11D48] hover:bg-[#BE123C] text-white shadow-md shadow-rose-950/30 cursor-pointer inline-flex items-center gap-1.5"
+            >
+              <span>Enquire Now</span>
+              <ChevronRight className="size-4 transition-transform group-hover:translate-x-0.5 duration-300" />
+            </Button>
           </div>
-        </div>
 
-        <div className="hidden items-center gap-6 lg:flex">
-          <Link
-            href="tel:0487042694"
-            className="flex items-center gap-2 whitespace-nowrap text-white text-sm font-medium transition-colors hover:text-white/80"
-          >
-            <Phone className="size-4.5" />
-            <span>0487 042 694</span>
-          </Link>
-          <Button
-            nativeButton={false}
-            render={<Link href="/contact" />}
-            className="group h-10 rounded-full px-5 font-medium bg-[#E11D48] hover:bg-[#BE123C] text-white shadow-md shadow-rose-950/30 cursor-pointer inline-flex items-center gap-1.5"
-          >
-            <span>Enquire Now</span>
-            <ChevronRight className="size-4 transition-transform group-hover:translate-x-0.5 duration-300" />
-          </Button>
-        </div>
-
-        <Sheet>
+          <Sheet>
           <SheetTrigger
             render={
               <Button
@@ -162,7 +170,10 @@ const Navbar = () => {
           <SheetContent
             side="right"
             showCloseButton={false}
-            className="dark flex flex-col gap-6 overflow-auto border-l border-white/10 bg-black p-5 sm:p-6 text-white no-scrollbar"
+            className={cn(
+              "dark flex flex-col gap-6 overflow-auto border-l p-5 sm:p-6 text-white no-scrollbar",
+              isHomePage ? "border-white/15 bg-[#4A505B]" : "border-white/10 bg-black",
+            )}
           >
             <SheetTitle className="sr-only">Navigation Menu</SheetTitle>
 
@@ -264,6 +275,7 @@ const Navbar = () => {
             </div>
           </SheetContent>
         </Sheet>
+        </div>
       </div>
     </nav>
   );

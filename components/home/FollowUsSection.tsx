@@ -13,7 +13,7 @@ const videos = [
 
 const FollowUsSection = () => {
   return (
-    <section className="relative w-full bg-black py-20 lg:py-24 text-white overflow-hidden border-t border-white/10">
+    <section className="relative w-full bg-[#4A505B] py-20 lg:py-24 text-white overflow-hidden border-t border-white/15">
       <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 xl:px-16 flex flex-col gap-10 sm:gap-12">
         <div className="flex flex-col gap-1.5">
           <h2 className="text-2xl sm:text-3xl lg:text-4xl font-semibold tracking-tight text-white">

@@ -8,7 +8,7 @@ import WAStockSection from "@/components/home/WAStockSection";
 
 const HomePage = () => {
   return (
-    <div className="">
+    <div className="bg-[#4A505B] min-h-screen text-white">
       <Hero />
       <AFSSection />
       <MantaAnnouncement />

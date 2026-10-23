@@ -1,7 +1,11 @@
+"use client";
+
 import Image from "next/image";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { Separator } from "@/components/ui/separator";
 import { FaFacebookF, FaInstagram } from "react-icons/fa6";
+import { cn } from "@/lib/utils";
 
 type FooterData = {
   title: string;
@@ -53,8 +57,17 @@ const footerSections: FooterData[] = [
 ];
 
 const Footer = () => {
+  const pathname = usePathname();
+  const isHomePage = pathname === "/";
+
   return (
-    <footer id="contact" className="dark bg-black text-foreground py-12 border-t border-white/10">
+    <footer
+      id="contact"
+      className={cn(
+        "dark text-foreground py-12 border-t border-white/15",
+        isHomePage ? "bg-[#4A505B]" : "bg-black",
+      )}
+    >
       <div className="max-w-7xl xl:px-16 lg:px-8 px-4 mx-auto">
         <div className="flex flex-col gap-6 sm:gap-12">
           <div className="py-6 sm:py-10 grid grid-cols-2 sm:grid-cols-4 md:grid-cols-7 lg:grid-cols-12 gap-x-8 gap-y-10 px-2 xl:px-0">

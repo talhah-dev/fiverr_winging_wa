@@ -33,7 +33,7 @@ const Hero = () => {
           {...fadeIn}
           className="flex flex-col items-center text-center gap-2 max-w-4xl mx-auto"
         >
-          <h1 className="text-3xl sm:text-5xl lg:text-6xl font-bold tracking-tight text-white drop-shadow-[0_3px_16px_rgba(0,0,0,0.9)]">
+          <h1 className="text-3xl max-w-xl sm:text-5xl lg:text-7xl font-bold tracking-tight text-white  drop-shadow-[0_3px_16px_rgba(0,0,0,0.9)]">
             Take Your Foiling to the next level
           </h1>
           <p className="text-base sm:text-lg lg:text-xl font-bold tracking-wide text-[#E11D48] drop-shadow-[0_2px_10px_rgba(0,0,0,0.9)]">
@@ -53,7 +53,7 @@ const Hero = () => {
               className="group relative flex items-center justify-center p-2 rounded-2xl bg-black/40 hover:bg-black/60 backdrop-blur-md border border-white/20 transition-all duration-300 hover:scale-105 shadow-xl"
             >
               <Image
-                src="/afs-badge.png"
+                src="/afs.svg"
                 alt="AFS Foils"
                 width={190}
                 height={88}
@@ -66,14 +66,11 @@ const Hero = () => {
           <div className="flex flex-col items-center text-center gap-3 max-w-2xl mx-auto order-1 md:order-2">
             <div className="flex flex-col gap-1">
               <p className="text-base sm:text-lg font-semibold text-white drop-shadow-[0_2px_12px_rgba(0,0,0,0.95)] leading-snug">
-                WingingWA delivers high-performance foils, Wings, and foil assist systems
-              </p>
-              <p className="text-sm sm:text-base font-medium text-white/95 drop-shadow-[0_2px_12px_rgba(0,0,0,0.95)]">
-                We are Australian Distributor for AFS and the WA dealer for Manta Foil Assist.
+                WingingWA delivers high-performance foils, Wings, and foil assist systems. We are Australian Distributor for AFS and the WA dealer for Manta Foil Assist.
               </p>
             </div>
 
-            <div className="flex flex-wrap items-center justify-center gap-3 pt-1">
+            {/* <div className="flex flex-wrap items-center justify-center gap-3 pt-1">
               <Button
                 nativeButton={false}
                 render={<Link href="#afs" />}
@@ -90,7 +87,7 @@ const Hero = () => {
                 <span>View WA Stock</span>
                 <ArrowUpRight className="size-4 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
               </Button>
-            </div>
+            </div> */}
           </div>
 
           <div className="flex items-center justify-center shrink-0 order-3">
@@ -99,7 +96,7 @@ const Hero = () => {
               className="group relative flex items-center justify-center p-3 rounded-2xl bg-black/40 hover:bg-black/60 backdrop-blur-md border border-white/20 transition-all duration-300 hover:scale-105 shadow-xl"
             >
               <Image
-                src="/manta-badge-white.png"
+                src="/manta.webp"
                 alt="Manta Foils"
                 width={200}
                 height={75}

@@ -1,17 +1,15 @@
 import Footer from "@/components/Footer";
-import AFSSection from "@/components/home/AFSSection";
+import BrandsSection from "@/components/home/BrandsSection";
 import FollowUsSection from "@/components/home/FollowUsSection";
 import Hero from "@/components/home/Hero";
 import HomeSlider from "@/components/home/HomeSlider";
-import MantaAnnouncement from "@/components/home/MantaAnnouncement";
 import WAStockSection from "@/components/home/WAStockSection";
 
 const HomePage = () => {
   return (
     <div className="bg-[#4A505B] min-h-screen text-white">
       <Hero />
-      <AFSSection />
-      <MantaAnnouncement />
+      <BrandsSection />
       <HomeSlider />
       <WAStockSection />
       <FollowUsSection />

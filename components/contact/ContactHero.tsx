@@ -15,6 +15,9 @@ const ContactHero = () => {
         className="object-cover object-center select-none"
       />
 
+      <div className="absolute inset-0 bg-black/20" />
+
+
       <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 xl:px-16 flex flex-col items-center text-center">
         <motion.div
           initial={{ opacity: 0, y: 15 }}

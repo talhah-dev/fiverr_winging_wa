@@ -18,7 +18,7 @@ const StockHero = () => {
         className="object-cover object-center select-none"
       />
 
-      <div className="absolute inset-0 bg-gradient-to-b from-black/80 via-black/50 to-black/85" />
+      <div className="absolute inset-0 bg-black/20" />
 
       <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 xl:px-16 flex flex-col items-center text-center">
         <motion.div
@@ -28,7 +28,7 @@ const StockHero = () => {
           className="flex flex-col items-center gap-4 max-w-2xl"
         >
           <h1 className="text-3xl sm:text-5xl lg:text-6xl font-bold tracking-tight text-white leading-tight drop-shadow-md">
-            WA Stock Available
+            Feature Equipment
           </h1>
 
           <p className="text-base sm:text-lg text-slate-100 leading-relaxed font-normal drop-shadow-xs">

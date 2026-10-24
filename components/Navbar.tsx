@@ -32,7 +32,7 @@ const navLinks: NavItem[] = [
       { title: "Manta Foil Assist", href: "/#manta" },
     ],
   },
-  { title: "WA Stock", href: "/wa-stock" },
+  { title: "Feature Equipment", href: "/feature-equipment" },
   { title: "Contact", href: "/contact" },
 ];
 

@@ -47,7 +47,7 @@ const AfsCatalog = ({
       const matchSubCategory =
         !selectedSubCategory ||
         product.subCategory.toLowerCase() ===
-          selectedSubCategory.toLowerCase();
+        selectedSubCategory.toLowerCase();
 
       const matchDiscipline =
         !selectedDiscipline ||
@@ -324,8 +324,8 @@ const AfsCatalog = ({
                                 product.badgeType === "deal"
                                   ? "bg-rose-500/20 text-rose-300 border-rose-500/40"
                                   : product.badgeType === "performance"
-                                  ? "bg-amber-500/20 text-amber-300 border-amber-500/40"
-                                  : "bg-white/10 text-slate-200 border-white/20",
+                                    ? "bg-amber-500/20 text-amber-300 border-amber-500/40"
+                                    : "bg-white/10 text-slate-200 border-white/20",
                               )}
                             >
                               {product.badge}

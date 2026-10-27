@@ -25,16 +25,16 @@ const faqs = [
 
 const ContactFAQ = () => {
   return (
-    <section className="relative w-full py-16 lg:py-20 bg-[#EAECEF] border-t border-slate-300/80">
+    <section className="relative w-full py-16 lg:py-20 bg-[#4A505B] border-t border-white/15 text-white">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 xl:px-16 flex flex-col gap-10">
         <div className="flex flex-col items-center text-center gap-2 max-w-2xl mx-auto">
-          <span className="text-xs font-bold uppercase tracking-wider text-rose-600">
+          <span className="text-xs font-bold uppercase tracking-wider text-rose-400">
             Frequently Asked Questions
           </span>
-          <h2 className="text-2xl sm:text-3xl font-bold tracking-tight text-slate-900">
+          <h2 className="text-2xl sm:text-3xl font-bold tracking-tight text-white">
             Common Inquiries & Support
           </h2>
-          <p className="text-sm sm:text-base text-slate-600">
+          <p className="text-sm sm:text-base text-slate-200">
             Quick answers regarding ordering, demonstrations, and local inventory.
           </p>
         </div>
@@ -45,17 +45,17 @@ const ContactFAQ = () => {
             return (
               <div
                 key={faq.question}
-                className="rounded-2xl border border-slate-200 bg-white p-6 shadow-xs flex flex-col gap-3"
+                className="rounded-2xl border border-white/15 bg-white/[0.06] p-6 shadow-xs flex flex-col gap-3 text-white hover:bg-white/[0.1] transition-colors"
               >
-                <div className="flex items-center gap-3 text-[#E11D48]">
-                  <div className="flex size-9 items-center justify-center rounded-lg bg-rose-50 border border-rose-100">
+                <div className="flex items-center gap-3 text-rose-400">
+                  <div className="flex size-9 items-center justify-center rounded-lg bg-white/10 border border-white/15 text-white">
                     <Icon className="size-4.5" />
                   </div>
-                  <h3 className="text-base font-bold text-slate-900">
+                  <h3 className="text-base font-bold text-white">
                     {faq.question}
                   </h3>
                 </div>
-                <p className="text-sm text-slate-600 leading-relaxed pl-12">
+                <p className="text-sm text-slate-300 leading-relaxed pl-12">
                   {faq.answer}
                 </p>
               </div>

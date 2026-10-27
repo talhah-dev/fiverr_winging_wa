@@ -28,7 +28,7 @@ const navLinks: NavItem[] = [
     title: "Brands",
     href: "/#afs",
     subLinks: [
-      { title: "AFS Foils", href: "/#afs" },
+      { title: "AFS Foils", href: "/afs-foils" },
       { title: "Manta Foil Assist", href: "/#manta" },
     ],
   },
@@ -53,9 +53,7 @@ const Navbar = () => {
       className={cn(
         "dark fixed inset-x-0 top-0 z-50 w-full transition-all duration-300",
         isSticky
-          ? isHomePage
-            ? "bg-[#4A505B]/90 shadow-lg shadow-black/20 backdrop-blur-lg border-b border-white/15"
-            : "bg-black/85 shadow-lg shadow-black/30 backdrop-blur-lg border-b border-white/10"
+          ? "bg-[#4A505B]/90 shadow-lg shadow-black/20 backdrop-blur-lg border-b border-white/15"
           : "bg-transparent",
       )}
     >
@@ -82,14 +80,7 @@ const Navbar = () => {
                   <ChevronDown className="size-4 transition-transform duration-200 group-hover:rotate-180" />
                 </button>
                 <div className="invisible absolute top-full left-0 z-50 pt-2 opacity-0 transition-all duration-200 group-hover:visible group-hover:opacity-100">
-                  <div
-                    className={cn(
-                      "min-w-48 rounded-xl border p-1.5 shadow-2xl backdrop-blur-md",
-                      isHomePage
-                        ? "border-white/15 bg-[#4A505B]/95"
-                        : "border-white/10 bg-black/95",
-                    )}
-                  >
+                  <div className="min-w-48 rounded-xl border border-white/15 bg-[#4A505B]/95 p-1.5 shadow-2xl backdrop-blur-md">
                     {link.subLinks.map((sub) => (
                       <Link
                         key={sub.title}
@@ -124,11 +115,11 @@ const Navbar = () => {
             <Image
               src="/logo.png"
               alt="Winging WA"
-              width={160}
-              height={44}
+              width={220}
+              height={60}
               className={cn(
                 "w-auto object-contain transition-all duration-300",
-                isSticky ? "h-10 md:h-12" : "h-12 md:h-15",
+                isSticky ? "h-12 md:h-14" : "h-14 md:h-16 lg:h-[68px]",
               )}
               priority
             />
@@ -170,10 +161,7 @@ const Navbar = () => {
           <SheetContent
             side="right"
             showCloseButton={false}
-            className={cn(
-              "dark flex flex-col gap-6 overflow-auto border-l p-5 sm:p-6 text-white no-scrollbar",
-              isHomePage ? "border-white/15 bg-[#4A505B]" : "border-white/10 bg-black",
-            )}
+            className="dark flex flex-col gap-6 overflow-auto border-l border-white/15 bg-[#4A505B] p-5 sm:p-6 text-white no-scrollbar"
           >
             <SheetTitle className="sr-only">Navigation Menu</SheetTitle>
 
@@ -185,9 +173,9 @@ const Navbar = () => {
                     <Image
                       src="/logo.png"
                       alt="Winging WA"
-                      width={140}
-                      height={38}
-                      className="h-9 w-auto object-contain"
+                      width={180}
+                      height={50}
+                      className="h-11 w-auto object-contain"
                       priority
                     />
                   </Link>

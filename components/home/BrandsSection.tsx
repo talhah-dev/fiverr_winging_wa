@@ -78,7 +78,7 @@ const BrandsSection = () => {
             <div className="flex flex-wrap items-center gap-3 pt-1">
               <Button
                 nativeButton={false}
-                render={<Link href="/feature-equipment" />}
+                render={<Link href="/afs-foils" />}
                 className="h-10 rounded-full px-5 bg-[#E11D48] hover:bg-[#BE123C] text-white text-sm font-semibold cursor-pointer shadow-md shadow-rose-950/30 inline-flex items-center gap-1.5 flex-1 sm:flex-initial"
               >
                 <span>Explore AFS</span>

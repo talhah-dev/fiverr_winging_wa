@@ -8,7 +8,7 @@ import { ArrowUpRight, Phone } from "lucide-react";
 
 const StockHero = () => {
   return (
-    <section className="relative w-full pt-32 pb-16 lg:pt-40 lg:pb-24 bg-slate-950 text-white overflow-hidden">
+    <section className="relative w-full pt-32 pb-16 lg:pt-40 lg:pb-24 bg-[#4A505B] text-white overflow-hidden">
       <Image
         src="/stock-hero.jpg"
         alt="Western Australia Foiling Coastline"

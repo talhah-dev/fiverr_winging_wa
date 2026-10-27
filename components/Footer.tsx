@@ -38,7 +38,7 @@ const footerSections: FooterData[] = [
     links: [
       {
         title: "AFS Foils",
-        href: "/#afs",
+        href: "/afs-foils",
       },
       {
         title: "Manta Foil Assist",
@@ -57,16 +57,10 @@ const footerSections: FooterData[] = [
 ];
 
 const Footer = () => {
-  const pathname = usePathname();
-  const isHomePage = pathname === "/";
-
   return (
     <footer
       id="contact"
-      className={cn(
-        "dark text-foreground py-12 border-t border-white/15",
-        isHomePage ? "bg-[#4A505B]" : "bg-black",
-      )}
+      className="dark bg-[#4A505B] text-foreground py-12 border-t border-white/15"
     >
       <div className="max-w-7xl xl:px-16 lg:px-8 px-4 mx-auto">
         <div className="flex flex-col gap-6 sm:gap-12">
@@ -75,11 +69,11 @@ const Footer = () => {
               <div className="flex flex-col gap-6">
                 <Link href="/" className="flex items-center">
                   <Image
-                    src="/favicon.png"
+                    src="/logo.png"
                     alt="Winging WA"
-                    width={160}
-                    height={44}
-                    className="h-12 sm:h-14 w-auto object-contain"
+                    width={200}
+                    height={55}
+                    className="h-14 sm:h-16 w-auto object-contain"
                   />
                 </Link>
 

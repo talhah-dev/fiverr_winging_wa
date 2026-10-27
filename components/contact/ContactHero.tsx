@@ -5,7 +5,7 @@ import { motion } from "motion/react";
 
 const ContactHero = () => {
   return (
-    <section className="relative w-full pt-32 pb-20 lg:pt-40 lg:pb-28 text-white overflow-hidden bg-slate-950">
+    <section className="relative w-full pt-32 pb-20 lg:pt-40 lg:pb-28 text-white overflow-hidden bg-[#4A505B]">
       <Image
         src="/contact-hero.jpg"
         alt="Western Australia Foiling Coastline"

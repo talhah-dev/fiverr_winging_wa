@@ -12,7 +12,7 @@ export const metadata: Metadata = {
 
 const WAStockPage = () => {
   return (
-    <div className="min-h-screen flex flex-col bg-[#F4F5F7]">
+    <div className="min-h-screen flex flex-col bg-[#4A505B] text-white">
       <Navbar />
       <main className="flex-1">
         <StockHero />

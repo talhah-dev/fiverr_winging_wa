@@ -1,3 +1,4 @@
+import { Suspense } from "react";
 import type { Metadata } from "next";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
@@ -14,7 +15,7 @@ export const metadata: Metadata = {
 
 const ContactPage = () => {
   return (
-    <div className="min-h-screen flex flex-col bg-[#F4F5F7]">
+    <div className="min-h-screen flex flex-col bg-[#4A505B] text-white">
       <Navbar />
       <main className="flex-1">
         <ContactHero />
@@ -26,7 +27,9 @@ const ContactPage = () => {
                 <ContactInfoCards />
               </div>
               <div className="lg:col-span-7 w-full">
-                <ContactForm />
+                <Suspense fallback={<div className="h-96 rounded-3xl bg-white/5 animate-pulse" />}>
+                  <ContactForm />
+                </Suspense>
               </div>
             </div>
           </div>

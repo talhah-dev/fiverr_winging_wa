@@ -1,8 +1,9 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { useSearchParams } from "next/navigation";
 import { Button } from "@/components/ui/button";
-import { ArrowUpRight, CheckCircle2, Send } from "lucide-react";
+import { CheckCircle2, Send } from "lucide-react";
 
 const interests = [
   "AFS Carbon Foils (Silk, Enduro, Flyer)",
@@ -15,6 +16,9 @@ const interests = [
 ];
 
 const ContactForm = () => {
+  const searchParams = useSearchParams();
+  const itemParam = searchParams.get("item");
+
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -22,6 +26,15 @@ const ContactForm = () => {
     interest: interests[0],
     message: "",
   });
+
+  useEffect(() => {
+    if (itemParam) {
+      setFormData((prev) => ({
+        ...prev,
+        message: prev.message || `Hi Mark, I would like to enquire about pricing and availability for the ${itemParam}.`,
+      }));
+    }
+  }, [itemParam]);
 
   const [submitted, setSubmitted] = useState(false);
   const [loading, setLoading] = useState(false);
@@ -37,28 +50,28 @@ const ContactForm = () => {
   };
 
   return (
-    <div className="w-full rounded-3xl border border-slate-200 bg-white p-6 sm:p-10 shadow-sm relative">
-      <div className="flex flex-col gap-2 pb-6 border-b border-slate-100">
-        <span className="text-xs font-bold uppercase tracking-wider text-rose-600">
+    <div className="w-full rounded-3xl border border-white/15 bg-white/[0.06] p-6 sm:p-10 shadow-xl relative text-white backdrop-blur-md">
+      <div className="flex flex-col gap-2 pb-6 border-b border-white/10">
+        <span className="text-xs font-bold uppercase tracking-wider text-rose-400">
           Enquiry Form
         </span>
-        <h2 className="text-2xl sm:text-3xl font-bold tracking-tight text-slate-900">
+        <h2 className="text-2xl sm:text-3xl font-bold tracking-tight text-white">
           Send Us a Message
         </h2>
-        <p className="text-sm text-slate-600">
+        <p className="text-sm text-slate-200">
           Fill out your details below and Mark will get back to you promptly with pricing, setup advice, or availability.
         </p>
       </div>
 
       {submitted ? (
         <div className="flex flex-col items-center justify-center py-16 text-center gap-4">
-          <div className="flex size-16 items-center justify-center rounded-full bg-emerald-100 text-emerald-600">
+          <div className="flex size-16 items-center justify-center rounded-full bg-emerald-500/20 text-emerald-400 border border-emerald-500/30">
             <CheckCircle2 className="size-8" />
           </div>
-          <h3 className="text-2xl font-bold text-slate-900">
+          <h3 className="text-2xl font-bold text-white">
             Message Sent Successfully!
           </h3>
-          <p className="text-sm text-slate-600 max-w-md">
+          <p className="text-sm text-slate-200 max-w-md">
             Thank you, {formData.name || "friend"}. We have received your enquiry regarding {formData.interest}. Mark will be in touch with you shortly.
           </p>
           <div className="pt-4">
@@ -75,7 +88,7 @@ const ContactForm = () => {
                 });
               }}
               variant="outline"
-              className="rounded-full px-6 border-slate-300 text-slate-700 hover:bg-slate-100 cursor-pointer"
+              className="rounded-full px-6 border-white/20 text-white hover:bg-white/10 cursor-pointer"
             >
               Send Another Message
             </Button>
@@ -87,9 +100,9 @@ const ContactForm = () => {
             <div className="flex flex-col gap-2">
               <label
                 htmlFor="name"
-                className="text-xs font-bold uppercase tracking-wider text-slate-700"
+                className="text-xs font-bold uppercase tracking-wider text-slate-200"
               >
-                Your Name <span className="text-rose-500">*</span>
+                Your Name <span className="text-rose-400">*</span>
               </label>
               <input
                 id="name"
@@ -100,16 +113,16 @@ const ContactForm = () => {
                 onChange={(e) =>
                   setFormData({ ...formData, name: e.target.value })
                 }
-                className="h-11 w-full rounded-xl border border-slate-200 bg-slate-50/50 px-4 text-sm text-slate-900 placeholder:text-slate-400 focus:border-[#E11D48] focus:bg-white focus:outline-hidden transition-all"
+                className="h-11 w-full rounded-xl border border-white/15 bg-white/10 px-4 text-sm text-white placeholder:text-white/40 focus:border-[#E11D48] focus:bg-white/15 focus:outline-hidden transition-all"
               />
             </div>
 
             <div className="flex flex-col gap-2">
               <label
                 htmlFor="email"
-                className="text-xs font-bold uppercase tracking-wider text-slate-700"
+                className="text-xs font-bold uppercase tracking-wider text-slate-200"
               >
-                Email Address <span className="text-rose-500">*</span>
+                Email Address <span className="text-rose-400">*</span>
               </label>
               <input
                 id="email"
@@ -120,7 +133,7 @@ const ContactForm = () => {
                 onChange={(e) =>
                   setFormData({ ...formData, email: e.target.value })
                 }
-                className="h-11 w-full rounded-xl border border-slate-200 bg-slate-50/50 px-4 text-sm text-slate-900 placeholder:text-slate-400 focus:border-[#E11D48] focus:bg-white focus:outline-hidden transition-all"
+                className="h-11 w-full rounded-xl border border-white/15 bg-white/10 px-4 text-sm text-white placeholder:text-white/40 focus:border-[#E11D48] focus:bg-white/15 focus:outline-hidden transition-all"
               />
             </div>
           </div>
@@ -129,9 +142,9 @@ const ContactForm = () => {
             <div className="flex flex-col gap-2">
               <label
                 htmlFor="phone"
-                className="text-xs font-bold uppercase tracking-wider text-slate-700"
+                className="text-xs font-bold uppercase tracking-wider text-slate-200"
               >
-                Phone Number <span className="text-rose-500">*</span>
+                Phone Number <span className="text-rose-400">*</span>
               </label>
               <input
                 id="phone"
@@ -142,14 +155,14 @@ const ContactForm = () => {
                 onChange={(e) =>
                   setFormData({ ...formData, phone: e.target.value })
                 }
-                className="h-11 w-full rounded-xl border border-slate-200 bg-slate-50/50 px-4 text-sm text-slate-900 placeholder:text-slate-400 focus:border-[#E11D48] focus:bg-white focus:outline-hidden transition-all"
+                className="h-11 w-full rounded-xl border border-white/15 bg-white/10 px-4 text-sm text-white placeholder:text-white/40 focus:border-[#E11D48] focus:bg-white/15 focus:outline-hidden transition-all"
               />
             </div>
 
             <div className="flex flex-col gap-2">
               <label
                 htmlFor="interest"
-                className="text-xs font-bold uppercase tracking-wider text-slate-700"
+                className="text-xs font-bold uppercase tracking-wider text-slate-200"
               >
                 Gear Interest
               </label>
@@ -159,10 +172,10 @@ const ContactForm = () => {
                 onChange={(e) =>
                   setFormData({ ...formData, interest: e.target.value })
                 }
-                className="h-11 w-full rounded-xl border border-slate-200 bg-slate-50/50 px-3.5 text-sm text-slate-900 focus:border-[#E11D48] focus:bg-white focus:outline-hidden transition-all cursor-pointer"
+                className="h-11 w-full rounded-xl border border-white/15 bg-[#4A505B] px-3.5 text-sm text-white focus:border-[#E11D48] focus:outline-hidden transition-all cursor-pointer"
               >
                 {interests.map((opt) => (
-                  <option key={opt} value={opt}>
+                  <option key={opt} value={opt} className="bg-[#4A505B] text-white">
                     {opt}
                   </option>
                 ))}
@@ -173,9 +186,9 @@ const ContactForm = () => {
           <div className="flex flex-col gap-2">
             <label
               htmlFor="message"
-              className="text-xs font-bold uppercase tracking-wider text-slate-700"
+              className="text-xs font-bold uppercase tracking-wider text-slate-200"
             >
-              Message <span className="text-rose-500">*</span>
+              Message <span className="text-rose-400">*</span>
             </label>
             <textarea
               id="message"
@@ -186,19 +199,19 @@ const ContactForm = () => {
               onChange={(e) =>
                 setFormData({ ...formData, message: e.target.value })
               }
-              className="w-full rounded-xl border border-slate-200 bg-slate-50/50 p-4 text-sm text-slate-900 placeholder:text-slate-400 focus:border-[#E11D48] focus:bg-white focus:outline-hidden transition-all resize-y"
+              className="w-full rounded-xl border border-white/15 bg-white/10 p-4 text-sm text-white placeholder:text-white/40 focus:border-[#E11D48] focus:bg-white/15 focus:outline-hidden transition-all resize-y"
             />
           </div>
 
           <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pt-2">
-            <p className="text-xs text-slate-500">
+            <p className="text-xs text-slate-300">
               Your details are kept strictly private and used only to respond to your enquiry.
             </p>
 
             <Button
               type="submit"
               disabled={loading}
-              className="h-12 w-full sm:w-auto rounded-full px-8 bg-[#E11D48] hover:bg-[#BE123C] text-white font-bold cursor-pointer shadow-md shadow-rose-900/20 inline-flex items-center justify-center gap-2 transition-all duration-300"
+              className="h-12 w-full sm:w-auto rounded-full px-8 bg-[#E11D48] hover:bg-[#BE123C] text-white font-bold cursor-pointer shadow-md shadow-rose-900/30 inline-flex items-center justify-center gap-2 transition-all duration-300"
             >
               {loading ? (
                 <span>Sending...</span>

@@ -321,24 +321,24 @@ const StockCatalog = () => {
   }, [selectedCategory, selectedBrand, searchQuery]);
 
   return (
-    <section className="relative w-full py-12 lg:py-20 bg-[#F4F5F7]">
+    <section className="relative w-full py-12 lg:py-20 bg-[#4A505B] text-white">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 xl:px-16 flex flex-col gap-10">
-        <div className="rounded-3xl border border-slate-200 bg-white p-6 sm:p-8 shadow-xs flex flex-col gap-6">
+        <div className="rounded-3xl border border-white/15 bg-white/[0.06] backdrop-blur-md p-6 sm:p-8 shadow-xl flex flex-col gap-6 text-white">
           <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
             <div className="relative flex-1 max-w-md">
-              <Search className="absolute left-3.5 top-1/2 -translate-y-1/2 size-4.5 text-slate-400" />
+              <Search className="absolute left-3.5 top-1/2 -translate-y-1/2 size-4.5 text-white/50" />
               <input
                 type="text"
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
                 placeholder="Search models, sizes, disciplines..."
-                className="h-11 w-full rounded-full border border-slate-200 bg-slate-50/70 pl-10 pr-4 text-sm text-slate-900 placeholder:text-slate-400 focus:border-[#E11D48] focus:bg-white focus:outline-hidden transition-all"
+                className="h-11 w-full rounded-full border border-white/15 bg-white/10 pl-10 pr-4 text-sm text-white placeholder:text-white/40 focus:border-[#E11D48] focus:bg-white/15 focus:outline-hidden transition-all"
               />
               {searchQuery && (
                 <button
                   type="button"
                   onClick={() => setSearchQuery("")}
-                  className="absolute right-3.5 top-1/2 -translate-y-1/2 text-slate-400 hover:text-slate-600 cursor-pointer"
+                  className="absolute right-3.5 top-1/2 -translate-y-1/2 text-white/50 hover:text-white cursor-pointer"
                 >
                   <X className="size-4" />
                 </button>
@@ -346,10 +346,10 @@ const StockCatalog = () => {
             </div>
 
             <div className="flex items-center gap-2">
-              <span className="text-xs font-bold uppercase tracking-wider text-slate-400 mr-1 hidden sm:inline">
+              <span className="text-xs font-bold uppercase tracking-wider text-slate-300 mr-1 hidden sm:inline">
                 Brand:
               </span>
-              <div className="flex items-center gap-1.5 p-1 rounded-full bg-slate-100 border border-slate-200">
+              <div className="flex items-center gap-1.5 p-1 rounded-full bg-white/10 border border-white/15">
                 {brands.map((b) => (
                   <button
                     key={b}
@@ -358,7 +358,7 @@ const StockCatalog = () => {
                     className={`rounded-full px-3.5 py-1 text-xs font-bold transition-all cursor-pointer ${
                       selectedBrand === b
                         ? "bg-[#E11D48] text-white shadow-xs"
-                        : "text-slate-600 hover:text-slate-900"
+                        : "text-white/80 hover:text-white"
                     }`}
                   >
                     {b}
@@ -368,8 +368,8 @@ const StockCatalog = () => {
             </div>
           </div>
 
-          <div className="flex items-center gap-2 overflow-x-auto pb-1 no-scrollbar border-t border-slate-100 pt-4">
-            <Filter className="size-4 text-slate-400 shrink-0 mr-1" />
+          <div className="flex items-center gap-2 overflow-x-auto pb-1 no-scrollbar border-t border-white/10 pt-4">
+            <Filter className="size-4 text-white/60 shrink-0 mr-1" />
             {categories.map((cat) => (
               <button
                 key={cat}
@@ -377,8 +377,8 @@ const StockCatalog = () => {
                 onClick={() => setSelectedCategory(cat)}
                 className={`whitespace-nowrap rounded-full px-4 py-1.5 text-xs font-bold transition-all cursor-pointer border ${
                   selectedCategory === cat
-                    ? "bg-slate-900 text-white border-slate-900 shadow-xs"
-                    : "bg-white text-slate-700 border-slate-200 hover:bg-slate-50 hover:border-slate-300"
+                    ? "bg-[#E11D48] text-white border-[#E11D48] shadow-xs"
+                    : "bg-white/10 text-white/80 border-white/15 hover:bg-white/20 hover:text-white"
                 }`}
               >
                 {cat}
@@ -386,7 +386,7 @@ const StockCatalog = () => {
             ))}
           </div>
 
-          <div className="flex items-center justify-between text-xs font-semibold text-slate-500 pt-2 border-t border-slate-100">
+          <div className="flex items-center justify-between text-xs font-semibold text-slate-300 pt-2 border-t border-white/10">
             <span>
               Showing {filteredItems.length} of {staticInventory.length} items in Western Australia
             </span>
@@ -395,11 +395,11 @@ const StockCatalog = () => {
         </div>
 
         {filteredItems.length === 0 ? (
-          <div className="rounded-3xl border border-slate-200 bg-white p-12 text-center flex flex-col items-center justify-center gap-3">
-            <p className="text-lg font-bold text-slate-800">
+          <div className="rounded-3xl border border-white/15 bg-white/[0.06] p-12 text-center flex flex-col items-center justify-center gap-3 text-white">
+            <p className="text-lg font-bold text-white">
               No inventory matching your search.
             </p>
-            <p className="text-sm text-slate-500 max-w-md">
+            <p className="text-sm text-slate-300 max-w-md">
               We frequently receive direct shipments of AFS and Manta hardware. Call Mark directly to check upcoming container stock.
             </p>
             <Button
@@ -410,7 +410,7 @@ const StockCatalog = () => {
                 setSearchQuery("");
               }}
               variant="outline"
-              className="rounded-full mt-2"
+              className="rounded-full mt-2 border-white/20 text-white hover:bg-white/10 cursor-pointer"
             >
               Reset Filters
             </Button>
@@ -420,17 +420,23 @@ const StockCatalog = () => {
             {filteredItems.map((item) => (
               <div
                 key={item.id}
-                className="group flex flex-col justify-between rounded-3xl border border-slate-200 bg-white p-5 shadow-xs hover:shadow-xl hover:border-slate-300 transition-all duration-300"
+                className="group flex flex-col justify-between rounded-3xl border border-white/15 bg-white/[0.06] p-5 shadow-xs hover:bg-white/[0.1] hover:border-white/30 transition-all duration-300 text-white"
               >
                 <div className="flex flex-col gap-3.5">
-                  <div className="relative w-full h-56 rounded-2xl flex items-center justify-center overflow-hidden">
+                  <div className="relative w-full h-56 rounded-2xl flex items-center justify-center overflow-hidden bg-white/5 border border-white/10">
                     <span
-                      className={`absolute top-3 left-3 z-10 rounded-full px-2.5 py-0.5 text-[11px] font-bold border backdrop-blur-md ${item.badgeColor}`}
+                      className={`absolute top-3 left-3 z-10 rounded-full px-2.5 py-0.5 text-[11px] font-bold border backdrop-blur-md ${
+                        item.stockStatus === "In Stock (WA)"
+                          ? "bg-emerald-500/20 text-emerald-300 border-emerald-500/30"
+                          : item.stockStatus === "Low Stock"
+                          ? "bg-amber-500/20 text-amber-300 border-amber-500/30"
+                          : "bg-rose-500/20 text-rose-300 border-rose-500/30"
+                      }`}
                     >
                       {item.stockStatus}
                     </span>
 
-                    <span className="absolute top-3 right-3 z-10 rounded-full bg-white/90 px-2 py-0.5 text-[10px] font-extrabold uppercase text-slate-600 shadow-xs border border-slate-200 backdrop-blur-md">
+                    <span className="absolute top-3 right-3 z-10 rounded-full bg-black/60 text-white/90 px-2 py-0.5 text-[10px] font-extrabold uppercase shadow-xs border border-white/20 backdrop-blur-md">
                       {item.brand}
                     </span>
 
@@ -454,23 +460,23 @@ const StockCatalog = () => {
                       {item.disciplines.slice(0, 3).map((disc) => (
                         <span
                           key={disc}
-                          className="rounded-md bg-slate-100 px-2 py-0.5 text-[10px] font-semibold text-slate-600"
+                          className="rounded-md bg-white/10 border border-white/10 px-2 py-0.5 text-[10px] font-semibold text-slate-200"
                         >
                           {disc}
                         </span>
                       ))}
                     </div>
 
-                    <h3 className="text-base font-bold text-slate-900 leading-snug line-clamp-2 group-hover:text-[#E11D48] transition-colors">
+                    <h3 className="text-base font-bold text-white leading-snug line-clamp-2 group-hover:text-rose-400 transition-colors">
                       {item.name}
                     </h3>
 
-                    <p className="text-xs text-slate-500 font-medium line-clamp-1">
+                    <p className="text-xs text-slate-300 font-medium line-clamp-1">
                       {item.specs}
                     </p>
 
                     <div className="flex items-baseline gap-2 pt-1">
-                      <span className="text-lg font-black text-slate-900 tracking-tight">
+                      <span className="text-lg font-black text-white tracking-tight">
                         {item.price}
                       </span>
                       {item.originalPrice && (
@@ -482,7 +488,7 @@ const StockCatalog = () => {
                   </div>
                 </div>
 
-                <div className="flex items-center gap-2 pt-4 border-t border-slate-100 mt-4">
+                <div className="flex items-center gap-2 pt-4 border-t border-white/10 mt-4">
                   <Button
                     type="button"
                     onClick={() => setActiveItem(item)}
@@ -495,7 +501,7 @@ const StockCatalog = () => {
                   <Link
                     href="tel:0487042694"
                     aria-label={`Call about ${item.name}`}
-                    className="flex size-10 items-center justify-center rounded-full bg-slate-100 hover:bg-slate-200 text-slate-700 transition-colors cursor-pointer border border-slate-200"
+                    className="flex size-10 items-center justify-center rounded-full bg-white/10 hover:bg-white/20 text-white transition-colors cursor-pointer border border-white/15"
                   >
                     <Phone className="size-4" />
                   </Link>
@@ -507,30 +513,30 @@ const StockCatalog = () => {
       </div>
 
       {activeItem && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-xs animate-in fade-in duration-200">
-          <div className="relative w-full max-w-lg rounded-3xl bg-white p-6 sm:p-8 shadow-2xl border border-slate-200 flex flex-col gap-5">
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/70 backdrop-blur-xs animate-in fade-in duration-200">
+          <div className="relative w-full max-w-lg rounded-3xl bg-[#4A505B] p-6 sm:p-8 shadow-2xl border border-white/20 flex flex-col gap-5 text-white">
             <button
               type="button"
               onClick={() => setActiveItem(null)}
-              className="absolute right-4 top-4 flex size-9 items-center justify-center rounded-full bg-slate-100 text-slate-600 hover:bg-slate-200 cursor-pointer transition-colors"
+              className="absolute right-4 top-4 flex size-9 items-center justify-center rounded-full bg-white/10 text-white hover:bg-white/20 cursor-pointer transition-colors"
             >
               <X className="size-5" />
             </button>
 
             <div className="flex flex-col gap-1.5 pr-8">
-              <span className="text-xs font-bold uppercase tracking-wider text-rose-600">
+              <span className="text-xs font-bold uppercase tracking-wider text-rose-400">
                 Reserve / Enquire In-Stock Item
               </span>
-              <h3 className="text-xl font-bold text-slate-900">
+              <h3 className="text-xl font-bold text-white">
                 {activeItem.name}
               </h3>
-              <p className="text-base font-extrabold text-[#E11D48]">
+              <p className="text-base font-extrabold text-rose-400">
                 {activeItem.price} AUD
               </p>
             </div>
 
-            <div className="flex items-center gap-4 rounded-2xl bg-slate-50 p-4 border border-slate-200">
-              <div className="relative size-20 rounded-xl bg-white p-2 border border-slate-200 shrink-0">
+            <div className="flex items-center gap-4 rounded-2xl bg-white/[0.06] p-4 border border-white/15">
+              <div className="relative size-20 rounded-xl bg-white/10 p-2 border border-white/15 shrink-0">
                 <Image
                   src={activeItem.image}
                   alt={activeItem.name}
@@ -538,19 +544,19 @@ const StockCatalog = () => {
                   className="object-contain p-1"
                 />
               </div>
-              <div className="flex flex-col gap-1 text-xs text-slate-600">
-                <span className="font-bold text-slate-900">
+              <div className="flex flex-col gap-1 text-xs text-slate-200">
+                <span className="font-bold text-white">
                   Specs: {activeItem.specs}
                 </span>
-                <span className="text-emerald-700 font-semibold">
+                <span className="text-emerald-400 font-semibold">
                   Status: {activeItem.stockStatus}
                 </span>
-                <span>{activeItem.description}</span>
+                <span className="text-slate-300">{activeItem.description}</span>
               </div>
             </div>
 
             <div className="flex flex-col gap-3">
-              <p className="text-xs text-slate-500">
+              <p className="text-xs text-slate-300">
                 Direct distribution through Mark Mawby. Call directly to arrange immediate collection in WA or fast courier across Australia.
               </p>
 
@@ -558,7 +564,7 @@ const StockCatalog = () => {
                 <Button
                   nativeButton={false}
                   render={<Link href="tel:0487042694" />}
-                  className="h-11 rounded-full bg-[#E11D48] hover:bg-[#BE123C] text-white font-bold cursor-pointer inline-flex items-center justify-center gap-2"
+                  className="h-11 rounded-full bg-[#E11D48] hover:bg-[#BE123C] text-white font-bold cursor-pointer inline-flex items-center justify-center gap-2 shadow-xs"
                 >
                   <Phone className="size-4" />
                   <span>Call: 0487 042 694</span>
@@ -572,7 +578,7 @@ const StockCatalog = () => {
                       href={`/contact?item=${encodeURIComponent(activeItem.name)}`}
                     />
                   }
-                  className="h-11 rounded-full border-slate-300 bg-white hover:bg-slate-100 text-slate-800 font-bold cursor-pointer inline-flex items-center justify-center gap-2"
+                  className="h-11 rounded-full border-white/20 bg-white/10 hover:bg-white/20 text-white font-bold cursor-pointer inline-flex items-center justify-center gap-2"
                 >
                   <span>Send Message</span>
                   <ArrowUpRight className="size-4" />

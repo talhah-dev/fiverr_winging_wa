@@ -3,6 +3,9 @@
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import MantaHero from "@/components/manta/MantaHero";
+import MantaDisciplines from "@/components/manta/MantaDisciplines";
+import MantaAnnouncement from "@/components/manta/MantaAnnouncement";
+import MantaFAQ from "@/components/manta/MantaFAQ";
 
 const MantaPageContent = () => {
   return (
@@ -10,6 +13,9 @@ const MantaPageContent = () => {
       <Navbar />
       <main className="flex-1">
         <MantaHero />
+        <MantaDisciplines />
+        <MantaAnnouncement />
+        <MantaFAQ />  
       </main>
       <Footer />
     </div>
@@ -17,4 +23,3 @@ const MantaPageContent = () => {
 };
 
 export default MantaPageContent;
-

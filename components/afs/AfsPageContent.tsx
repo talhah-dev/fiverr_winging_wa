@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { Suspense, useState } from "react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import AfsHero from "@/components/afs/AfsHero";
@@ -21,10 +21,12 @@ const AfsPageContent = () => {
           selectedDiscipline={selectedDiscipline}
           onSelectDiscipline={setSelectedDiscipline}
         />
-        <AfsCatalog
-          selectedDiscipline={selectedDiscipline}
-          onClearDiscipline={() => setSelectedDiscipline(null)}
-        />
+        <Suspense fallback={null}>
+          <AfsCatalog
+            selectedDiscipline={selectedDiscipline}
+            onClearDiscipline={() => setSelectedDiscipline(null)}
+          />
+        </Suspense>
       </main>
       <Footer />
     </div>

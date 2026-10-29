@@ -18,7 +18,7 @@ const AfsHero = () => {
         className="object-cover object-center select-none"
       />
 
-      <div className="absolute inset-0 bg-black/35" />
+      <div className="absolute inset-0 bg-black/20" />
 
       <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 xl:px-16 flex flex-col items-center text-center">
         <motion.div
@@ -27,11 +27,6 @@ const AfsHero = () => {
           transition={{ duration: 0.6 }}
           className="flex flex-col items-center gap-4 max-w-3xl"
         >
-          <div className="inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/10 px-3.5 py-1 text-xs font-semibold text-white/90 backdrop-blur-md">
-            <span>Direct French Composite Carbon</span>
-            <span className="size-1 rounded-full bg-rose-400" />
-            <span>Authorized Australian Distributor</span>
-          </div>
 
           <h1 className="text-3xl sm:text-5xl lg:text-6xl font-bold tracking-tight text-white leading-tight drop-shadow-md">
             AFS Foils <span className="text-[#E11D48] md:block">Full Collection</span>

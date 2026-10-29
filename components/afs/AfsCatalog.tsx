@@ -631,6 +631,7 @@ const AfsCatalog = ({
                     <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-6 pt-2">
                       {group.products.map((product) => {
                         const productHref = `/afs-foils/${product.id}`;
+                        const contactHref = `/contact?item=${encodeURIComponent(product.name)}`;
 
                         return (
                           <div
@@ -713,7 +714,7 @@ const AfsCatalog = ({
 
                             <div className="pt-5 mt-auto">
                               <Link
-                                href={productHref}
+                                href={contactHref}
                                 className={cn(
                                   "w-full h-11 rounded-lg text-xs sm:text-sm font-black tracking-widest uppercase flex items-center justify-center transition-all cursor-pointer shadow-md",
                                   product.actionText === "GRAB THE DEAL"

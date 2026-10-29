@@ -42,15 +42,15 @@ const footerSections: FooterData[] = [
       },
       {
         title: "Manta Foil Assist",
-        href: "/#manta",
+        href: "/manta-foils",
       },
       {
         title: "TakeOff Evo",
-        href: "/#manta",
+        href: "/manta-foils",
       },
       {
         title: "Manta Backpack",
-        href: "/#manta",
+        href: "/manta-foils",
       },
     ],
   },

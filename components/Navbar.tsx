@@ -37,6 +37,7 @@ const navLinks: NavItem[] = [
     subLinks: [
       { title: "AFS Foils", href: "/afs-foils" },
       { title: "Manta Foil Assist", href: "/manta-foils" },
+      { title: "How It Works", href: "/how-it-works" },
     ],
   },
   { title: "Feature Equipment", href: "/feature-equipment" },

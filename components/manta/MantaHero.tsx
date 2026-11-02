@@ -75,6 +75,15 @@ const MantaHero = () => {
 
             <Button
               nativeButton={false}
+              render={<Link href="/how-it-works" />}
+              className="h-12 sm:h-13 rounded-full px-8 bg-[#FFE600] hover:bg-[#E5CF00] text-black font-extrabold text-sm uppercase tracking-wider shadow-xl shadow-black/40 cursor-pointer inline-flex items-center gap-2 transition-all hover:scale-105"
+            >
+              <span>How it works</span>
+              <ArrowUpRight className="size-4.5" />
+            </Button>
+
+            <Button
+              nativeButton={false}
               variant="outline"
               render={<Link href="tel:0487042694" />}
               className="h-12 sm:h-13 rounded-full px-7 border-white/25 bg-black/40 hover:bg-black/60 text-white font-medium text-sm cursor-pointer backdrop-blur-md inline-flex items-center gap-2"

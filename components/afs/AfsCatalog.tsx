@@ -32,11 +32,7 @@ const componentsList = [
   { id: "stabilizers", name: "Stabilizers", count: 4 },
   { id: "fuselages", name: "Fuselages", count: 5 },
   { id: "full-sets", name: "Full sets", count: 9 },
-  { id: "boards", name: "Boards", count: 15 },
   { id: "wings", name: "Wings", count: 4 },
-  { id: "package", name: "Package", count: 2 },
-  { id: "accessories", name: "Accessories", count: 22 },
-  { id: "wear", name: "Wear", count: 8 },
 ];
 
 const disciplinesList = [
@@ -182,6 +178,10 @@ const AfsCatalog = ({
     };
 
     let list = afsProducts.filter((product) => {
+      const isAllowedCategory =
+        product.category === "Foils" || product.category === "Wings";
+      if (!isAllowedCategory) return false;
+
       const matchComponent =
         !selectedComponent ||
         product.subCategory.toLowerCase() === selectedComponent.toLowerCase() ||
@@ -426,7 +426,7 @@ const AfsCatalog = ({
                     : "bg-white/10 text-white/60 group-hover:text-white",
                 )}
               >
-                99
+                37
               </span>
             </button>
 

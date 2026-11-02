@@ -46,11 +46,7 @@ const navLinks: NavItem[] = [
 
 const afsCategoryLinks = [
   { id: "foils", name: "Foils", count: 33 },
-  { id: "boards", name: "Boards", count: 15 },
   { id: "wings", name: "Wings", count: 4 },
-  { id: "package", name: "Package", count: 2 },
-  { id: "accessories", name: "Accessories", count: 22 },
-  { id: "wear", name: "Wear", count: 8 },
 ];
 
 const Navbar = () => {
@@ -176,7 +172,7 @@ const Navbar = () => {
                         All products
                       </span>
                       <span className="text-sm sm:text-base font-semibold text-slate-300/80 group-hover:text-rose-300 transition-colors">
-                        99
+                        37
                       </span>
                     </button>
                   </div>
@@ -197,49 +193,49 @@ const Navbar = () => {
 
           <div className="hidden lg:flex items-center gap-1">
             {navLinks.map((link) => {
-            const isCurrent =
-              link.href === "/"
-                ? pathname === "/"
-                : pathname === link.href || pathname.startsWith(`${link.href}/`);
+              const isCurrent =
+                link.href === "/"
+                  ? pathname === "/"
+                  : pathname === link.href || pathname.startsWith(`${link.href}/`);
 
-            return link.subLinks ? (
-              <div key={link.title} className="relative group">
-                <button
-                  type="button"
-                  className="flex items-center gap-1 rounded-full px-3.5 py-1.5 text-sm font-medium whitespace-nowrap text-white/80 hover:text-white transition-colors cursor-pointer"
-                >
-                  {link.title}
-                  <ChevronDown className="size-4 transition-transform duration-200 group-hover:rotate-180" />
-                </button>
-                <div className="invisible absolute top-full left-0 z-50 pt-2 opacity-0 transition-all duration-200 group-hover:visible group-hover:opacity-100">
-                  <div className="min-w-48 rounded-xl border border-white/15 bg-[#4A505B]/95 p-1.5 shadow-2xl backdrop-blur-md">
-                    {link.subLinks.map((sub) => (
-                      <Link
-                        key={sub.title}
-                        href={sub.href}
-                        className="block rounded-lg px-3 py-2 text-sm font-medium text-white/80 hover:text-white hover:bg-white/10 transition-colors"
-                      >
-                        {sub.title}
-                      </Link>
-                    ))}
+              return link.subLinks ? (
+                <div key={link.title} className="relative group">
+                  <button
+                    type="button"
+                    className="flex items-center gap-1 rounded-full px-3.5 py-1.5 text-sm font-medium whitespace-nowrap text-white/80 hover:text-white transition-colors cursor-pointer"
+                  >
+                    {link.title}
+                    <ChevronDown className="size-4 transition-transform duration-200 group-hover:rotate-180" />
+                  </button>
+                  <div className="invisible absolute top-full left-0 z-50 pt-2 opacity-0 transition-all duration-200 group-hover:visible group-hover:opacity-100">
+                    <div className="min-w-48 rounded-xl border border-white/15 bg-[#4A505B]/95 p-1.5 shadow-2xl backdrop-blur-md">
+                      {link.subLinks.map((sub) => (
+                        <Link
+                          key={sub.title}
+                          href={sub.href}
+                          className="block rounded-lg px-3 py-2 text-sm font-medium text-white/80 hover:text-white hover:bg-white/10 transition-colors"
+                        >
+                          {sub.title}
+                        </Link>
+                      ))}
+                    </div>
                   </div>
                 </div>
-              </div>
-            ) : (
-              <Link
-                key={link.title}
-                href={link.href}
-                className={cn(
-                  "rounded-full px-3.5 py-1.5 text-sm font-medium whitespace-nowrap transition-colors",
-                  isCurrent
-                    ? "bg-white/20 text-white font-semibold backdrop-blur-sm"
-                    : "text-white/80 hover:text-white hover:bg-white/10",
-                )}
-              >
-                {link.title}
-              </Link>
-            );
-          })}
+              ) : (
+                <Link
+                  key={link.title}
+                  href={link.href}
+                  className={cn(
+                    "rounded-full px-3.5 py-1.5 text-sm font-medium whitespace-nowrap transition-colors",
+                    isCurrent
+                      ? "bg-white/20 text-white font-semibold backdrop-blur-sm"
+                      : "text-white/80 hover:text-white hover:bg-white/10",
+                  )}
+                >
+                  {link.title}
+                </Link>
+              );
+            })}
           </div>
         </div>
 
@@ -271,7 +267,7 @@ const Navbar = () => {
             <Button
               nativeButton={false}
               render={<Link href="/contact" />}
-              className="group h-10 rounded-full px-5 font-medium bg-[#E11D48] hover:bg-[#BE123C] text-white shadow-md shadow-rose-950/30 cursor-pointer inline-flex items-center gap-1.5"
+              className="group h-10 rounded-full px-5 font-medium bg-[#ee0a09] hover:bg-[#BE123C] text-white shadow-md shadow-rose-950/30 cursor-pointer inline-flex items-center gap-1.5"
             >
               <span>Enquire Now</span>
               <ChevronRight className="size-4 transition-transform group-hover:translate-x-0.5 duration-300" />
@@ -279,124 +275,124 @@ const Navbar = () => {
           </div>
 
           <Sheet>
-          <SheetTrigger
-            render={
-              <Button
-                size="icon"
-                className="h-10 w-10 rounded-full lg:hidden bg-white/10 text-white hover:bg-white/20 backdrop-blur-md cursor-pointer"
-              >
-                <Equal className="size-5" />
-                <span className="sr-only">Menu</span>
-              </Button>
-            }
-          />
+            <SheetTrigger
+              render={
+                <Button
+                  size="icon"
+                  className="h-10 w-10 rounded-full lg:hidden bg-white/10 text-white hover:bg-white/20 backdrop-blur-md cursor-pointer"
+                >
+                  <Equal className="size-5" />
+                  <span className="sr-only">Menu</span>
+                </Button>
+              }
+            />
 
-          <SheetContent
-            side="right"
-            showCloseButton={false}
-            className="dark flex flex-col gap-6 overflow-auto border-l border-white/15 bg-[#4A505B] p-5 sm:p-6 text-white no-scrollbar"
-          >
-            <SheetTitle className="sr-only">Navigation Menu</SheetTitle>
+            <SheetContent
+              side="right"
+              showCloseButton={false}
+              className="dark flex flex-col gap-6 overflow-auto border-l border-white/15 bg-[#4A505B] p-5 sm:p-6 text-white no-scrollbar"
+            >
+              <SheetTitle className="sr-only">Navigation Menu</SheetTitle>
 
-            <SheetHeader className="flex-row items-center justify-between p-0">
-              <SheetClose
-                nativeButton={false}
-                render={
-                  <Link href="/" className="flex items-center">
-                    <Image
-                      src="/logo.png"
-                      alt="Winging WA"
-                      width={180}
-                      height={50}
-                      className="h-11 w-auto object-contain"
-                      priority
-                    />
-                  </Link>
-                }
-              />
-              <SheetClose className="flex h-9 w-9 items-center justify-center rounded-lg border border-white/10 text-white hover:bg-white/10 cursor-pointer">
-                <X size={18} className="shrink-0" />
-              </SheetClose>
-            </SheetHeader>
-
-            <div className="flex flex-col gap-1.5 pt-4">
-              {navLinks.map((link) => {
-                const isCurrent =
-                  link.href === "/"
-                    ? pathname === "/"
-                    : pathname === link.href || pathname.startsWith(`${link.href}/`);
-
-                return link.subLinks ? (
-                  <div key={link.title} className="flex flex-col gap-1">
-                    <span className="px-3 pt-2 text-xs font-semibold tracking-wider text-white/40 uppercase">
-                      {link.title}
-                    </span>
-                    {link.subLinks.map((sub) => (
-                      <SheetClose
-                        key={sub.title}
-                        nativeButton={false}
-                        render={
-                          <Link
-                            href={sub.href}
-                            className="rounded-lg px-3 py-2 pl-6 text-sm font-normal text-white/70 hover:bg-white/10 hover:text-white"
-                          >
-                            {sub.title}
-                          </Link>
-                        }
+              <SheetHeader className="flex-row items-center justify-between p-0">
+                <SheetClose
+                  nativeButton={false}
+                  render={
+                    <Link href="/" className="flex items-center">
+                      <Image
+                        src="/logo.png"
+                        alt="Winging WA"
+                        width={180}
+                        height={50}
+                        className="h-11 w-auto object-contain"
+                        priority
                       />
-                    ))}
-                  </div>
-                ) : (
-                  <SheetClose
-                    key={link.title}
-                    nativeButton={false}
-                    render={
-                      <Link
-                        href={link.href}
-                        className={cn(
-                          "rounded-lg px-3 py-2 text-base font-normal hover:bg-white/10 hover:text-white",
-                          isCurrent
-                            ? "bg-white/15 text-white font-medium"
-                            : "text-white/70",
-                        )}
-                      >
-                        {link.title}
-                      </Link>
-                    }
-                  />
-                );
-              })}
-            </div>
+                    </Link>
+                  }
+                />
+                <SheetClose className="flex h-9 w-9 items-center justify-center rounded-lg border border-white/10 text-white hover:bg-white/10 cursor-pointer">
+                  <X size={18} className="shrink-0" />
+                </SheetClose>
+              </SheetHeader>
 
-            <div className="mt-auto flex flex-col gap-3 pt-6 border-t border-white/10">
-              <SheetClose
-                nativeButton={false}
-                render={
-                  <Link
-                    href="tel:0487042694"
-                    className="flex items-center gap-2 text-white hover:text-white/80"
-                  >
-                    <Phone className="size-4" />
-                    <span className="text-sm">0487 042 694</span>
-                  </Link>
-                }
-              />
-              <SheetClose
-                nativeButton={false}
-                render={
-                  <Button
-                    nativeButton={false}
-                    render={<Link href="/contact" />}
-                    className="group h-11 w-full rounded-full px-5 font-medium bg-[#E11D48] hover:bg-[#BE123C] text-white shadow-md shadow-rose-950/30 cursor-pointer"
-                  >
-                    Enquire Now
-                    <ChevronRight className="size-4 transition-transform group-hover:translate-x-0.5 duration-300" />
-                  </Button>
-                }
-              />
-            </div>
-          </SheetContent>
-        </Sheet>
+              <div className="flex flex-col gap-1.5 pt-4">
+                {navLinks.map((link) => {
+                  const isCurrent =
+                    link.href === "/"
+                      ? pathname === "/"
+                      : pathname === link.href || pathname.startsWith(`${link.href}/`);
+
+                  return link.subLinks ? (
+                    <div key={link.title} className="flex flex-col gap-1">
+                      <span className="px-3 pt-2 text-xs font-semibold tracking-wider text-white/40 uppercase">
+                        {link.title}
+                      </span>
+                      {link.subLinks.map((sub) => (
+                        <SheetClose
+                          key={sub.title}
+                          nativeButton={false}
+                          render={
+                            <Link
+                              href={sub.href}
+                              className="rounded-lg px-3 py-2 pl-6 text-sm font-normal text-white/70 hover:bg-white/10 hover:text-white"
+                            >
+                              {sub.title}
+                            </Link>
+                          }
+                        />
+                      ))}
+                    </div>
+                  ) : (
+                    <SheetClose
+                      key={link.title}
+                      nativeButton={false}
+                      render={
+                        <Link
+                          href={link.href}
+                          className={cn(
+                            "rounded-lg px-3 py-2 text-base font-normal hover:bg-white/10 hover:text-white",
+                            isCurrent
+                              ? "bg-white/15 text-white font-medium"
+                              : "text-white/70",
+                          )}
+                        >
+                          {link.title}
+                        </Link>
+                      }
+                    />
+                  );
+                })}
+              </div>
+
+              <div className="mt-auto flex flex-col gap-3 pt-6 border-t border-white/10">
+                <SheetClose
+                  nativeButton={false}
+                  render={
+                    <Link
+                      href="tel:0487042694"
+                      className="flex items-center gap-2 text-white hover:text-white/80"
+                    >
+                      <Phone className="size-4" />
+                      <span className="text-sm">0487 042 694</span>
+                    </Link>
+                  }
+                />
+                <SheetClose
+                  nativeButton={false}
+                  render={
+                    <Button
+                      nativeButton={false}
+                      render={<Link href="/contact" />}
+                      className="group h-11 w-full rounded-full px-5 font-medium bg-[#E11D48] hover:bg-[#BE123C] text-white shadow-md shadow-rose-950/30 cursor-pointer"
+                    >
+                      Enquire Now
+                      <ChevronRight className="size-4 transition-transform group-hover:translate-x-0.5 duration-300" />
+                    </Button>
+                  }
+                />
+              </div>
+            </SheetContent>
+          </Sheet>
         </div>
       </div>
     </nav>

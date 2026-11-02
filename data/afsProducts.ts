@@ -25,7 +25,7 @@ export interface AfsProduct {
 }
 
 export const afsCategories = [
-  { id: "all", name: "All products", count: 99 },
+  { id: "all", name: "All products", count: 37 },
   {
     id: "foils",
     name: "Foils",
@@ -38,11 +38,7 @@ export const afsCategories = [
       { id: "full-sets", name: "Full sets", count: 9 },
     ],
   },
-  { id: "boards", name: "Boards", count: 15 },
   { id: "wings", name: "Wings", count: 4 },
-  { id: "package", name: "Package", count: 2 },
-  { id: "accessories", name: "Accessories", count: 22 },
-  { id: "wear", name: "Wear", count: 8 },
 ];
 
 export const afsProducts: AfsProduct[] = [

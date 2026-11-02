@@ -23,6 +23,23 @@ interface StockProduct {
 
 const stockProducts: StockProduct[] = [
   {
+    id: "mini-pump",
+    name: "MINI Pump",
+    price: "$70.00",
+    originalPrice: "$104.00",
+    badge: "Sale",
+    badgeColor: "bg-rose-500/15 text-rose-400 border border-rose-500/30",
+    image: "/stock/MINIPump.avif",
+  },
+  {
+    id: "afs-silk-v2-carbon",
+    name: "AFS Silk v2 Carbon Wing Set",
+    price: "$2,450.00",
+    badge: "French Carbon",
+    badgeColor: "bg-purple-500/15 text-purple-400 border border-purple-500/30",
+    image: "/stock/AFSStream-full.png",
+  },
+  {
     id: "afs-stream",
     name: "AFS Stream Wing",
     price: "$2,000.00",
@@ -39,7 +56,7 @@ const stockProducts: StockProduct[] = [
     image: "/stock/FUSELAGECARBONLong.avif",
   },
   {
-    id: "manta-takeoff-evo",
+    id: "manta-takeoff-evo-kit",
     name: "Manta TakeOff Evo Assist Kit",
     price: "$4,850.00",
     badge: "New",
@@ -53,23 +70,6 @@ const stockProducts: StockProduct[] = [
     badge: "Featured",
     badgeColor: "bg-blue-500/15 text-blue-400 border border-blue-500/30",
     image: "/manta-backpack.jpg",
-  },
-  {
-    id: "mini-pump",
-    name: "MINI Pump",
-    price: "$70.00",
-    originalPrice: "$104.00",
-    badge: "Sale",
-    badgeColor: "bg-rose-500/15 text-rose-400 border border-rose-500/30",
-    image: "/stock/MINIPump.avif",
-  },
-  {
-    id: "afs-silk-v2",
-    name: "AFS Silk v2 Carbon Wing Set",
-    price: "$2,450.00",
-    badge: "French Carbon",
-    badgeColor: "bg-purple-500/15 text-purple-400 border border-purple-500/30",
-    image: "/stock/AFSStream-full.png",
   },
 ];
 
@@ -89,7 +89,7 @@ const WAStockSection = () => {
         <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4">
           <div className="flex flex-col gap-1.5">
             <h2 className="text-2xl sm:text-3xl lg:text-4xl font-semibold tracking-tight text-white">
-              WA Stock Available
+              Feature Equipment
             </h2>
             <p className="text-sm sm:text-base text-white/60 font-normal">
               Direct inventory available in Western Australia ready to ship
@@ -151,7 +151,10 @@ const WAStockSection = () => {
             >
               {stockProducts.map((product) => (
                 <SwiperSlide key={product.id}>
-                  <div className="flex flex-col gap-3 group">
+                  <Link
+                    href={`/feature-equipment/${product.id}`}
+                    className="flex flex-col gap-3 group cursor-pointer"
+                  >
                     <div className="relative w-full h-64 sm:h-72 rounded-2xl bg-[#ECECEC] p-6 flex items-center justify-center overflow-hidden transition-all duration-300 group-hover:shadow-xl group-hover:shadow-white/5">
                       {product.badge && (
                         <span
@@ -189,22 +192,25 @@ const WAStockSection = () => {
                         </div>
                       </div>
 
-                      <Link
-                        href="/contact"
-                        aria-label={`Enquire about ${product.name}`}
-                        className="shrink-0 flex size-9 items-center justify-center rounded-full bg-white/10 hover:bg-[#E11D48] text-white transition-all duration-300 hover:scale-105 cursor-pointer shadow-sm"
+                      <div
+                        aria-label={`View details for ${product.name}`}
+                        className="shrink-0 flex size-9 items-center justify-center rounded-full bg-white/10 group-hover:bg-[#E11D48] text-white transition-all duration-300 group-hover:scale-105 shadow-sm"
                       >
                         <Plus className="size-4" />
-                      </Link>
+                      </div>
                     </div>
-                  </div>
+                  </Link>
                 </SwiperSlide>
               ))}
             </Swiper>
           ) : (
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 w-full">
               {stockProducts.slice(0, 4).map((product) => (
-                <div key={product.id} className="flex flex-col gap-3">
+                <Link
+                  key={product.id}
+                  href={`/feature-equipment/${product.id}`}
+                  className="flex flex-col gap-3 group cursor-pointer"
+                >
                   <div className="relative w-full h-64 sm:h-72 rounded-2xl bg-[#ECECEC] p-6 flex items-center justify-center overflow-hidden">
                     <div className="relative w-full h-full">
                       <Image
@@ -218,7 +224,7 @@ const WAStockSection = () => {
                   </div>
                   <div className="flex items-center justify-between gap-3 px-1 pt-1">
                     <div className="flex flex-col gap-0.5 min-w-0">
-                      <h3 className="text-base font-medium text-white truncate">
+                      <h3 className="text-base font-medium text-white truncate group-hover:text-rose-400 transition-colors">
                         {product.name}
                       </h3>
                       <span className="text-base font-semibold text-white">
@@ -226,7 +232,7 @@ const WAStockSection = () => {
                       </span>
                     </div>
                   </div>
-                </div>
+                </Link>
               ))}
             </div>
           )}
@@ -235,7 +241,7 @@ const WAStockSection = () => {
         <div className="flex justify-center pt-4">
           <Button
             nativeButton={false}
-            render={<Link href="/wa-stock" />}
+            render={<Link href="/feature-equipment" />}
             className="group h-11 rounded-full px-8 bg-[#E11D48] hover:bg-[#BE123C] text-white font-medium cursor-pointer shadow-lg shadow-rose-950/40 inline-flex items-center gap-2"
           >
             <span>More products</span>

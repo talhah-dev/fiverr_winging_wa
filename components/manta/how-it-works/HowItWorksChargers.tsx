@@ -80,7 +80,7 @@ const HowItWorksChargers = () => {
           {chargers.map((item, idx) => (
             <div
               key={idx}
-              className="flex flex-col rounded-3xl border border-white/15 bg-white/[0.05] hover:bg-white/[0.09] hover:border-rose-400/50 transition-all duration-300 p-8 backdrop-blur-md shadow-xl justify-between group"
+              className="flex flex-col rounded-3xl border border-white/15 bg-white/[0.05] hover:bg-white/[0.09] hover:border-[#ef0e0a]/50 transition-all duration-300 p-8 backdrop-blur-md shadow-xl justify-between group"
             >
               <div className="flex flex-col gap-5">
                 <div className="flex items-center justify-between">
@@ -112,7 +112,7 @@ const HowItWorksChargers = () => {
                 <div className="grid grid-cols-1 gap-2.5 pt-3 border-t border-white/10">
                   <div className="flex items-center justify-between text-xs py-1.5 px-3 rounded-xl bg-white/[0.04]">
                     <span className="text-slate-300 flex items-center gap-2">
-                      <Clock className="size-3.5 text-rose-400" />
+                      <Clock className="size-3.5 text-[#ef0e0a]" />
                       1x Air Battery (194 Wh)
                     </span>
                     <span className="font-extrabold text-white">{item.airTime}</span>

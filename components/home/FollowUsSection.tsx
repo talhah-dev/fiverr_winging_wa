@@ -17,7 +17,7 @@ const FollowUsSection = () => {
       <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 xl:px-16 flex flex-col gap-10 sm:gap-12">
         <div className="flex flex-col gap-1.5">
           <h2 className="text-2xl sm:text-3xl lg:text-4xl font-semibold tracking-tight text-white">
-            Follow Us On Facebook Winging WA
+            Follow Us On Instagram Winging WA
           </h2>
           <p className="text-sm sm:text-base text-white/60 font-normal">
             Catch the latest reviews, sessions, and gear updates from our community

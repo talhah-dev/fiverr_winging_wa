@@ -57,7 +57,7 @@ const batteries = [
     weight: "5.3 kg + motor",
     capacity: "712 Wh",
     tag: "Maximum Range",
-    tagColor: "bg-rose-500/20 text-rose-300 border-rose-500/30",
+    tagColor: "bg-[#ef0e0a]/20 text-orange-300 border-[#ef0e0a]/30",
     features: [
       "Ultimate flight endurance over an hour",
       "Combined flexibility for marathon sessions",
@@ -96,13 +96,13 @@ const HowItWorksBatteries = () => {
     <section id="batteries" className="relative w-full py-16 lg:py-24 bg-[#4A505B] text-white border-b border-white/10">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 flex flex-col gap-12">
         <div className="flex flex-col items-center text-center gap-3 max-w-3xl mx-auto">
-          <div className="inline-flex items-center gap-2 rounded-full border border-rose-500/30 bg-rose-500/10 px-4 py-1">
-            <span className="text-xs font-bold uppercase tracking-wider text-rose-300">
+          <div className="inline-flex items-center gap-2 rounded-full border border-[#ef0e0a]/30 bg-[#ef0e0a]/10 px-4 py-1">
+            <span className="text-xs font-bold uppercase tracking-wider text-orange-300">
               Step 01
             </span>
           </div>
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black uppercase tracking-tight text-white">
-            Choose Your <span className="text-rose-400">Battery</span>
+            Choose Your <span className="text-[#ef0e0a]">Battery</span>
           </h2>
           <p className="text-sm sm:text-base text-slate-300 font-normal">
             Select the power configuration that suits your travel plans and session duration requirements.
@@ -142,13 +142,13 @@ const HowItWorksBatteries = () => {
                 <div className="grid grid-cols-1 gap-2 pt-2 border-t border-white/10">
                   <div className="flex items-center justify-between text-xs py-1">
                     <span className="text-slate-300 flex items-center gap-1.5 font-medium">
-                      <Clock className="size-3.5 text-rose-400" /> Ride time
+                      <Clock className="size-3.5 text-[#ef0e0a]" /> Ride time
                     </span>
                     <span className="font-bold text-white">{item.rideTime}</span>
                   </div>
                   <div className="flex items-center justify-between text-xs py-1 border-t border-white/5">
                     <span className="text-slate-300 flex items-center gap-1.5 font-medium">
-                      <Weight className="size-3.5 text-rose-400" /> Weight
+                      <Weight className="size-3.5 text-[#ef0e0a]" /> Weight
                     </span>
                     <span className="font-bold text-white">{item.weight}</span>
                   </div>
@@ -174,7 +174,7 @@ const HowItWorksBatteries = () => {
                 <Button
                   nativeButton={false}
                   render={<Link href="/contact?item=TakeOff%20Evo%20Battery%20Config" />}
-                  className="w-full h-10 rounded-full bg-black/60 hover:bg-[#E11D48] text-white border border-white/20 hover:border-transparent font-bold text-xs uppercase tracking-wider transition-all"
+                  className="w-full h-10 rounded-full bg-black/60 hover:bg-[#ef0e0a] text-white border border-white/20 hover:border-transparent font-bold text-xs uppercase tracking-wider transition-all"
                 >
                   Configure This
                 </Button>
@@ -186,7 +186,7 @@ const HowItWorksBatteries = () => {
         <div className="pt-8">
           <div className="flex flex-col gap-6">
             <h3 className="text-2xl sm:text-3xl font-black uppercase tracking-tight text-white border-b border-white/10 pb-4">
-              Battery <span className="text-rose-400">FAQs</span>
+              Battery <span className="text-[#ef0e0a]">FAQs</span>
             </h3>
 
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
@@ -209,7 +209,7 @@ const HowItWorksBatteries = () => {
                         <div
                           className={cn(
                             "flex size-7 rounded-full bg-white/10 items-center justify-center shrink-0 transition-transform duration-300",
-                            isOpen && "rotate-180 bg-rose-500/20 text-rose-300"
+                            isOpen && "rotate-180 bg-[#ef0e0a]/20 text-orange-300"
                           )}
                         >
                           <ChevronDown className="size-4" />
@@ -232,7 +232,7 @@ const HowItWorksBatteries = () => {
 
               <div className="lg:col-span-4">
                 <div className="rounded-3xl border border-white/15 bg-white/[0.06] backdrop-blur-md p-6 sm:p-8 flex flex-col items-center text-center gap-4 shadow-xl">
-                  <div className="flex size-12 rounded-2xl bg-white/10 border border-white/15 items-center justify-center text-rose-400">
+                  <div className="flex size-12 rounded-2xl bg-white/10 border border-white/15 items-center justify-center text-[#ef0e0a]">
                     <MessageSquareQuote className="size-6" />
                   </div>
                   <h4 className="text-base sm:text-lg font-bold text-white">

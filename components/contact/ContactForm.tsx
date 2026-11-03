@@ -52,7 +52,7 @@ const ContactForm = () => {
   return (
     <div className="w-full rounded-3xl border border-white/15 bg-white/[0.06] p-6 sm:p-10 shadow-xl relative text-white backdrop-blur-md">
       <div className="flex flex-col gap-2 pb-6 border-b border-white/10">
-        <span className="text-xs font-bold uppercase tracking-wider text-rose-400">
+        <span className="text-xs font-bold uppercase tracking-wider text-[#ef0e0a]">
           Enquiry Form
         </span>
         <h2 className="text-2xl sm:text-3xl font-bold tracking-tight text-white">
@@ -102,7 +102,7 @@ const ContactForm = () => {
                 htmlFor="name"
                 className="text-xs font-bold uppercase tracking-wider text-slate-200"
               >
-                Your Name <span className="text-rose-400">*</span>
+                Your Name <span className="text-[#ef0e0a]">*</span>
               </label>
               <input
                 id="name"
@@ -113,7 +113,7 @@ const ContactForm = () => {
                 onChange={(e) =>
                   setFormData({ ...formData, name: e.target.value })
                 }
-                className="h-11 w-full rounded-xl border border-white/15 bg-white/10 px-4 text-sm text-white placeholder:text-white/40 focus:border-[#E11D48] focus:bg-white/15 focus:outline-hidden transition-all"
+                className="h-11 w-full rounded-xl border border-white/15 bg-white/10 px-4 text-sm text-white placeholder:text-white/40 focus:border-[#ef0e0a] focus:bg-white/15 focus:outline-hidden transition-all"
               />
             </div>
 
@@ -122,7 +122,7 @@ const ContactForm = () => {
                 htmlFor="email"
                 className="text-xs font-bold uppercase tracking-wider text-slate-200"
               >
-                Email Address <span className="text-rose-400">*</span>
+                Email Address <span className="text-[#ef0e0a]">*</span>
               </label>
               <input
                 id="email"
@@ -133,7 +133,7 @@ const ContactForm = () => {
                 onChange={(e) =>
                   setFormData({ ...formData, email: e.target.value })
                 }
-                className="h-11 w-full rounded-xl border border-white/15 bg-white/10 px-4 text-sm text-white placeholder:text-white/40 focus:border-[#E11D48] focus:bg-white/15 focus:outline-hidden transition-all"
+                className="h-11 w-full rounded-xl border border-white/15 bg-white/10 px-4 text-sm text-white placeholder:text-white/40 focus:border-[#ef0e0a] focus:bg-white/15 focus:outline-hidden transition-all"
               />
             </div>
           </div>
@@ -144,7 +144,7 @@ const ContactForm = () => {
                 htmlFor="phone"
                 className="text-xs font-bold uppercase tracking-wider text-slate-200"
               >
-                Phone Number <span className="text-rose-400">*</span>
+                Phone Number <span className="text-[#ef0e0a]">*</span>
               </label>
               <input
                 id="phone"
@@ -155,7 +155,7 @@ const ContactForm = () => {
                 onChange={(e) =>
                   setFormData({ ...formData, phone: e.target.value })
                 }
-                className="h-11 w-full rounded-xl border border-white/15 bg-white/10 px-4 text-sm text-white placeholder:text-white/40 focus:border-[#E11D48] focus:bg-white/15 focus:outline-hidden transition-all"
+                className="h-11 w-full rounded-xl border border-white/15 bg-white/10 px-4 text-sm text-white placeholder:text-white/40 focus:border-[#ef0e0a] focus:bg-white/15 focus:outline-hidden transition-all"
               />
             </div>
 
@@ -172,7 +172,7 @@ const ContactForm = () => {
                 onChange={(e) =>
                   setFormData({ ...formData, interest: e.target.value })
                 }
-                className="h-11 w-full rounded-xl border border-white/15 bg-[#4A505B] px-3.5 text-sm text-white focus:border-[#E11D48] focus:outline-hidden transition-all cursor-pointer"
+                className="h-11 w-full rounded-xl border border-white/15 bg-[#4A505B] px-3.5 text-sm text-white focus:border-[#ef0e0a] focus:outline-hidden transition-all cursor-pointer"
               >
                 {interests.map((opt) => (
                   <option key={opt} value={opt} className="bg-[#4A505B] text-white">
@@ -188,7 +188,7 @@ const ContactForm = () => {
               htmlFor="message"
               className="text-xs font-bold uppercase tracking-wider text-slate-200"
             >
-              Message <span className="text-rose-400">*</span>
+              Message <span className="text-[#ef0e0a]">*</span>
             </label>
             <textarea
               id="message"
@@ -199,7 +199,7 @@ const ContactForm = () => {
               onChange={(e) =>
                 setFormData({ ...formData, message: e.target.value })
               }
-              className="w-full rounded-xl border border-white/15 bg-white/10 p-4 text-sm text-white placeholder:text-white/40 focus:border-[#E11D48] focus:bg-white/15 focus:outline-hidden transition-all resize-y"
+              className="w-full rounded-xl border border-white/15 bg-white/10 p-4 text-sm text-white placeholder:text-white/40 focus:border-[#ef0e0a] focus:bg-white/15 focus:outline-hidden transition-all resize-y"
             />
           </div>
 
@@ -211,7 +211,7 @@ const ContactForm = () => {
             <Button
               type="submit"
               disabled={loading}
-              className="h-12 w-full sm:w-auto rounded-full px-8 bg-[#E11D48] hover:bg-[#BE123C] text-white font-bold cursor-pointer shadow-md shadow-rose-900/30 inline-flex items-center justify-center gap-2 transition-all duration-300"
+              className="h-12 w-full sm:w-auto rounded-full px-8 bg-[#ef0e0a] hover:bg-[#c40c08] text-white font-bold cursor-pointer shadow-md shadow-orange-950/30 inline-flex items-center justify-center gap-2 transition-all duration-300"
             >
               {loading ? (
                 <span>Sending...</span>

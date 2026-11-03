@@ -13,7 +13,7 @@ const BrandsSection = () => {
     >
       <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 xl:px-16 flex flex-col gap-8 lg:gap-10">
         <div className="flex flex-col items-center text-center gap-1.5 max-w-2xl mx-auto">
-          <span className="text-xs font-bold tracking-wider uppercase text-rose-400">
+          <span className="text-xs font-bold tracking-wider uppercase text-[#ef0e0a]">
             Authorized Australian Distributor & Dealer
           </span>
           <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold tracking-tight text-white">
@@ -39,13 +39,13 @@ const BrandsSection = () => {
                     className="object-contain object-left"
                   />
                 </div>
-                <span className="rounded-full bg-rose-500/15 border border-rose-500/30 px-3 py-0.5 text-xs font-semibold text-rose-300">
+                <span className="rounded-full bg-[#ef0e0a]/15 border border-[#ef0e0a]/30 px-3 py-0.5 text-xs font-semibold text-orange-300">
                   Since 2009
                 </span>
               </div>
 
               <div className="flex flex-col gap-1.5 pt-1">
-                <h3 className="text-xl sm:text-2xl font-bold text-white group-hover:text-rose-400 transition-colors">
+                <h3 className="text-xl sm:text-2xl font-bold text-white group-hover:text-[#ef0e0a] transition-colors">
                   AFS Foils — French Carbon Innovation
                 </h3>
                 <p className="text-sm text-white/75 leading-relaxed">
@@ -79,7 +79,7 @@ const BrandsSection = () => {
               <Button
                 nativeButton={false}
                 render={<Link href="/afs-foils" />}
-                className="h-10 rounded-full px-5 bg-[#E11D48] hover:bg-[#BE123C] text-white text-sm font-semibold cursor-pointer shadow-md shadow-rose-950/30 inline-flex items-center gap-1.5 flex-1 sm:flex-initial"
+                className="h-10 rounded-full px-5 bg-[#ef0e0a] hover:bg-[#c40c08] text-white text-sm font-semibold cursor-pointer shadow-md shadow-orange-950/30 inline-flex items-center gap-1.5 flex-1 sm:flex-initial"
               >
                 <span>Explore AFS</span>
                 <ArrowUpRight className="size-4" />
@@ -109,13 +109,13 @@ const BrandsSection = () => {
                     className="object-contain object-left"
                   />
                 </div>
-                <span className="rounded-full bg-rose-500/15 border border-rose-500/30 px-3 py-0.5 text-xs font-semibold text-rose-300">
+                <span className="rounded-full bg-[#ef0e0a]/15 border border-[#ef0e0a]/30 px-3 py-0.5 text-xs font-semibold text-orange-300">
                   WA Dealer
                 </span>
               </div>
 
               <div className="flex flex-col gap-1.5 pt-1">
-                <h3 className="text-xl sm:text-2xl font-bold text-white group-hover:text-rose-400 transition-colors">
+                <h3 className="text-xl sm:text-2xl font-bold text-white group-hover:text-[#ef0e0a] transition-colors">
                   Manta Foil Assist — Electrify Your Foil
                 </h3>
                 <p className="text-sm text-white/75 leading-relaxed">
@@ -149,7 +149,7 @@ const BrandsSection = () => {
               <Button
                 nativeButton={false}
                 render={<Link href="/manta-foils" />}
-                className="h-10 rounded-full px-5 bg-[#E11D48] hover:bg-[#BE123C] text-white text-sm font-semibold cursor-pointer shadow-md shadow-rose-950/30 inline-flex items-center gap-1.5 flex-1 sm:flex-initial"
+                className="h-10 rounded-full px-5 bg-[#ef0e0a] hover:bg-[#c40c08] text-white text-sm font-semibold cursor-pointer shadow-md shadow-orange-950/30 inline-flex items-center gap-1.5 flex-1 sm:flex-initial"
               >
                 <span>Shop Manta</span>
                 <ArrowUpRight className="size-4" />

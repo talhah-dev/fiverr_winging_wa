@@ -41,7 +41,7 @@ const HowItWorksAddons = () => {
             </span>
           </div>
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black uppercase tracking-tight text-white">
-            Recommended <span className="text-rose-400">Add-Ons</span>
+            Recommended <span className="text-[#ef0e0a]">Add-Ons</span>
           </h2>
           <p className="text-sm sm:text-base text-slate-300 font-normal">
             Enhance your TakeOff Evo system with factory-approved hardware and signal optimization accessories.
@@ -66,7 +66,7 @@ const HowItWorksAddons = () => {
                 </div>
 
                 <div className="flex flex-col gap-1">
-                  <span className="text-[11px] font-bold uppercase tracking-widest text-rose-300">
+                  <span className="text-[11px] font-bold uppercase tracking-widest text-orange-300">
                     {addon.subtitle}
                   </span>
                   <h3 className="text-lg sm:text-xl font-bold text-white">

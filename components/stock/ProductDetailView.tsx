@@ -54,7 +54,7 @@ export const ProductDetailView = ({
 
           <Link
             href="/feature-equipment"
-            className="shrink-0 inline-flex items-center gap-1.5 text-xs font-semibold text-rose-400 hover:text-rose-300 transition-colors ml-4"
+            className="shrink-0 inline-flex items-center gap-1.5 text-xs font-semibold text-[#ef0e0a] hover:text-orange-300 transition-colors ml-4"
           >
             <ArrowLeft className="size-3.5" />
             <span>All Equipment</span>
@@ -101,7 +101,7 @@ export const ProductDetailView = ({
           <div className="lg:col-span-6 flex flex-col gap-6">
             <div className="flex flex-col gap-2">
               <div className="flex items-center gap-2">
-                <span className="text-xs font-bold uppercase tracking-wider text-rose-400">
+                <span className="text-xs font-bold uppercase tracking-wider text-[#ef0e0a]">
                   {product.category}
                 </span>
                 <span className="text-white/30">•</span>
@@ -150,7 +150,7 @@ export const ProductDetailView = ({
                 {product.description}
               </p>
               {product.longDescription && (
-                <p className="text-xs sm:text-sm text-slate-300 leading-relaxed border-l-2 border-rose-500/60 pl-3">
+                <p className="text-xs sm:text-sm text-slate-300 leading-relaxed border-l-2 border-[#ef0e0a]/60 pl-3">
                   {product.longDescription}
                 </p>
               )}
@@ -159,7 +159,7 @@ export const ProductDetailView = ({
             <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 pt-2">
               <Link
                 href={contactUrl}
-                className="flex-1 h-12 min-h-[48px] rounded-full bg-[#E11D48] hover:bg-[#BE123C] text-white font-bold text-sm shadow-lg shadow-rose-950/40 inline-flex items-center justify-center gap-2 px-6 transition-all duration-300 hover:scale-[1.01] cursor-pointer"
+                className="flex-1 h-12 min-h-[48px] rounded-full bg-[#ef0e0a] hover:bg-[#c40c08] text-white font-bold text-sm shadow-lg shadow-orange-950/30 inline-flex items-center justify-center gap-2 px-6 transition-all duration-300 hover:scale-[1.01] cursor-pointer"
               >
                 <span>Buy Now / Purchase Enquiry</span>
                 <ArrowUpRight className="size-4 shrink-0" />
@@ -175,7 +175,7 @@ export const ProductDetailView = ({
             </div>
 
             <div className="rounded-2xl border border-white/10 bg-black/20 p-4 flex items-start gap-3 text-xs text-slate-300">
-              <HelpCircle className="size-4 text-rose-400 shrink-0 mt-0.5" />
+              <HelpCircle className="size-4 text-[#ef0e0a] shrink-0 mt-0.5" />
               <div className="flex flex-col gap-1">
                 <span className="font-semibold text-white">
                   Direct Australian Distribution
@@ -197,7 +197,7 @@ export const ProductDetailView = ({
                       key={idx}
                       className="flex items-start gap-2.5 text-xs sm:text-sm text-slate-200"
                     >
-                      <Check className="size-4 text-rose-400 shrink-0 mt-0.5" />
+                      <Check className="size-4 text-[#ef0e0a] shrink-0 mt-0.5" />
                       <span>{feat}</span>
                     </li>
                   ))}
@@ -234,7 +234,7 @@ export const ProductDetailView = ({
           {product.inTheBox && product.inTheBox.length > 0 && (
             <div className="lg:col-span-5 flex flex-col gap-4">
               <div className="flex items-center gap-2">
-                <Package className="size-5 text-rose-400" />
+                <Package className="size-5 text-[#ef0e0a]" />
                 <h2 className="text-xl sm:text-2xl font-bold text-white tracking-tight">
                   What&apos;s Included
                 </h2>
@@ -245,7 +245,7 @@ export const ProductDetailView = ({
                     key={idx}
                     className="flex items-center gap-3 text-xs sm:text-sm text-slate-200"
                   >
-                    <div className="size-2 rounded-full bg-rose-400 shrink-0" />
+                    <div className="size-2 rounded-full bg-[#ef0e0a] shrink-0" />
                     <span>{boxItem}</span>
                   </div>
                 ))}
@@ -258,7 +258,7 @@ export const ProductDetailView = ({
           <div className="flex flex-col gap-6 pt-10 border-t border-white/15">
             <div className="flex items-end justify-between">
               <div className="flex flex-col gap-1">
-                <span className="text-xs font-bold uppercase tracking-wider text-rose-400">
+                <span className="text-xs font-bold uppercase tracking-wider text-[#ef0e0a]">
                   WA Inventory
                 </span>
                 <h2 className="text-xl sm:text-2xl font-bold text-white tracking-tight">
@@ -267,7 +267,7 @@ export const ProductDetailView = ({
               </div>
               <Link
                 href="/feature-equipment"
-                className="text-xs sm:text-sm font-semibold text-rose-400 hover:text-rose-300 transition-colors inline-flex items-center gap-1"
+                className="text-xs sm:text-sm font-semibold text-[#ef0e0a] hover:text-orange-300 transition-colors inline-flex items-center gap-1"
               >
                 <span>View Full Catalog</span>
                 <ChevronRight className="size-4" />
@@ -303,7 +303,7 @@ export const ProductDetailView = ({
 
                   <div className="flex items-center justify-between gap-3 px-1 pt-1">
                     <div className="flex flex-col gap-0.5 min-w-0">
-                      <h3 className="text-sm font-medium text-white truncate group-hover:text-rose-400 transition-colors">
+                      <h3 className="text-sm font-medium text-white truncate group-hover:text-[#ef0e0a] transition-colors">
                         {item.name}
                       </h3>
                       <div className="flex items-center gap-2">
@@ -320,7 +320,7 @@ export const ProductDetailView = ({
 
                     <div
                       aria-label={`View details for ${item.name}`}
-                      className="shrink-0 flex size-8 items-center justify-center rounded-full bg-white/10 group-hover:bg-[#E11D48] text-white transition-all duration-300 group-hover:scale-105 shadow-sm"
+                      className="shrink-0 flex size-8 items-center justify-center rounded-full bg-white/10 group-hover:bg-[#ef0e0a] text-white transition-all duration-300 group-hover:scale-105 shadow-sm"
                     >
                       <Plus className="size-3.5" />
                     </div>

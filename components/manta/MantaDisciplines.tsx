@@ -51,13 +51,13 @@ const MantaDisciplines = () => {
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 xl:px-16 flex flex-col gap-10">
         <div className="flex flex-col items-center text-center gap-3 max-w-3xl mx-auto">
           <div className="inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/10 px-4 py-1 backdrop-blur-md">
-            <span className="text-xs font-bold uppercase tracking-wider text-rose-300">
+            <span className="text-xs font-bold uppercase tracking-wider text-orange-300">
               Maximum Versatility
             </span>
           </div>
 
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black uppercase tracking-tight text-white leading-tight">
-            One System. <span className="text-rose-400">Multiple Disciplines.</span>
+            One System. <span className="text-[#ef0e0a]">Multiple Disciplines.</span>
           </h2>
 
           <p className="text-sm sm:text-base text-slate-200 max-w-2xl leading-relaxed">

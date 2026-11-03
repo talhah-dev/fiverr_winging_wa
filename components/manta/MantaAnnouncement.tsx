@@ -13,7 +13,7 @@ const MantaAnnouncement = () => {
           <div className="flex flex-col items-start text-left gap-5">
            
             <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black tracking-tight text-white leading-tight">
-              We are excited <span className="text-rose-400">to announce!</span>
+              We are excited <span className="text-[#ef0e0a]">to announce!</span>
             </h2>
 
             <div className="flex flex-col gap-3.5 text-sm sm:text-base text-slate-200 leading-relaxed font-normal">
@@ -32,7 +32,7 @@ const MantaAnnouncement = () => {
               <Button
                 nativeButton={false}
                 render={<Link href="tel:0487042694" />}
-                className="h-12 rounded-full px-7 bg-[#E11D48] hover:bg-[#BE123C] text-white font-black text-sm uppercase tracking-wide cursor-pointer shadow-lg shadow-rose-950/40 inline-flex items-center gap-2 transition-all hover:scale-105"
+                className="h-12 rounded-full px-7 bg-[#ef0e0a] hover:bg-[#c40c08] text-white font-black text-sm uppercase tracking-wide cursor-pointer shadow-lg shadow-orange-950/30 inline-flex items-center gap-2 transition-all hover:scale-105"
               >
                 <Phone className="size-4" />
                 <span>PH: 0487 042 694</span>
@@ -44,7 +44,7 @@ const MantaAnnouncement = () => {
                 render={<Link href="/contact?item=Manta%20TakeOff%20Demo" />}
                 className="h-12 rounded-full px-7 border-white/25 bg-white/10 hover:bg-white/20 text-white font-bold text-sm cursor-pointer backdrop-blur-md inline-flex items-center gap-2 transition-all hover:scale-105"
               >
-                <Calendar className="size-4 text-rose-300" />
+                <Calendar className="size-4 text-orange-300" />
                 <span>Book a Viewing</span>
                 <ArrowUpRight className="size-4" />
               </Button>

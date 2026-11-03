@@ -40,7 +40,7 @@ const HowItWorksHero = () => {
 
         <div className="flex flex-col gap-4 max-w-3xl">
           <h1 className="text-4xl sm:text-5xl lg:text-6xl font-black uppercase tracking-tight text-white leading-[1.1]">
-            How It <span className="text-rose-400">Works</span>
+            How It <span className="text-[#ef0e0a]">Works</span>
           </h1>
           <p className="text-base sm:text-lg text-slate-200 font-normal leading-relaxed">
             With over 20 years of foil design innovation, Manta Foils delivers ride experiences that are smooth, powerful, and unforgettable. Whether you’re chasing waves or cruising flatwater, our products give you the freedom to fly.
@@ -59,11 +59,11 @@ const HowItWorksHero = () => {
                 href={item.href}
                 className="group relative flex flex-col items-center gap-3 p-5 rounded-2xl border border-white/15 bg-white/[0.06] hover:bg-white/[0.12] hover:border-[#FFE600]/60 transition-all duration-300 backdrop-blur-md shadow-lg"
               >
-                <div className="flex size-11 rounded-xl bg-white/10 border border-white/15 items-center justify-center text-rose-300 group-hover:bg-[#FFE600] group-hover:text-black group-hover:border-transparent transition-all">
+                <div className="flex size-11 rounded-xl bg-white/10 border border-white/15 items-center justify-center text-orange-300 group-hover:bg-[#FFE600] group-hover:text-black group-hover:border-transparent transition-all">
                   <Icon className="size-5" />
                 </div>
                 <div className="flex flex-col items-center">
-                  <span className="text-xs font-bold uppercase tracking-wider text-rose-300 group-hover:text-white transition-colors">
+                  <span className="text-xs font-bold uppercase tracking-wider text-orange-300 group-hover:text-white transition-colors">
                     {item.step}
                   </span>
                   <span className="text-sm sm:text-base font-bold text-white group-hover:text-[#FFE600] transition-colors">

@@ -71,9 +71,9 @@ const Footer = () => {
                   <Image
                     src="/logo.png"
                     alt="Winging WA"
-                    width={200}
-                    height={55}
-                    className="h-14 sm:h-16 w-auto object-contain"
+                    width={320}
+                    height={150}
+                    className="h-20 sm:h-24 md:h-28 w-auto object-contain"
                   />
                 </Link>
 
@@ -83,21 +83,21 @@ const Footer = () => {
                 </p>
 
                 <div className="flex items-center gap-3">
-                  <Link
+                  {/* <Link
                     href="https://www.facebook.com/WingingWA"
                     target="_blank"
                     rel="noopener noreferrer"
                     aria-label="Facebook"
-                    className="flex size-9 items-center justify-center rounded-full border border-white/10 bg-white/5 text-muted-foreground hover:bg-[#E11D48] hover:text-white hover:border-[#E11D48] transition-colors"
+                    className="flex size-9 items-center justify-center rounded-full border border-white/10 bg-white/5 text-muted-foreground hover:bg-[#ef0e0a] hover:text-white hover:border-[#ef0e0a] transition-colors"
                   >
                     <FaFacebookF className="size-4" />
-                  </Link>
+                  </Link> */}
                   <Link
                     href="https://www.instagram.com/winging_wa"
                     target="_blank"
                     rel="noopener noreferrer"
                     aria-label="Instagram"
-                    className="flex size-9 items-center justify-center rounded-full border border-white/10 bg-white/5 text-muted-foreground hover:bg-[#E11D48] hover:text-white hover:border-[#E11D48] transition-colors"
+                    className="flex size-9 items-center justify-center rounded-full border border-white/10 bg-white/5 text-muted-foreground hover:bg-[#ef0e0a] hover:text-white hover:border-[#ef0e0a] transition-colors"
                   >
                     <FaInstagram className="size-4" />
                   </Link>

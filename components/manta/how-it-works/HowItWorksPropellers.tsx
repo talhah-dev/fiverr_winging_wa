@@ -26,7 +26,7 @@ const propellers = [
     title: "3-Blade Folding Propeller",
     image: "/manta/how-it-works/3-blade-propeller.svg",
     tag: "High Thrust Upgrade",
-    tagColor: "bg-rose-500/20 text-rose-300 border-rose-500/30",
+    tagColor: "bg-[#ef0e0a]/20 text-orange-300 border-[#ef0e0a]/30",
     description:
       "High-output performance propeller delivering instant acceleration, grip in choppy water, and higher top-end speed.",
     highlights: [
@@ -78,13 +78,13 @@ const HowItWorksPropellers = () => {
     <section id="propellers" className="relative w-full py-16 lg:py-24 bg-[#4A505B] text-white border-b border-white/10">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 flex flex-col gap-12">
         <div className="flex flex-col items-center text-center gap-3 max-w-3xl mx-auto">
-          <div className="inline-flex items-center gap-2 rounded-full border border-rose-500/30 bg-rose-500/10 px-4 py-1">
-            <span className="text-xs font-bold uppercase tracking-wider text-rose-300">
+          <div className="inline-flex items-center gap-2 rounded-full border border-[#ef0e0a]/30 bg-[#ef0e0a]/10 px-4 py-1">
+            <span className="text-xs font-bold uppercase tracking-wider text-orange-300">
               Step 03
             </span>
           </div>
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black uppercase tracking-tight text-white">
-            Choose Your <span className="text-rose-400">Propeller</span>
+            Choose Your <span className="text-[#ef0e0a]">Propeller</span>
           </h2>
           <p className="text-sm sm:text-base text-slate-300 font-normal">
             Match your foil size, rider weight, and flight goals with the ideal folding blade setup.
@@ -102,7 +102,7 @@ const HowItWorksPropellers = () => {
                   <span className={cn("text-xs font-extrabold uppercase tracking-wider px-3 py-1 rounded-full border", item.tagColor)}>
                     {item.tag}
                   </span>
-                  <Wind className="size-5 text-rose-300" />
+                  <Wind className="size-5 text-orange-300" />
                 </div>
 
                 <div className="relative w-full aspect-[4/3] flex items-center justify-center overflow-hidden rounded-2xl bg-black/20 p-6 border border-white/10">
@@ -138,7 +138,7 @@ const HowItWorksPropellers = () => {
                 <Button
                   nativeButton={false}
                   render={<Link href="/contact?item=TakeOff%20Propeller%20Option" />}
-                  className="w-full h-11 rounded-full bg-black/60 hover:bg-[#E11D48] text-white border border-white/20 hover:border-transparent font-bold text-xs uppercase tracking-wider transition-all"
+                  className="w-full h-11 rounded-full bg-black/60 hover:bg-[#ef0e0a] text-white border border-white/20 hover:border-transparent font-bold text-xs uppercase tracking-wider transition-all"
                 >
                   Choose Propeller
                 </Button>
@@ -150,7 +150,7 @@ const HowItWorksPropellers = () => {
         <div className="pt-6">
           <div className="flex flex-col gap-6 max-w-4xl mx-auto">
             <h3 className="text-2xl sm:text-3xl font-black uppercase tracking-tight text-white border-b border-white/10 pb-4">
-              Propeller <span className="text-rose-400">FAQs</span>
+              Propeller <span className="text-[#ef0e0a]">FAQs</span>
             </h3>
 
             <div className="flex flex-col gap-3">
@@ -172,7 +172,7 @@ const HowItWorksPropellers = () => {
                       <div
                         className={cn(
                           "flex size-7 rounded-full bg-white/10 items-center justify-center shrink-0 transition-transform duration-300",
-                          isOpen && "rotate-180 bg-rose-500/20 text-rose-300"
+                          isOpen && "rotate-180 bg-[#ef0e0a]/20 text-orange-300"
                         )}
                       >
                         <ChevronDown className="size-4" />

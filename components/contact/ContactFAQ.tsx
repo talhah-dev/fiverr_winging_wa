@@ -28,7 +28,7 @@ const ContactFAQ = () => {
     <section className="relative w-full py-16 lg:py-20 bg-[#4A505B] border-t border-white/15 text-white">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 xl:px-16 flex flex-col gap-10">
         <div className="flex flex-col items-center text-center gap-2 max-w-2xl mx-auto">
-          <span className="text-xs font-bold uppercase tracking-wider text-rose-400">
+          <span className="text-xs font-bold uppercase tracking-wider text-[#ef0e0a]">
             Frequently Asked Questions
           </span>
           <h2 className="text-2xl sm:text-3xl font-bold tracking-tight text-white">
@@ -47,7 +47,7 @@ const ContactFAQ = () => {
                 key={faq.question}
                 className="rounded-2xl border border-white/15 bg-white/[0.06] p-6 shadow-xs flex flex-col gap-3 text-white hover:bg-white/[0.1] transition-colors"
               >
-                <div className="flex items-center gap-3 text-rose-400">
+                <div className="flex items-center gap-3 text-[#ef0e0a]">
                   <div className="flex size-9 items-center justify-center rounded-lg bg-white/10 border border-white/15 text-white">
                     <Icon className="size-4.5" />
                   </div>

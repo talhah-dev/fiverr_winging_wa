@@ -35,7 +35,7 @@ const ContactInfoCards = () => {
   return (
     <div className="flex flex-col gap-6 w-full">
       <div className="flex flex-col gap-2">
-        <span className="text-xs font-bold uppercase tracking-wider text-rose-400">
+        <span className="text-xs font-bold uppercase tracking-wider text-[#ef0e0a]">
           Direct Contact Information
         </span>
         <h2 className="text-2xl sm:text-3xl font-bold tracking-tight text-white">
@@ -56,7 +56,7 @@ const ContactInfoCards = () => {
             >
               <div className="flex items-start justify-between gap-3">
                 <div className="flex items-center gap-3">
-                  <div className="flex size-11 items-center justify-center rounded-xl bg-white/10 text-white border border-white/15 group-hover:bg-[#E11D48] group-hover:text-white group-hover:border-[#E11D48] transition-colors duration-300">
+                  <div className="flex size-11 items-center justify-center rounded-xl bg-white/10 text-white border border-white/15 group-hover:bg-[#ef0e0a] group-hover:text-white group-hover:border-[#ef0e0a] transition-colors duration-300">
                     <Icon className="size-5" />
                   </div>
                   <div className="flex flex-col">
@@ -82,7 +82,7 @@ const ContactInfoCards = () => {
                 <div className="pt-2 border-t border-white/10 mt-1">
                   <Link
                     href={item.href}
-                    className="text-base sm:text-lg font-bold text-white group-hover:text-rose-400 transition-colors inline-flex items-center gap-1.5"
+                    className="text-base sm:text-lg font-bold text-white group-hover:text-[#ef0e0a] transition-colors inline-flex items-center gap-1.5"
                   >
                     <span>{item.value}</span>
                   </Link>
@@ -115,7 +115,7 @@ const ContactInfoCards = () => {
             target="_blank"
             rel="noopener noreferrer"
             aria-label="Facebook Winging WA"
-            className="flex size-11 items-center justify-center rounded-xl border border-white/15 bg-white/10 text-white hover:bg-[#E11D48] hover:text-white hover:border-[#E11D48] transition-all shadow-xs"
+            className="flex size-11 items-center justify-center rounded-xl border border-white/15 bg-white/10 text-white hover:bg-[#ef0e0a] hover:text-white hover:border-[#ef0e0a] transition-all shadow-xs"
           >
             <FaFacebookF className="size-5" />
           </Link>
@@ -124,15 +124,15 @@ const ContactInfoCards = () => {
             target="_blank"
             rel="noopener noreferrer"
             aria-label="Instagram Winging WA"
-            className="flex size-11 items-center justify-center rounded-xl border border-white/15 bg-white/10 text-white hover:bg-[#E11D48] hover:text-white hover:border-[#E11D48] transition-all shadow-xs"
+            className="flex size-11 items-center justify-center rounded-xl border border-white/15 bg-white/10 text-white hover:bg-[#ef0e0a] hover:text-white hover:border-[#ef0e0a] transition-all shadow-xs"
           >
             <FaInstagram className="size-5" />
           </Link>
         </div>
       </div>
 
-      <div className="rounded-2xl border border-rose-500/30 bg-rose-500/10 p-5 flex items-start gap-3.5 text-white">
-        <ShieldCheck className="size-6 text-rose-400 shrink-0 mt-0.5" />
+      <div className="rounded-2xl border border-[#ef0e0a]/30 bg-[#ef0e0a]/10 p-5 flex items-start gap-3.5 text-white">
+        <ShieldCheck className="size-6 text-[#ef0e0a] shrink-0 mt-0.5" />
         <div className="flex flex-col gap-1">
           <h4 className="text-sm font-bold text-white">
             Authorized Australian Warranty & Support

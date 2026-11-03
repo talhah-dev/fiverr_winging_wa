@@ -57,13 +57,13 @@ const MantaFAQ = () => {
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 xl:px-16 flex flex-col gap-12">
         <div className="flex flex-col items-center text-center gap-3 max-w-3xl mx-auto">
           <div className="inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/10 px-4 py-1 backdrop-blur-md">
-            <span className="text-xs font-bold uppercase tracking-wider text-rose-300">
+            <span className="text-xs font-bold uppercase tracking-wider text-orange-300">
               Got Questions?
             </span>
           </div>
 
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black uppercase tracking-tight text-white leading-tight">
-            TakeOff Evo: <span className="text-rose-400">Frequently Asked Questions</span>
+            TakeOff Evo: <span className="text-[#ef0e0a]">Frequently Asked Questions</span>
           </h2>
         </div>
 
@@ -88,7 +88,7 @@ const MantaFAQ = () => {
                     <div
                       className={cn(
                         "flex size-7 rounded-full bg-white/10 items-center justify-center shrink-0 transition-transform duration-300",
-                        isOpen && "rotate-180 bg-rose-500/20 text-rose-300",
+                        isOpen && "rotate-180 bg-[#ef0e0a]/20 text-orange-300",
                       )}
                     >
                       <ChevronDown className="size-4" />
@@ -115,7 +115,7 @@ const MantaFAQ = () => {
           <div className="lg:col-span-5 xl:col-span-4">
             <div className="rounded-3xl border border-white/15 bg-white/[0.06] backdrop-blur-md p-8 sm:p-10 flex flex-col items-center text-center gap-5 shadow-2xl sticky top-28">
               <div className="flex size-14 rounded-2xl bg-white/10 border border-white/15 items-center justify-center text-white">
-                <MessageSquareQuote className="size-7 text-rose-400" />
+                <MessageSquareQuote className="size-7 text-[#ef0e0a]" />
               </div>
 
               <div className="flex flex-col gap-2">
@@ -130,7 +130,7 @@ const MantaFAQ = () => {
               <Button
                 nativeButton={false}
                 render={<Link href="/contact?item=Manta%20Foil%20Assist" />}
-                className="w-full h-11 rounded-full bg-black hover:bg-[#E11D48] text-white border border-white/20 hover:border-transparent font-bold text-xs uppercase tracking-wider cursor-pointer transition-all shadow-md mt-2"
+                className="w-full h-11 rounded-full bg-black hover:bg-[#ef0e0a] text-white border border-white/20 hover:border-transparent font-bold text-xs uppercase tracking-wider cursor-pointer transition-all shadow-md mt-2"
               >
                 Contact us
               </Button>

@@ -41,7 +41,7 @@ const StockCatalog = () => {
 
               <div className="flex items-center justify-between gap-3 px-1 pt-1">
                 <div className="flex flex-col gap-0.5 min-w-0">
-                  <h3 className="text-base font-medium text-white truncate group-hover:text-rose-400 transition-colors">
+                  <h3 className="text-base font-medium text-white truncate group-hover:text-[#ef0e0a] transition-colors">
                     {item.name}
                   </h3>
                   <div className="flex items-center gap-2">
@@ -58,7 +58,7 @@ const StockCatalog = () => {
 
                 <div
                   aria-label={`View details for ${item.name}`}
-                  className="shrink-0 flex size-9 items-center justify-center rounded-full bg-white/10 group-hover:bg-[#E11D48] text-white transition-all duration-300 group-hover:scale-105 shadow-sm"
+                  className="shrink-0 flex size-9 items-center justify-center rounded-full bg-white/10 group-hover:bg-[#ef0e0a] text-white transition-all duration-300 group-hover:scale-105 shadow-sm"
                 >
                   <Plus className="size-4" />
                 </div>

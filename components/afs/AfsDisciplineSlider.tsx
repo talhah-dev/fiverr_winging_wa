@@ -29,14 +29,14 @@ const AfsDisciplineSlider = ({
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 xl:px-16 flex flex-col gap-4">
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-3">
-            <span className="text-xs font-bold uppercase tracking-wider text-rose-400">
-              Browse by Discipline
+            <span className="text-xs font-bold uppercase tracking-wider text-[#ef0e0a]">
+              Products - Wings, Parawing and Foils
             </span>
             {selectedDiscipline && (
               <button
                 type="button"
                 onClick={() => onSelectDiscipline(null)}
-                className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-rose-500/20 text-rose-300 border border-rose-500/30 text-xs font-semibold cursor-pointer hover:bg-rose-500/30 transition-colors"
+                className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-[#ef0e0a]/20 text-orange-300 border border-[#ef0e0a]/30 text-xs font-semibold cursor-pointer hover:bg-[#ef0e0a]/30 transition-colors"
               >
                 <span>Filtered: {selectedDiscipline}</span>
                 <X className="size-3" />
@@ -86,9 +86,8 @@ const AfsDisciplineSlider = ({
             slidesPerView={1.2}
             breakpoints={{
               480: { slidesPerView: 2, spaceBetween: 14 },
-              640: { slidesPerView: 3, spaceBetween: 16 },
-              900: { slidesPerView: 4, spaceBetween: 16 },
-              1150: { slidesPerView: 5, spaceBetween: 16 },
+              768: { slidesPerView: 3, spaceBetween: 16 },
+              1024: { slidesPerView: 3, spaceBetween: 20 },
             }}
             className="w-full overflow-hidden rounded-2xl"
           >
@@ -108,7 +107,7 @@ const AfsDisciplineSlider = ({
                     className={cn(
                       "group relative h-44 sm:h-48 w-full cursor-pointer overflow-hidden rounded-2xl border transition-all duration-300 select-none",
                       isSelected
-                        ? "border-[#E11D48] ring-2 ring-[#E11D48] shadow-lg shadow-rose-950/40"
+                        ? "border-[#ef0e0a] ring-2 ring-[#ef0e0a] shadow-lg shadow-orange-950/30"
                         : "border-white/15 hover:border-white/40 hover:scale-[1.02]",
                     )}
                   >
@@ -132,7 +131,7 @@ const AfsDisciplineSlider = ({
                     </div>
 
                     {isSelected && (
-                      <div className="absolute top-2.5 right-2.5 z-10 rounded-full bg-[#E11D48] px-2 py-0.5 text-[10px] font-extrabold uppercase text-white shadow-xs">
+                      <div className="absolute top-2.5 right-2.5 z-10 rounded-full bg-[#ef0e0a] px-2 py-0.5 text-[10px] font-extrabold uppercase text-white shadow-xs">
                         Active
                       </div>
                     )}

@@ -26,7 +26,7 @@ const ContactHero = () => {
           className="flex flex-col items-center gap-4 max-w-3xl"
         >
           <h1 className="text-3xl sm:text-5xl lg:text-6xl font-bold tracking-tight text-white leading-tight drop-shadow-md">
-            Get In Touch With <span className="text-[#E11D48] md:block">Winging WA</span>
+            Get In Touch With <span className="text-[#ef0e0a] md:block">Winging WA</span>
           </h1>
 
           <p className="text-base sm:text-lg text-slate-100 leading-relaxed max-w-xl font-normal drop-shadow-sm">

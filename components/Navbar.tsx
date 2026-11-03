@@ -35,7 +35,7 @@ const navLinks: NavItem[] = [
     title: "Brands",
     href: "/#afs",
     subLinks: [
-      { title: "AFS Foils", href: "/afs-foils" },
+      { title: "AFS Foiling", href: "/afs-foils" },
       { title: "Manta Foil Assist", href: "/manta-foils" },
       { title: "How It Works", href: "/how-it-works" },
     ],
@@ -110,7 +110,7 @@ const Navbar = () => {
                       height="16"
                       viewBox="0 0 20 16"
                       fill="currentColor"
-                      className="text-white transition-colors group-hover:text-rose-400"
+                      className="text-white transition-colors group-hover:text-[#ef0e0a]"
                     >
                       <rect width="20" height="2.2" rx="1.1" />
                       <rect y="6.9" width="20" height="2.2" rx="1.1" />
@@ -152,10 +152,10 @@ const Navbar = () => {
                         onClick={() => handleCategoryClick(cat.id)}
                         className="group flex items-center justify-between py-3.5 sm:py-4 px-3 -mx-3 rounded-xl hover:bg-white/[0.07] transition-all cursor-pointer text-left"
                       >
-                        <span className="text-base sm:text-lg font-bold text-white tracking-tight group-hover:text-rose-400 group-hover:translate-x-1 transition-all">
+                        <span className="text-base sm:text-lg font-bold text-white tracking-tight group-hover:text-[#ef0e0a] group-hover:translate-x-1 transition-all">
                           {cat.name}
                         </span>
-                        <span className="text-sm sm:text-base font-semibold text-slate-300/80 group-hover:text-rose-300 transition-colors">
+                        <span className="text-sm sm:text-base font-semibold text-slate-300/80 group-hover:text-orange-300 transition-colors">
                           {cat.count}
                         </span>
                       </button>
@@ -168,10 +168,10 @@ const Navbar = () => {
                       onClick={() => handleCategoryClick("all")}
                       className="group flex items-center justify-between py-3.5 sm:py-4 px-3 -mx-3 rounded-xl hover:bg-white/[0.07] transition-all cursor-pointer text-left"
                     >
-                      <span className="text-base sm:text-lg font-bold text-white tracking-tight group-hover:text-rose-400 group-hover:translate-x-1 transition-all">
+                      <span className="text-base sm:text-lg font-bold text-white tracking-tight group-hover:text-[#ef0e0a] group-hover:translate-x-1 transition-all">
                         All products
                       </span>
-                      <span className="text-sm sm:text-base font-semibold text-slate-300/80 group-hover:text-rose-300 transition-colors">
+                      <span className="text-sm sm:text-base font-semibold text-slate-300/80 group-hover:text-orange-300 transition-colors">
                         37
                       </span>
                     </button>
@@ -182,7 +182,7 @@ const Navbar = () => {
                       href="tel:0487042694"
                       className="flex items-center gap-2.5 text-xs text-slate-300 hover:text-white transition-colors"
                     >
-                      <Phone className="size-4 text-rose-400" />
+                      <Phone className="size-4 text-[#ef0e0a]" />
                       <span>Direct WA Expert: 0487 042 694 (Mark)</span>
                     </Link>
                   </div>
@@ -244,11 +244,11 @@ const Navbar = () => {
             <Image
               src="/logo.png"
               alt="Winging WA"
-              width={220}
-              height={60}
+              width={320}
+              height={150}
               className={cn(
                 "w-auto object-contain transition-all duration-300",
-                isSticky ? "h-12 md:h-14" : "h-14 md:h-16 lg:h-[68px]",
+                isSticky ? "h-14 md:h-16 lg:h-[76px]" : "h-16 sm:h-20 md:h-22 lg:h-[90px]",
               )}
               priority
             />
@@ -267,7 +267,7 @@ const Navbar = () => {
             <Button
               nativeButton={false}
               render={<Link href="/contact" />}
-              className="group h-10 rounded-full px-5 font-medium bg-[#ef0e0a] hover:bg-[#BE123C] text-white shadow-md shadow-rose-950/30 cursor-pointer inline-flex items-center gap-1.5"
+              className="group h-10 rounded-full px-5 font-medium bg-[#ef0e0a] hover:bg-[#c40c08] text-white shadow-md shadow-orange-950/30 cursor-pointer inline-flex items-center gap-1.5"
             >
               <span>Enquire Now</span>
               <ChevronRight className="size-4 transition-transform group-hover:translate-x-0.5 duration-300" />
@@ -302,9 +302,9 @@ const Navbar = () => {
                       <Image
                         src="/logo.png"
                         alt="Winging WA"
-                        width={180}
-                        height={50}
-                        className="h-11 w-auto object-contain"
+                        width={240}
+                        height={110}
+                        className="h-14 sm:h-16 w-auto object-contain"
                         priority
                       />
                     </Link>
@@ -383,7 +383,7 @@ const Navbar = () => {
                     <Button
                       nativeButton={false}
                       render={<Link href="/contact" />}
-                      className="group h-11 w-full rounded-full px-5 font-medium bg-[#E11D48] hover:bg-[#BE123C] text-white shadow-md shadow-rose-950/30 cursor-pointer"
+                      className="group h-11 w-full rounded-full px-5 font-medium bg-[#ef0e0a] hover:bg-[#c40c08] text-white shadow-md shadow-orange-950/30 cursor-pointer"
                     >
                       Enquire Now
                       <ChevronRight className="size-4 transition-transform group-hover:translate-x-0.5 duration-300" />

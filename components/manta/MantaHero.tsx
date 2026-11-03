@@ -56,7 +56,7 @@ const MantaHero = () => {
 
           <h1 className="text-2xl sm:text-4xl lg:text-5xl font-black uppercase tracking-tight text-white leading-tight drop-shadow-lg">
             Power. Air Travel.{" "}
-            <span className="text-rose-400">Maintenance free motor.</span>
+            <span className="text-[#ef0e0a]">Maintenance free motor.</span>
           </h1>
 
           <p className="text-base sm:text-lg text-slate-100/90 leading-relaxed max-w-xl font-medium drop-shadow-md">
@@ -67,7 +67,7 @@ const MantaHero = () => {
             <Button
               nativeButton={false}
               render={<Link href="/contact?item=Manta%20TakeOff%20Evo" />}
-              className="h-12 sm:h-13 rounded-full px-8 sm:px-9 bg-[#E11D48] hover:bg-[#BE123C] text-white font-extrabold text-sm uppercase tracking-wider shadow-xl shadow-rose-950/50 cursor-pointer inline-flex items-center gap-2 transition-all hover:scale-105"
+              className="h-12 sm:h-13 rounded-full px-8 sm:px-9 bg-[#ef0e0a] hover:bg-[#c40c08] text-white font-extrabold text-sm uppercase tracking-wider shadow-xl shadow-orange-950/30 cursor-pointer inline-flex items-center gap-2 transition-all hover:scale-105"
             >
               <span>Buy now</span>
               <ArrowUpRight className="size-4.5" />
@@ -88,7 +88,7 @@ const MantaHero = () => {
               render={<Link href="tel:0487042694" />}
               className="h-12 sm:h-13 rounded-full px-7 border-white/25 bg-black/40 hover:bg-black/60 text-white font-medium text-sm cursor-pointer backdrop-blur-md inline-flex items-center gap-2"
             >
-              <Phone className="size-4 text-rose-400" />
+              <Phone className="size-4 text-[#ef0e0a]" />
               <span>Call Mark: 0487 042 694</span>
             </Button>
           </div>

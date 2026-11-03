@@ -193,6 +193,16 @@ const AfsCatalog = ({
 
       const matchDiscipline =
         !activeDiscipline ||
+        (activeDiscipline.toLowerCase() === "wings" &&
+          (product.category.toLowerCase() === "wings" ||
+            product.subCategory.toLowerCase() === "wings")) ||
+        (activeDiscipline.toLowerCase() === "parawing" &&
+          (product.name.toLowerCase().includes("parawing") ||
+            product.disciplines?.some((d) =>
+              d.toLowerCase().includes("parawing"),
+            ))) ||
+        (activeDiscipline.toLowerCase() === "foils" &&
+          product.category.toLowerCase() === "foils") ||
         product.disciplines?.some(
           (d) =>
             d.toLowerCase().includes(activeDiscipline.toLowerCase()) ||
@@ -303,7 +313,7 @@ const AfsCatalog = ({
             </span>
 
             {activeDiscipline && (
-              <span className="inline-flex items-center gap-1 rounded-full bg-[#E11D48] px-3 py-0.5 text-xs font-bold text-white shadow-xs">
+              <span className="inline-flex items-center gap-1 rounded-full bg-[#ef0e0a] px-3 py-0.5 text-xs font-bold text-white shadow-xs">
                 <span>Discipline: {activeDiscipline}</span>
                 <button
                   type="button"
@@ -349,7 +359,7 @@ const AfsCatalog = ({
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
                 placeholder="Search models or sizes..."
-                className="h-10 w-full rounded-full border border-white/15 bg-white/10 pl-9 pr-8 text-xs text-white placeholder:text-white/40 focus:border-[#E11D48] focus:bg-white/15 focus:outline-hidden transition-all"
+                className="h-10 w-full rounded-full border border-white/15 bg-white/10 pl-9 pr-8 text-xs text-white placeholder:text-white/40 focus:border-[#ef0e0a] focus:bg-white/15 focus:outline-hidden transition-all"
               />
               {searchQuery && (
                 <button
@@ -369,7 +379,7 @@ const AfsCatalog = ({
                   e.target.value as "featured" | "price-asc" | "price-desc",
                 )
               }
-              className="h-10 rounded-full border border-white/15 bg-[#4A505B] px-3.5 text-xs text-white focus:border-[#E11D48] focus:outline-hidden cursor-pointer"
+              className="h-10 rounded-full border border-white/15 bg-[#4A505B] px-3.5 text-xs text-white focus:border-[#ef0e0a] focus:outline-hidden cursor-pointer"
             >
               <option value="featured" className="bg-[#4A505B] text-white">
                 Sort: Featured
@@ -393,7 +403,7 @@ const AfsCatalog = ({
           >
             <div className="flex items-center justify-between pb-3 border-b border-white/10">
               <div className="flex items-center gap-2">
-                <SlidersHorizontal className="size-4 text-rose-400" />
+                <SlidersHorizontal className="size-4 text-[#ef0e0a]" />
                 <span className="text-xs font-bold uppercase tracking-wider text-white">
                   Filters
                 </span>
@@ -401,7 +411,7 @@ const AfsCatalog = ({
               <button
                 type="button"
                 onClick={handleResetAll}
-                className="text-[11px] font-semibold text-rose-300 hover:text-white transition-colors cursor-pointer"
+                className="text-[11px] font-semibold text-orange-300 hover:text-white transition-colors cursor-pointer"
               >
                 Reset All
               </button>
@@ -413,7 +423,7 @@ const AfsCatalog = ({
               className={cn(
                 "group flex items-center justify-between rounded-2xl px-4 py-3 text-sm font-bold transition-all cursor-pointer text-left w-full",
                 isAllActive
-                  ? "bg-[#E11D48] text-white shadow-md shadow-rose-950/40"
+                  ? "bg-[#ef0e0a] text-white shadow-md shadow-orange-950/30"
                   : "bg-white/10 hover:bg-white/15 text-white/80 hover:text-white",
               )}
             >
@@ -462,7 +472,7 @@ const AfsCatalog = ({
                               className={cn(
                                 "size-4 rounded-[3px] border flex items-center justify-center transition-colors shrink-0",
                                 isSelected
-                                  ? "bg-[#E11D48] border-[#E11D48] text-white"
+                                  ? "bg-[#ef0e0a] border-[#ef0e0a] text-white"
                                   : "border-white/30 bg-white/5 group-hover:border-white/50",
                               )}
                             >
@@ -527,7 +537,7 @@ const AfsCatalog = ({
                             className={cn(
                               "size-4 rounded-[3px] border flex items-center justify-center transition-colors shrink-0",
                               isSelected
-                                ? "bg-[#E11D48] border-[#E11D48] text-white"
+                                ? "bg-[#ef0e0a] border-[#ef0e0a] text-white"
                                 : "border-white/30 bg-white/5 group-hover:border-white/50",
                             )}
                           >
@@ -581,7 +591,7 @@ const AfsCatalog = ({
                     step="25"
                     value={maxPrice}
                     onChange={(e) => setMaxPrice(Number(e.target.value))}
-                    className="w-full accent-[#E11D48] bg-white/20 h-1.5 rounded-lg cursor-pointer"
+                    className="w-full accent-[#ef0e0a] bg-white/20 h-1.5 rounded-lg cursor-pointer"
                   />
                   <div className="flex items-center justify-between text-xs font-semibold text-slate-300">
                     <span>1,00€</span>
@@ -648,7 +658,7 @@ const AfsCatalog = ({
                                     className={cn(
                                       "absolute top-3 right-3 z-10 rounded px-2 py-0.5 text-[10px] font-bold tracking-wider uppercase border",
                                       product.badgeType === "deal"
-                                        ? "bg-[#E11D48] text-white border-rose-400/30"
+                                        ? "bg-[#ef0e0a] text-white border-[#ef0e0a]/30"
                                         : product.badgeType === "performance"
                                           ? "bg-amber-600 text-white border-amber-400/30"
                                           : "bg-slate-900/80 text-white border-white/10",
@@ -672,7 +682,7 @@ const AfsCatalog = ({
                               <div className="flex flex-col items-center text-center p-4 pb-2">
                                 <Link
                                   href={productHref}
-                                  className="text-base sm:text-lg font-bold uppercase tracking-tight text-white leading-snug line-clamp-2 cursor-pointer group-hover:text-rose-400 transition-colors"
+                                  className="text-base sm:text-lg font-bold uppercase tracking-tight text-white leading-snug line-clamp-2 cursor-pointer group-hover:text-[#ef0e0a] transition-colors"
                                 >
                                   {product.name}
                                 </Link>
@@ -700,7 +710,7 @@ const AfsCatalog = ({
                                     {product.price}
                                   </span>
                                   {product.originalPrice && (
-                                    <span className="text-xs font-normal text-rose-300 line-through">
+                                    <span className="text-xs font-normal text-orange-300 line-through">
                                       {product.originalPrice}
                                     </span>
                                   )}
@@ -714,8 +724,8 @@ const AfsCatalog = ({
                                 className={cn(
                                   "w-full h-11 rounded-xl text-xs sm:text-sm font-semibold tracking-wide uppercase flex items-center justify-center transition-all cursor-pointer",
                                   product.actionText === "GRAB THE DEAL"
-                                    ? "bg-[#E11D48] hover:bg-[#BE123C] text-white"
-                                    : "bg-black/50 hover:bg-[#E11D48] text-white border border-white/15 hover:border-transparent",
+                                    ? "bg-[#ef0e0a] hover:bg-[#c40c08] text-white"
+                                    : "bg-black/50 hover:bg-[#ef0e0a] text-white border border-white/15 hover:border-transparent",
                                 )}
                               >
                                 {product.actionText}

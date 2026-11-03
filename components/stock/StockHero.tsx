@@ -40,7 +40,7 @@ const StockHero = () => {
             <Button
               nativeButton={false}
               render={<Link href="tel:0487042694" />}
-              className="h-11 rounded-full px-7 bg-[#E11D48] hover:bg-[#BE123C] text-white font-semibold cursor-pointer shadow-lg shadow-rose-950/40 inline-flex items-center gap-2"
+              className="h-11 rounded-full px-7 bg-[#ef0e0a] hover:bg-[#c40c08] text-white font-semibold cursor-pointer shadow-lg shadow-orange-950/30 inline-flex items-center gap-2"
             >
               <Phone className="size-4" />
               <span>Call Mark: 0487 042 694</span>

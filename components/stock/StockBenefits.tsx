@@ -29,7 +29,7 @@ const StockBenefits = () => {
     <section className="relative w-full py-16 lg:py-24 bg-white border-t border-slate-200">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 xl:px-16 flex flex-col gap-12">
         <div className="flex flex-col items-center text-center gap-2 max-w-2xl mx-auto">
-          <span className="text-xs font-bold uppercase tracking-wider text-rose-600">
+          <span className="text-xs font-bold uppercase tracking-wider text-[#ef0e0a]">
             Why Buy Local
           </span>
           <h2 className="text-2xl sm:text-3xl font-bold tracking-tight text-slate-900">
@@ -48,7 +48,7 @@ const StockBenefits = () => {
                 key={b.title}
                 className="rounded-3xl border border-slate-200 bg-slate-50/70 p-6 flex flex-col gap-3.5 hover:shadow-md hover:bg-white hover:border-slate-300 transition-all duration-300"
               >
-                <div className="flex size-11 items-center justify-center rounded-xl bg-rose-50 text-[#E11D48] border border-rose-100">
+                <div className="flex size-11 items-center justify-center rounded-xl bg-orange-50 text-[#ef0e0a] border border-orange-100">
                   <Icon className="size-5" />
                 </div>
                 <h3 className="text-base font-bold text-slate-900">

@@ -28,7 +28,7 @@ const stockProducts: StockProduct[] = [
     price: "$70.00",
     originalPrice: "$104.00",
     badge: "Sale",
-    badgeColor: "bg-rose-500/15 text-rose-400 border border-rose-500/30",
+    badgeColor: "bg-[#ef0e0a]/15 text-[#ef0e0a] border border-[#ef0e0a]/30",
     image: "/stock/MINIPump.avif",
   },
   {
@@ -60,7 +60,7 @@ const stockProducts: StockProduct[] = [
     name: "Manta TakeOff Evo Assist Kit",
     price: "$4,850.00",
     badge: "New",
-    badgeColor: "bg-rose-500/15 text-rose-400 border border-rose-500/30",
+    badgeColor: "bg-[#ef0e0a]/15 text-[#ef0e0a] border border-[#ef0e0a]/30",
     image: "/manta-evo.png",
   },
   {
@@ -177,7 +177,7 @@ const WAStockSection = () => {
 
                     <div className="flex items-center justify-between gap-3 px-1 pt-1">
                       <div className="flex flex-col gap-0.5 min-w-0">
-                        <h3 className="text-base font-medium text-white truncate group-hover:text-rose-400 transition-colors">
+                        <h3 className="text-base font-medium text-white truncate group-hover:text-[#ef0e0a] transition-colors">
                           {product.name}
                         </h3>
                         <div className="flex items-center gap-2">
@@ -194,7 +194,7 @@ const WAStockSection = () => {
 
                       <div
                         aria-label={`View details for ${product.name}`}
-                        className="shrink-0 flex size-9 items-center justify-center rounded-full bg-white/10 group-hover:bg-[#E11D48] text-white transition-all duration-300 group-hover:scale-105 shadow-sm"
+                        className="shrink-0 flex size-9 items-center justify-center rounded-full bg-white/10 group-hover:bg-[#ef0e0a] text-white transition-all duration-300 group-hover:scale-105 shadow-sm"
                       >
                         <Plus className="size-4" />
                       </div>
@@ -224,7 +224,7 @@ const WAStockSection = () => {
                   </div>
                   <div className="flex items-center justify-between gap-3 px-1 pt-1">
                     <div className="flex flex-col gap-0.5 min-w-0">
-                      <h3 className="text-base font-medium text-white truncate group-hover:text-rose-400 transition-colors">
+                      <h3 className="text-base font-medium text-white truncate group-hover:text-[#ef0e0a] transition-colors">
                         {product.name}
                       </h3>
                       <span className="text-base font-semibold text-white">
@@ -242,7 +242,7 @@ const WAStockSection = () => {
           <Button
             nativeButton={false}
             render={<Link href="/feature-equipment" />}
-            className="group h-11 rounded-full px-8 bg-[#E11D48] hover:bg-[#BE123C] text-white font-medium cursor-pointer shadow-lg shadow-rose-950/40 inline-flex items-center gap-2"
+            className="group h-11 rounded-full px-8 bg-[#ef0e0a] hover:bg-[#c40c08] text-white font-medium cursor-pointer shadow-lg shadow-orange-950/30 inline-flex items-center gap-2"
           >
             <span>More products</span>
             <ArrowRight className="size-4 transition-transform duration-300 group-hover:translate-x-1" />

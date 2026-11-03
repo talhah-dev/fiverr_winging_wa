@@ -28,7 +28,7 @@ export const generateMetadata = async ({
   }
 
   return {
-    title: `${product.name} | Feature Equipment | Winging WA`,
+    title: `${product.name} | Featured Equipment | Winging WA`,
     description: `${product.name} - ${product.specs}. Direct stock available in Western Australia. ${product.description}`,
   };
 };

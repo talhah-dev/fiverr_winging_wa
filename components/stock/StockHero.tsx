@@ -28,7 +28,7 @@ const StockHero = () => {
           className="flex flex-col items-center gap-4 max-w-2xl"
         >
           <h1 className="text-3xl sm:text-5xl lg:text-6xl font-bold tracking-tight text-white leading-tight drop-shadow-md">
-            Feature Equipment
+            Featured Equipment
           </h1>
 
           <p className="text-base sm:text-lg text-slate-100 leading-relaxed font-normal drop-shadow-xs">

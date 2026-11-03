@@ -28,7 +28,7 @@ const MantaHero = () => {
           className="w-full h-full object-cover object-center scale-105"
         >
           <source
-            src="https://www.mantafoils.com/wp-content/uploads/2025/11/Evo-page-main-video-resized2.mp4#t=1"
+            src="https://www.mantafoils.com/wp-content/uploads/2026/10/Website-Home-Banner-10Sec-dg.mp4"
             type="video/mp4"
           />
         </video>
@@ -64,6 +64,15 @@ const MantaHero = () => {
           </p>
 
           <div className="flex flex-wrap items-center justify-center gap-4 pt-3">
+            <Button
+              nativeButton={false}
+              render={<Link href="/manta-backpack" />}
+              className="h-12 sm:h-13 rounded-full px-8 bg-[#D6F900] hover:bg-[#c3e400] text-black font-extrabold text-sm uppercase tracking-wider shadow-xl shadow-black/40 cursor-pointer inline-flex items-center gap-2 transition-all hover:scale-105"
+            >
+              <span>MANTA Back Pack</span>
+              <ArrowUpRight className="size-4.5" />
+            </Button>
+
             <Button
               nativeButton={false}
               render={<Link href="/contact?item=Manta%20TakeOff%20Evo" />}

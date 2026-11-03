@@ -46,7 +46,7 @@ const Hero = () => {
           <div className="flex flex-col items-center text-center gap-3 max-w-2xl mx-auto order-1 md:order-2">
             <div className="flex flex-col gap-1">
               <p className="text-base sm:text-lg font-semibold text-white drop-shadow-[0_2px_12px_rgba(0,0,0,0.95)] leading-snug">
-                WingingWA delivers high-performance foils, Wings, and foil assist systems. We are Australian Distributor for AFS and the WA dealer for Manta Foil Assist.
+                Winging WA delivers high performance foils, wings and foil assist systems. We are the Australian Distributor for AFS and the WA dealer for MANTA Foil Assist.
               </p>
             </div>
           </div>

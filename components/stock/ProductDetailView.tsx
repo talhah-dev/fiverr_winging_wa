@@ -44,7 +44,7 @@ export const ProductDetailView = ({
               href="/feature-equipment"
               className="hover:text-white transition-colors"
             >
-              Feature Equipment
+              Featured Equipment
             </Link>
             <ChevronRight className="size-3.5 shrink-0 opacity-40" />
             <span className="text-white font-medium truncate max-w-[200px] sm:max-w-xs">

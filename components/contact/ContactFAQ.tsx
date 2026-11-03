@@ -32,7 +32,7 @@ const ContactFAQ = () => {
             Frequently Asked Questions
           </span>
           <h2 className="text-2xl sm:text-3xl font-bold tracking-tight text-white">
-            Common Inquiries & Support
+            Common Enquiries & Support
           </h2>
           <p className="text-sm sm:text-base text-slate-200">
             Quick answers regarding ordering, demonstrations, and local inventory.

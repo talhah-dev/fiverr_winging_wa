@@ -89,7 +89,7 @@ const WAStockSection = () => {
         <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4">
           <div className="flex flex-col gap-1.5">
             <h2 className="text-2xl sm:text-3xl lg:text-4xl font-semibold tracking-tight text-white">
-              Feature Equipment
+              Featured Equipment
             </h2>
             <p className="text-sm sm:text-base text-white/60 font-normal">
               Direct inventory available in Western Australia ready to ship

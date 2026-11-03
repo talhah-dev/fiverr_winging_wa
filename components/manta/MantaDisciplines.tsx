@@ -126,7 +126,7 @@ const MantaDisciplines = () => {
                           : "group-hover:border-white group-hover:bg-white/10",
                       )}
                     >
-                      <Plus className="size-4 sm:size-5" />
+                      <Plus className="size-4 sm:size-5 stroke-white" strokeWidth={2.5} />
                     </div>
                   </div>
                 </div>

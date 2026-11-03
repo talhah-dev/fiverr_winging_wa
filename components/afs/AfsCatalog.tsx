@@ -636,47 +636,43 @@ const AfsCatalog = ({
                         return (
                           <div
                             key={product.id}
-                            className="group flex flex-col justify-between rounded-xl sm:rounded-2xl border border-white/15 bg-white/[0.06] p-5 sm:p-6 shadow-md hover:bg-white/[0.10] hover:border-white/30 transition-all duration-300 text-white relative"
+                            className="group flex flex-col justify-between rounded-2xl border border-white/10 hover:border-white/20 transition-all duration-300 text-white relative overflow-hidden"
                           >
                             <div className="flex flex-col">
-                              <div className="flex items-center justify-between min-h-6">
-                                {product.badge ? (
-                                  <span
-                                    className={cn(
-                                      "rounded-[3px] px-2.5 py-1 text-[11px] font-black tracking-wider uppercase border",
-                                      product.badgeType === "deal"
-                                        ? "bg-rose-500/20 text-rose-300 border-rose-500/40"
-                                        : product.badgeType === "performance"
-                                          ? "bg-amber-500/20 text-amber-300 border-amber-500/40"
-                                          : "bg-white/15 text-white border-white/20",
-                                    )}
-                                  >
-                                    {product.badge}
-                                  </span>
-                                ) : (
-                                  <span className="rounded-[3px] px-2.5 py-1 text-[11px] font-black tracking-wider uppercase border bg-white/10 text-white/80 border-white/15">
-                                    {product.subCategory}
-                                  </span>
-                                )}
-                              </div>
-
                               <Link
                                 href={productHref}
-                                className="relative w-full h-48 sm:h-56 flex items-center justify-center overflow-hidden my-3 cursor-pointer group-hover:scale-105 transition-transform duration-500"
+                                className="relative w-full h-52 sm:h-60 bg-white flex items-center justify-center overflow-hidden cursor-pointer transition-all duration-300"
                               >
-                                <Image
-                                  src={product.image}
-                                  alt={product.name}
-                                  fill
-                                  sizes="(max-width: 640px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                                  className="object-contain p-2 select-none"
-                                />
+                                {(product.badge || product.subCategory) && (
+                                  <span
+                                    className={cn(
+                                      "absolute top-3 right-3 z-10 rounded px-2 py-0.5 text-[10px] font-bold tracking-wider uppercase border",
+                                      product.badgeType === "deal"
+                                        ? "bg-[#E11D48] text-white border-rose-400/30"
+                                        : product.badgeType === "performance"
+                                          ? "bg-amber-600 text-white border-amber-400/30"
+                                          : "bg-slate-900/80 text-white border-white/10",
+                                    )}
+                                  >
+                                    {product.badge || product.subCategory}
+                                  </span>
+                                )}
+
+                                <div className="relative w-full h-full p-4 flex items-center justify-center">
+                                  <Image
+                                    src={product.image}
+                                    alt={product.name}
+                                    fill
+                                    sizes="(max-width: 640px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                                    className="object-contain p-2 select-none group-hover:scale-105 transition-transform duration-500"
+                                  />
+                                </div>
                               </Link>
 
-                              <div className="flex flex-col items-center text-center pt-2">
+                              <div className="flex flex-col items-center text-center p-4 pb-2">
                                 <Link
                                   href={productHref}
-                                  className="text-base sm:text-lg font-black uppercase tracking-tight text-white leading-snug line-clamp-2 cursor-pointer group-hover:text-rose-400 transition-colors"
+                                  className="text-base sm:text-lg font-bold uppercase tracking-tight text-white leading-snug line-clamp-2 cursor-pointer group-hover:text-rose-400 transition-colors"
                                 >
                                   {product.name}
                                 </Link>
@@ -712,14 +708,14 @@ const AfsCatalog = ({
                               </div>
                             </div>
 
-                            <div className="pt-5 mt-auto">
+                            <div className="p-4 pt-1 mt-auto">
                               <Link
                                 href={contactHref}
                                 className={cn(
-                                  "w-full h-11 rounded-lg text-xs sm:text-sm font-black tracking-widest uppercase flex items-center justify-center transition-all cursor-pointer shadow-md",
+                                  "w-full h-11 rounded-xl text-xs sm:text-sm font-semibold tracking-wide uppercase flex items-center justify-center transition-all cursor-pointer",
                                   product.actionText === "GRAB THE DEAL"
                                     ? "bg-[#E11D48] hover:bg-[#BE123C] text-white"
-                                    : "bg-black/60 hover:bg-[#E11D48] text-white border border-white/20 hover:border-transparent",
+                                    : "bg-black/50 hover:bg-[#E11D48] text-white border border-white/15 hover:border-transparent",
                                 )}
                               >
                                 {product.actionText}

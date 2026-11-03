@@ -267,7 +267,7 @@ const Navbar = () => {
             <Button
               nativeButton={false}
               render={<Link href="/contact" />}
-              className="group h-10 rounded-full px-5 font-medium bg-[#ee0a09] hover:bg-[#BE123C] text-white shadow-md shadow-rose-950/30 cursor-pointer inline-flex items-center gap-1.5"
+              className="group h-10 rounded-full px-5 font-medium bg-[#ef0e0a] hover:bg-[#BE123C] text-white shadow-md shadow-rose-950/30 cursor-pointer inline-flex items-center gap-1.5"
             >
               <span>Enquire Now</span>
               <ChevronRight className="size-4 transition-transform group-hover:translate-x-0.5 duration-300" />

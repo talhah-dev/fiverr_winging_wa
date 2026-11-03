@@ -32,7 +32,7 @@ const defaultLineupData: Record<string, LineupItem[]> = {
       ar: "8.4",
       chord: "155 mm",
       description: "Immediate takeoff in light wind, forgiving glide, and effortless pumping between weakest waves.",
-      image: "https://api.afs-foiling.com/wp-content/uploads/2026/03/SILK-V2-1150-perspective-1024x788.png",
+      image: "",
     },
     {
       size: "1050",
@@ -42,7 +42,7 @@ const defaultLineupData: Record<string, LineupItem[]> = {
       ar: "8.4",
       chord: "148 mm",
       description: "The ideal balance between early lift, rolling agility, and dependable glide for all-round foiling.",
-      image: "https://api.afs-foiling.com/wp-content/uploads/2026/03/SILK-V2-1050-perspective-1024x788.png",
+      image: "",
     },
     {
       size: "950",
@@ -52,7 +52,7 @@ const defaultLineupData: Record<string, LineupItem[]> = {
       ar: "8.5",
       chord: "142 mm",
       description: "Ultra-responsive carving, continuous drive, and instant roll-to-roll transition in small to medium waves.",
-      image: "https://api.afs-foiling.com/wp-content/uploads/2026/03/SILK-V2-950-perspective-1024x788.png",
+      image: "",
     },
     {
       size: "850",
@@ -62,7 +62,7 @@ const defaultLineupData: Record<string, LineupItem[]> = {
       ar: "8.7",
       chord: "135 mm",
       description: "Direct hydrodynamic feedback, sharper turns, and dependable stability at high carving speeds.",
-      image: "https://api.afs-foiling.com/wp-content/uploads/2026/03/SILK-V2-850-perspective-1024x788.png",
+      image: "",
     },
     {
       size: "750",
@@ -72,7 +72,7 @@ const defaultLineupData: Record<string, LineupItem[]> = {
       ar: "9.0",
       chord: "128 mm",
       description: "Fast acceleration, incisive carves, and high-energy release for punchy waves and powered winging.",
-      image: "https://api.afs-foiling.com/wp-content/uploads/2026/03/SILK-V2-750-perspective-1024x788.png",
+      image: "",
     },
     {
       size: "650",
@@ -82,7 +82,7 @@ const defaultLineupData: Record<string, LineupItem[]> = {
       ar: "9.1",
       chord: "120 mm",
       description: "Maximum speed potential, radical rail angles, and razor-sharp turning for experienced riders.",
-      image: "https://api.afs-foiling.com/wp-content/uploads/2026/03/SILK-V2-650-perspective-1024x788.png",
+      image: "",
     },
   ],
 };
@@ -90,7 +90,7 @@ const defaultLineupData: Record<string, LineupItem[]> = {
 const AfsDynamicDetailContent = ({ product }: AfsDynamicDetailContentProps) => {
   const contactHref = `/contact?item=${encodeURIComponent(product.name)}`;
 
-  const lineup: LineupItem[] = defaultLineupData[product.id] || (
+  const baseLineup = defaultLineupData[product.id] || (
     product.sizes && product.sizes.length > 0
       ? product.sizes.map((s, idx) => ({
           size: s,
@@ -115,6 +115,11 @@ const AfsDynamicDetailContent = ({ product }: AfsDynamicDetailContentProps) => {
           },
         ]
   );
+
+  const lineup: LineupItem[] = baseLineup.map((item) => ({
+    ...item,
+    image: product.image,
+  }));
 
   const [activeSizeIdx, setActiveSizeIdx] = useState(
     Math.min(2, Math.max(0, lineup.length - 1)),
@@ -220,7 +225,7 @@ const AfsDynamicDetailContent = ({ product }: AfsDynamicDetailContentProps) => {
 
             <div className="lg:col-span-6 relative aspect-16/10 rounded-3xl overflow-hidden border border-white/15 shadow-2xl">
               <Image
-                src="https://api.afs-foiling.com/wp-content/uploads/2026/03/SILK_1803_v2_12.jpg"
+                src="https://images.unsplash.com/photo-1510525009512-ad7fc13eefab?auto=format&fit=crop&w=1600&q=80"
                 alt="AFS Foiling in action"
                 fill
                 sizes="(max-width: 1024px) 100vw, 50vw"
@@ -246,13 +251,13 @@ const AfsDynamicDetailContent = ({ product }: AfsDynamicDetailContentProps) => {
 
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
               <div className="p-6 rounded-2xl bg-[#3D434D] border border-white/10 flex flex-col gap-4">
-                <div className="relative w-full h-40 bg-white rounded-xl flex items-center justify-center p-3 overflow-hidden">
+                <div className="relative w-full h-44 bg-[#2D333D] rounded-xl flex items-center justify-center p-3 overflow-hidden border border-white/5">
                   <Image
-                    src="https://api.afs-foiling.com/wp-content/uploads/2026/03/SILK_v2_1150_Face.png"
-                    alt="Front profile"
+                    src={product.image}
+                    alt={`${product.name} Front Profile`}
                     fill
                     sizes="(max-width: 768px) 100vw, 33vw"
-                    className="object-contain p-2"
+                    className="object-contain p-2 hover:scale-105 transition-transform duration-300 drop-shadow-md"
                   />
                 </div>
                 <strong className="border-b-2 border-[#ef0e0a] pb-2 text-white uppercase text-base font-bold">
@@ -264,13 +269,13 @@ const AfsDynamicDetailContent = ({ product }: AfsDynamicDetailContentProps) => {
               </div>
 
               <div className="p-6 rounded-2xl bg-[#3D434D] border border-white/10 flex flex-col gap-4">
-                <div className="relative w-full h-40 bg-white rounded-xl flex items-center justify-center p-3 overflow-hidden">
+                <div className="relative w-full h-44 bg-[#2D333D] rounded-xl flex items-center justify-center p-3 overflow-hidden border border-white/5">
                   <Image
-                    src="https://api.afs-foiling.com/wp-content/uploads/2026/03/SILK_v2_1150_Dessus.png"
-                    alt="Planform"
+                    src={product.image}
+                    alt={`${product.name} Hydrodynamic Geometry`}
                     fill
                     sizes="(max-width: 768px) 100vw, 33vw"
-                    className="object-contain p-2"
+                    className="object-contain p-2 scale-110 -rotate-3 hover:scale-125 transition-transform duration-300 drop-shadow-md"
                   />
                 </div>
                 <strong className="border-b-2 border-[#ef0e0a] pb-2 text-white uppercase text-base font-bold">
@@ -282,13 +287,13 @@ const AfsDynamicDetailContent = ({ product }: AfsDynamicDetailContentProps) => {
               </div>
 
               <div className="p-6 rounded-2xl bg-[#3D434D] border border-white/10 flex flex-col gap-4">
-                <div className="relative w-full h-40 bg-white rounded-xl flex items-center justify-center p-3 overflow-hidden">
+                <div className="relative w-full h-44 bg-[#2D333D] rounded-xl flex items-center justify-center overflow-hidden border border-white/5">
                   <Image
-                    src="https://api.afs-foiling.com/wp-content/uploads/2026/03/SILK_v2_1150_Cote.png"
-                    alt="Chord and profile"
+                    src="https://images.unsplash.com/photo-1518709268805-4e9042af9f23?auto=format&fit=crop&w=800&q=80"
+                    alt="Pre-preg High Modulus Carbon Structure"
                     fill
                     sizes="(max-width: 768px) 100vw, 33vw"
-                    className="object-contain p-2"
+                    className="object-cover hover:scale-105 transition-transform duration-300"
                   />
                 </div>
                 <strong className="border-b-2 border-[#ef0e0a] pb-2 text-white uppercase text-base font-bold">
@@ -322,11 +327,11 @@ const AfsDynamicDetailContent = ({ product }: AfsDynamicDetailContentProps) => {
                 </p>
                 <div className="relative w-full h-32 flex items-center justify-center mt-auto">
                   <Image
-                    src="https://api.afs-foiling.com/wp-content/uploads/2026/03/download-6.png"
-                    alt="Sharper render"
+                    src={product.image}
+                    alt={`${product.name} Hydrofoil Profile`}
                     fill
                     sizes="33vw"
-                    className="object-contain"
+                    className="object-contain hover:scale-105 transition-transform duration-300 drop-shadow-md"
                   />
                 </div>
               </div>
@@ -339,11 +344,11 @@ const AfsDynamicDetailContent = ({ product }: AfsDynamicDetailContentProps) => {
                 </p>
                 <div className="relative w-full h-32 flex items-center justify-center mt-auto">
                   <Image
-                    src="https://api.afs-foiling.com/wp-content/uploads/2026/03/download-7.png"
-                    alt="Stronger render"
+                    src={product.image}
+                    alt={`${product.name} Carbon Construction`}
                     fill
                     sizes="33vw"
-                    className="object-contain"
+                    className="object-contain hover:scale-105 transition-transform duration-300 drop-shadow-md"
                   />
                 </div>
               </div>
@@ -356,11 +361,11 @@ const AfsDynamicDetailContent = ({ product }: AfsDynamicDetailContentProps) => {
                 </p>
                 <div className="relative w-full h-32 flex items-center justify-center mt-auto">
                   <Image
-                    src="https://api.afs-foiling.com/wp-content/uploads/2026/03/download-8.png"
-                    alt="Smoother render"
+                    src={product.image}
+                    alt={`${product.name} Lift Stability`}
                     fill
                     sizes="33vw"
-                    className="object-contain"
+                    className="object-contain hover:scale-105 transition-transform duration-300 drop-shadow-md"
                   />
                 </div>
               </div>
@@ -401,8 +406,8 @@ const AfsDynamicDetailContent = ({ product }: AfsDynamicDetailContentProps) => {
 
         <section className="relative w-full aspect-21/9 min-h-[300px] sm:min-h-[420px] overflow-hidden border-t border-white/10">
           <Image
-            src="https://api.afs-foiling.com/wp-content/uploads/2026/03/SILK_1803_v2_17.jpg"
-            alt="Big air surf foil jump"
+            src="https://images.unsplash.com/photo-1502680390469-be75c86b636f?auto=format&fit=crop&w=1920&q=85"
+            alt="High performance hydrofoil surfing in waves"
             fill
             sizes="100vw"
             className="object-cover object-center select-none"
@@ -684,6 +689,15 @@ const AfsDynamicDetailContent = ({ product }: AfsDynamicDetailContentProps) => {
 
         <section className="px-[20px] md:px-[60px] py-[100px] bg-[#4A505B] text-center border-t border-white/10">
           <div className="flex flex-col items-center gap-8 max-w-4xl mx-auto">
+            <div className="relative w-full max-w-xs h-36 flex items-center justify-center">
+              <Image
+                src={product.image}
+                alt={product.name}
+                fill
+                sizes="(max-width: 640px) 100vw, 320px"
+                className="object-contain drop-shadow-[0_20px_40px_rgba(0,0,0,0.7)] hover:scale-105 transition-transform duration-500"
+              />
+            </div>
             <h2 className="text-white font-black leading-tight text-4xl sm:text-6xl lg:text-7xl uppercase flex flex-col items-center gap-2">
               <span className="text-[#ef0e0a]">MORE {product.name.split(" ")[0]}</span>
               <span>THAN EVER</span>

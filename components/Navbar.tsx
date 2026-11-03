@@ -188,7 +188,10 @@ const Navbar = () => {
           isSticky ? "py-3 md:py-5" : "py-3.5 md:py-6",
         )}
       >
-        <div className="flex items-center justify-start lg:flex-1 lg:justify-center lg:order-2">
+        <div className="flex items-center gap-2.5 sm:gap-3.5 justify-start lg:flex-1 lg:justify-center lg:order-2">
+          <div className="lg:hidden shrink-0">
+            {afsSheet}
+          </div>
           <Link href="/" className="shrink-0 flex items-center">
             <Image
               src="/logo.png"
@@ -274,9 +277,7 @@ const Navbar = () => {
             </Button>
           </div>
 
-          <div className="lg:hidden flex items-center gap-2">
-            {afsSheet}
-
+          <div className="lg:hidden flex items-center">
             <Sheet>
               <SheetTrigger
                 render={

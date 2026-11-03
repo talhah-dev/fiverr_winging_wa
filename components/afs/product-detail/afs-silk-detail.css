@@ -1,0 +1,111 @@
+.afs-detail-root {
+  font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  color: #fff;
+  background-color: #4A505B;
+  overflow-x: hidden;
+}
+
+.afs-detail-root img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+.afs-detail-root .global-padding {
+  padding-inline: clamp(1.25rem, 10.4167vw - 5.4167rem, 5rem);
+}
+
+.afs-detail-root .global-margin {
+  margin-bottom: 80px;
+}
+
+@media (min-width: 64rem) {
+  .afs-detail-root .global-margin {
+    margin-bottom: clamp(7.5rem, 13.8889vw - 1.3889rem, 12.5rem);
+  }
+}
+
+.afs-detail-root .global-h2 {
+  font-size: 28px;
+  line-height: 112%;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+}
+
+@media (min-width: 48rem) {
+  .afs-detail-root .global-h2 {
+    font-size: 32px;
+  }
+}
+
+@media (min-width: 64rem) {
+  .afs-detail-root .global-h2 {
+    font-size: clamp(2rem, 1rem + 1.55vw, 2.375rem);
+  }
+}
+
+.afs-detail-root table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.afs-detail-root th,
+.afs-detail-root td {
+  padding: 14px 16px;
+  text-align: left;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.afs-detail-root .btn-primary {
+  transition: transform 250ms ease-in-out, box-shadow 250ms ease-in-out;
+}
+
+.afs-detail-root .btn-primary:hover {
+  transform: translateY(-2px);
+}
+
+.afs-detail-root .text-\[\#ef0e0a\] {
+  color: #ef0e0a;
+}
+
+.afs-detail-root .bg-\[\#ef0e0a\] {
+  background-color: #ef0e0a;
+}
+
+.afs-detail-root .border-\[\#ef0e0a\] {
+  border-color: #ef0e0a;
+}
+
+.afs-detail-root .before\:bg-\[\#ef0e0a\]::before {
+  content: "";
+  background-color: #ef0e0a;
+}
+
+.afs-detail-root .before\:text-\[\#ef0e0a\]::before {
+  content: "→";
+  color: #ef0e0a;
+}
+
+.afs-detail-root .bg-\[\#4A505B\] {
+  background-color: #4A505B;
+}
+
+.afs-detail-root .bg-\[\#3D434D\] {
+  background-color: #3D434D;
+}
+
+.afs-detail-root .hover\:border-\[rgba\(239\,_14\,_10\,_0\.45\)\]:hover {
+  border-color: rgba(239, 14, 10, 0.45);
+}
+
+.afs-detail-root .hover\:bg-\[rgba\(239\,14\,10\,0\.15\)\]:hover {
+  background-color: rgba(239, 14, 10, 0.15);
+}
+
+.afs-detail-root .hover\:shadow-\[0_12px_40px_rgba\(239\,14\,10\,0\.35\)\]:hover {
+  box-shadow: 0 12px 40px rgba(239, 14, 10, 0.35);
+}
+
+.afs-detail-root .drop-shadow-\[0_20px_60px_rgba\(239\,14\,10\,0\.25\)\] {
+  filter: drop-shadow(0 20px 60px rgba(239, 14, 10, 0.25));
+}

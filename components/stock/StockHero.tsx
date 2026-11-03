@@ -10,7 +10,7 @@ const StockHero = () => {
   return (
     <section className="relative w-full pt-32 pb-16 lg:pt-40 lg:pb-24 bg-[#4A505B] text-white overflow-hidden">
       <Image
-        src="/stock-hero.jpg"
+        src="/afsbg.webp"
         alt="Western Australia Foiling Coastline"
         fill
         priority

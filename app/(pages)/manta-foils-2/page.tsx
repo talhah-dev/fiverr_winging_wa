@@ -11,7 +11,7 @@ export const metadata: Metadata = {
 
 const MantaFoils2Page = () => {
   return (
-    <div className="min-h-screen flex flex-col bg-black text-white overflow-x-clip">
+    <div className="min-h-screen flex flex-col bg-[#4A505B] text-white overflow-x-clip">
       <Navbar />
       <main className="flex-1 pt-24 sm:pt-28">
         <MantaFoils2Content />

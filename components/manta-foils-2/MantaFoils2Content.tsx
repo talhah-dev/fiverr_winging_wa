@@ -14,6 +14,8 @@ const MantaFoils2Content = () => {
     videos.forEach((video) => {
       video.muted = true;
       video.playsInline = true;
+      video.loop = true;
+      video.autoplay = true;
       const playPromise = video.play();
       if (playPromise !== undefined) {
         playPromise.catch(() => {});
@@ -37,7 +39,7 @@ const MantaFoils2Content = () => {
   return (
     <div
       ref={containerRef}
-      className="manta-foils-2-wrapper w-full bg-black text-white overflow-hidden"
+      className="manta-foils-2-wrapper w-full bg-[#4A505B] text-white overflow-hidden"
       dangerouslySetInnerHTML={{ __html: mantaFoils2Html }}
     />
   );

@@ -4177,7 +4177,7 @@ h1.entry-title {
 .elementor-2519 .elementor-element.elementor-element-3bdf47e>.elementor-motion-effects-container>.elementor-motion-effects-layer::before {
     background-color: transparent;
     --background-overlay: '';
-    background-image: linear-gradient(180deg, #00000000 60%, #000000 100%);
+    background-image: linear-gradient(180deg, rgba(74, 80, 91, 0) 60%, #4A505B 100%);
 }
 
 .elementor-2519 .elementor-element.elementor-element-ae1b0f2 {
@@ -4418,7 +4418,7 @@ body.rtl .elementor-2519 .elementor-element.elementor-element-ddc24b7 {
 
 .elementor-2519 .elementor-element.elementor-element-3a08e66:not(.elementor-motion-effects-element-type-background),
 .elementor-2519 .elementor-element.elementor-element-3a08e66>.elementor-motion-effects-container>.elementor-motion-effects-layer {
-    background-color: #000000;
+    background-color: #4A505B;
 }
 
 .elementor-2519 .elementor-element.elementor-element-3a08e66.e-con {
@@ -4515,7 +4515,7 @@ body.rtl .elementor-2519 .elementor-element.elementor-element-ddc24b7 {
 
 .elementor-2519 .elementor-element.elementor-element-c39012f>.elementor-widget-container {
     background-color: transparent;
-    background-image: radial-gradient(at center center, #363636 0%, #000000 70%);
+    background-image: radial-gradient(at center center, #5A616E 0%, #4A505B 70%);
 }
 
 .elementor-2519 .elementor-element.elementor-element-c39012f.ha-has-bg-overlay:hover>.elementor-widget-container::before {
@@ -4840,7 +4840,7 @@ body.rtl .elementor-2519 .elementor-element.elementor-element-a0ee436 {
 .elementor-2519 .elementor-element.elementor-element-1e980e0>.elementor-background-slideshow::before,
 .elementor-2519 .elementor-element.elementor-element-1e980e0>.e-con-inner>.elementor-background-slideshow::before,
 .elementor-2519 .elementor-element.elementor-element-1e980e0>.elementor-motion-effects-container>.elementor-motion-effects-layer::before {
-    background-color: #000000;
+    background-color: #4A505B;
     --background-overlay: '';
 }
 
@@ -4934,7 +4934,7 @@ body.rtl .elementor-2519 .elementor-element.elementor-element-a0ee436 {
 
 .elementor-2519 .elementor-element.elementor-element-8daefbb:not(.elementor-motion-effects-element-type-background),
 .elementor-2519 .elementor-element.elementor-element-8daefbb>.elementor-motion-effects-container>.elementor-motion-effects-layer {
-    background-color: #000000;
+    background-color: #4A505B;
 }
 
 .elementor-2519 .elementor-element.elementor-element-e0b5117 {
@@ -5012,7 +5012,7 @@ body.rtl .elementor-2519 .elementor-element.elementor-element-a0ee436 {
 .elementor-2519 .elementor-element.elementor-element-7a9dbc7:not(.elementor-motion-effects-element-type-background),
 .elementor-2519 .elementor-element.elementor-element-7a9dbc7>.elementor-motion-effects-container>.elementor-motion-effects-layer {
     background-color: transparent;
-    background-image: radial-gradient(at center center, #363636 0%, #000000 70%);
+    background-image: radial-gradient(at center center, #5A616E 0%, #4A505B 70%);
 }
 
 .elementor-2519 .elementor-element.elementor-element-6b5f4b1 {
@@ -5480,7 +5480,7 @@ body.rtl .elementor-2519 .elementor-element.elementor-element-a0ee436 {
 .elementor-2519 .elementor-element.elementor-element-9e80ef2:not(.elementor-motion-effects-element-type-background),
 .elementor-2519 .elementor-element.elementor-element-9e80ef2>.elementor-motion-effects-container>.elementor-motion-effects-layer {
     background-color: transparent;
-    background-image: radial-gradient(at center center, #363636 20%, #000000 75%);
+    background-image: radial-gradient(at center center, #5A616E 20%, #4A505B 75%);
 }
 
 .elementor-2519 .elementor-element.elementor-element-1b67dab {
@@ -6832,7 +6832,7 @@ body.rtl .elementor-2519 .elementor-element.elementor-element-a0ee436 {
 .elementor-2519 .elementor-element.elementor-element-536e141:not(.elementor-motion-effects-element-type-background),
 .elementor-2519 .elementor-element.elementor-element-536e141>.elementor-motion-effects-container>.elementor-motion-effects-layer {
     background-color: transparent;
-    background-image: radial-gradient(at center center, #363636 0%, #000000 70%);
+    background-image: radial-gradient(at center center, #5A616E 0%, #4A505B 70%);
 }
 
 .elementor-2519 .elementor-element.elementor-element-6c2c0f8 {
@@ -6870,7 +6870,7 @@ body.rtl .elementor-2519 .elementor-element.elementor-element-a0ee436 {
 
 .elementor-2519 .elementor-element.elementor-element-f5eceb1:not(.elementor-motion-effects-element-type-background),
 .elementor-2519 .elementor-element.elementor-element-f5eceb1>.elementor-motion-effects-container>.elementor-motion-effects-layer {
-    background-color: #000000;
+    background-color: #4A505B;
 }
 
 .elementor-2519 .elementor-element.elementor-element-f5eceb1.e-con {
@@ -6920,7 +6920,7 @@ body.rtl .elementor-2519 .elementor-element.elementor-element-a0ee436 {
 .elementor-2519 .elementor-element.elementor-element-fbe44cb>.elementor-motion-effects-container>.elementor-motion-effects-layer::before {
     background-color: transparent;
     --background-overlay: '';
-    background-image: linear-gradient(180deg, #FF000000 0%, #000000 100%);
+    background-image: linear-gradient(180deg, rgba(74, 80, 91, 0) 0%, #4A505B 100%);
 }
 
 .elementor-2519 .elementor-element.elementor-element-c5fb9f3 .ue-image {
@@ -7064,7 +7064,7 @@ body.rtl .elementor-2519 .elementor-element.elementor-element-4e26cbc {
 .elementor-2519 .elementor-element.elementor-element-9520223>.elementor-motion-effects-container>.elementor-motion-effects-layer::before {
     background-color: transparent;
     --background-overlay: '';
-    background-image: linear-gradient(180deg, #FF000000 0%, #000000 100%);
+    background-image: linear-gradient(180deg, rgba(74, 80, 91, 0) 0%, #4A505B 100%);
 }
 
 .elementor-2519 .elementor-element.elementor-element-0a2f916 .ue-image {
@@ -7205,7 +7205,7 @@ body.rtl .elementor-2519 .elementor-element.elementor-element-64f395f {
 
 .elementor-2519 .elementor-element.elementor-element-fcab125:not(.elementor-motion-effects-element-type-background),
 .elementor-2519 .elementor-element.elementor-element-fcab125>.elementor-motion-effects-container>.elementor-motion-effects-layer {
-    background-color: #000000;
+    background-color: #4A505B;
 }
 
 .elementor-2519 .elementor-element.elementor-element-fcab125::before,
@@ -7214,7 +7214,7 @@ body.rtl .elementor-2519 .elementor-element.elementor-element-64f395f {
 .elementor-2519 .elementor-element.elementor-element-fcab125>.elementor-background-slideshow::before,
 .elementor-2519 .elementor-element.elementor-element-fcab125>.e-con-inner>.elementor-background-slideshow::before,
 .elementor-2519 .elementor-element.elementor-element-fcab125>.elementor-motion-effects-container>.elementor-motion-effects-layer::before {
-    background-color: #000000;
+    background-color: #4A505B;
     --background-overlay: '';
 }
 
@@ -7257,7 +7257,7 @@ body.rtl .elementor-2519 .elementor-element.elementor-element-64f395f {
 
 .elementor-2519 .elementor-element.elementor-element-95f9c25:not(.elementor-motion-effects-element-type-background),
 .elementor-2519 .elementor-element.elementor-element-95f9c25>.elementor-motion-effects-container>.elementor-motion-effects-layer {
-    background-color: #000000;
+    background-color: #4A505B;
 }
 
 .elementor-2519 .elementor-element.elementor-element-e685fb2>.elementor-widget-container {
@@ -8566,7 +8566,7 @@ body.rtl .elementor-2519 .elementor-element.elementor-element-64f395f {
 
 .elementor-2519 .elementor-element.elementor-element-ef6d94b:not(.elementor-motion-effects-element-type-background),
 .elementor-2519 .elementor-element.elementor-element-ef6d94b>.elementor-motion-effects-container>.elementor-motion-effects-layer {
-    background-color: #000000;
+    background-color: #4A505B;
 }
 
 .elementor-2519 .elementor-element.elementor-element-fd13c4a>.elementor-widget-container {
@@ -9380,7 +9380,7 @@ body.rtl .elementor-2519 .elementor-element.elementor-element-64f395f {
 
 .elementor-2519 .elementor-element.elementor-element-0a7a9a8:not(.elementor-motion-effects-element-type-background),
 .elementor-2519 .elementor-element.elementor-element-0a7a9a8>.elementor-motion-effects-container>.elementor-motion-effects-layer {
-    background-color: #000000;
+    background-color: #4A505B;
 }
 
 .elementor-2519 .elementor-element.elementor-element-67347dc {
@@ -9408,7 +9408,7 @@ body.rtl .elementor-2519 .elementor-element.elementor-element-64f395f {
 
 .elementor-2519 .elementor-element.elementor-element-67347dc:not(.elementor-motion-effects-element-type-background),
 .elementor-2519 .elementor-element.elementor-element-67347dc>.elementor-motion-effects-container>.elementor-motion-effects-layer {
-    background-color: #000000;
+    background-color: #4A505B;
 }
 
 .elementor-2519 .elementor-element.elementor-element-7b95533 {
@@ -9434,7 +9434,7 @@ body.rtl .elementor-2519 .elementor-element.elementor-element-64f395f {
 
 body.elementor-page-2519:not(.elementor-motion-effects-element-type-background),
 body.elementor-page-2519>.elementor-motion-effects-container>.elementor-motion-effects-layer {
-    background-color: #000000;
+    background-color: #4A505B;
 }
 
 @media(min-width:768px) {
@@ -12908,7 +12908,7 @@ body.elementor-page-2519>.elementor-motion-effects-container>.elementor-motion-e
         
 
         .newsletter-form input[type="submit"] {
-            background-color: #000000;
+            background-color: #4A505B;
             color: #FFFFFF;
             font-family: "SF UI Text", Sans-serif;
             font-size: 15px;
@@ -12958,7 +12958,7 @@ body.elementor-page-2519>.elementor-motion-effects-container>.elementor-motion-e
         }
 
         .black-btn a {
-            background: #000000 !important;
+            background: #4A505B !important;
             padding: 10px 24px !important;
             font-family: "SF UI Display", Sans-serif !important;
             letter-spacing: 0px !important;
@@ -12976,7 +12976,7 @@ body.elementor-page-2519>.elementor-motion-effects-container>.elementor-motion-e
         }
 
         .black-border-btn a:hover {
-            background: #000000 !important;
+            background: #4A505B !important;
             padding: 10px 24px !important;
             font-family: "SF UI Display", Sans-serif !important;
             letter-spacing: 0px !important;
@@ -12994,7 +12994,7 @@ body.elementor-page-2519>.elementor-motion-effects-container>.elementor-motion-e
         }
 
         .white-border-btn a:hover {
-            background: #000000 !important;
+            background: #4A505B !important;
             padding: 10px 24px !important;
             font-family: "SF UI Display", Sans-serif !important;
             letter-spacing: 0px !important;
@@ -13070,7 +13070,7 @@ body.elementor-page-2519>.elementor-motion-effects-container>.elementor-motion-e
         }
 
         .white-btn a:hover {
-            background: #000000 !important;
+            background: #4A505B !important;
             color: #fff !important;
             border: 1px solid #ffffff !important;
         }
@@ -13721,4 +13721,32 @@ body.elementor-page-2519>.elementor-motion-effects-container>.elementor-motion-e
             max-width: 100% !important;
             height: auto !important;
             display: block !important;
+        }
+        .manta-foils-2-wrapper,
+        .elementor-2519 {
+            background-color: #4A505B !important;
+        }
+        .elementor-2519 .elementor-element.elementor-element-a49be46 {
+            position: relative !important;
+            overflow: hidden !important;
+        }
+        .elementor-2519 .elementor-element.elementor-element-a49be46 .elementor-background-video-container {
+            position: absolute !important;
+            inset: 0 !important;
+            width: 100% !important;
+            height: 100% !important;
+            overflow: hidden !important;
+            z-index: 0 !important;
+            pointer-events: none !important;
+        }
+        .elementor-2519 .elementor-element.elementor-element-a49be46 .elementor-background-video-hosted {
+            position: absolute !important;
+            top: 50% !important;
+            left: 50% !important;
+            width: 100% !important;
+            height: 100% !important;
+            min-width: 100% !important;
+            min-height: 100% !important;
+            object-fit: cover !important;
+            transform: translate(-50%, -50%) !important;
         }

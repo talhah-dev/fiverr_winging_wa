@@ -26,53 +26,27 @@ interface AfsCatalogProps {
   onClearDiscipline: () => void;
 }
 
-const componentsList = [
-  { id: "front-wings", name: "Front wings", count: 9 },
-  { id: "masts", name: "Masts", count: 6 },
-  { id: "stabilizers", name: "Stabilizers", count: 4 },
-  { id: "fuselages", name: "Fuselages", count: 5 },
-  { id: "full-sets", name: "Full sets", count: 9 },
-  { id: "wings", name: "Wings", count: 4 },
-];
-
-const disciplinesList = [
-  { id: "wing-foil", name: "Wing foil", count: 41 },
-  { id: "parawing", name: "Parawing", count: 24 },
-  { id: "prone", name: "Prone", count: 26 },
-  { id: "dockstart", name: "Dockstart", count: 24 },
-  { id: "foil-assist", name: "Foil Assist", count: 12 },
-  { id: "wakefoil", name: "Wakefoil", count: 17 },
-  { id: "downwind", name: "Downwind", count: 25 },
-  { id: "kitefoil", name: "Kitefoil", count: 29 },
-  { id: "sup-foil", name: "Sup Foil", count: 32 },
-];
-
 const AfsCatalog = ({
   selectedDiscipline,
   onClearDiscipline,
 }: AfsCatalogProps) => {
   const [selectedCategory, setSelectedCategory] = useState<string>("all");
-  const [selectedComponent, setSelectedComponent] = useState<string | null>(null);
-  const [activeDiscipline, setActiveDiscipline] = useState<string | null>(
-    selectedDiscipline,
-  );
   const [maxPrice, setMaxPrice] = useState<number>(3746);
   const [searchQuery, setSearchQuery] = useState<string>("");
   const [showMobileSidebar, setShowMobileSidebar] = useState<boolean>(false);
   const [sortBy, setSortBy] = useState<"featured" | "price-asc" | "price-desc">(
     "featured",
   );
-
-  const [isComponentOpen, setIsComponentOpen] = useState<boolean>(true);
-  const [isDisciplineOpen, setIsDisciplineOpen] = useState<boolean>(true);
   const [isPriceOpen, setIsPriceOpen] = useState<boolean>(true);
 
   const searchParams = useSearchParams();
 
   useEffect(() => {
     if (selectedDiscipline) {
-      setActiveDiscipline(selectedDiscipline);
-      setSelectedComponent(null);
+      const lower = selectedDiscipline.toLowerCase();
+      if (lower === "foils" || lower === "wings") {
+        setSelectedCategory(lower);
+      }
     }
   }, [selectedDiscipline]);
 
@@ -80,96 +54,33 @@ const AfsCatalog = ({
     const cat = searchParams.get("category");
     if (cat) {
       const lower = cat.toLowerCase();
-      if (lower === "all") {
-        setSelectedCategory("all");
-        setSelectedComponent(null);
-        setActiveDiscipline(null);
-      } else {
-        const found = componentsList.find(
-          (c) =>
-            c.id.toLowerCase() === lower || c.name.toLowerCase() === lower,
-        );
-        if (found) {
-          setSelectedComponent(found.name);
-          setActiveDiscipline(null);
-        } else {
-          setSelectedCategory(lower);
-          setSelectedComponent(null);
-        }
+      if (lower === "all" || lower === "foils" || lower === "wings") {
+        setSelectedCategory(lower);
       }
     }
   }, [searchParams]);
 
-  useEffect(() => {
-    const handleCategoryEvent = (e: Event) => {
-      const customEvent = e as CustomEvent<string>;
-      if (customEvent.detail) {
-        const val = customEvent.detail.toLowerCase();
-        if (val === "all") {
-          setSelectedCategory("all");
-          setSelectedComponent(null);
-          setActiveDiscipline(null);
-        } else {
-          const found = componentsList.find(
-            (c) => c.id.toLowerCase() === val || c.name.toLowerCase() === val,
-          );
-          if (found) {
-            setSelectedComponent(found.name);
-            setActiveDiscipline(null);
-          } else {
-            setSelectedCategory(val);
-            setSelectedComponent(null);
-          }
-        }
-        const el = document.getElementById("catalog");
-        if (el) {
-          el.scrollIntoView({ behavior: "smooth" });
-        }
-      }
-    };
-    window.addEventListener("afs-select-category", handleCategoryEvent);
-    return () => {
-      window.removeEventListener("afs-select-category", handleCategoryEvent);
-    };
-  }, []);
-
   const handleResetAll = () => {
     setSelectedCategory("all");
-    setSelectedComponent(null);
-    setActiveDiscipline(null);
     onClearDiscipline();
     setMaxPrice(3746);
     setSearchQuery("");
   };
 
-  const handleComponentClick = (compName: string) => {
-    if (selectedComponent === compName) {
-      setSelectedComponent(null);
-    } else {
-      setSelectedComponent(compName);
-      setActiveDiscipline(null);
-      onClearDiscipline();
-    }
-  };
-
-  const handleDisciplineClick = (discName: string) => {
-    if (activeDiscipline === discName) {
-      setActiveDiscipline(null);
-      onClearDiscipline();
-    } else {
-      setActiveDiscipline(discName);
-      setSelectedComponent(null);
-    }
-  };
-
   const isAllActive =
     selectedCategory === "all" &&
-    selectedComponent === null &&
-    activeDiscipline === null &&
     maxPrice === 3746 &&
     searchQuery === "";
 
-  const showComponentSection = !activeDiscipline;
+  const availableProducts = useMemo(() => {
+    return afsProducts.filter(
+      (p) => p.category === "Foils" || p.category === "Wings",
+    );
+  }, []);
+
+  const totalCount = availableProducts.length;
+  const foilsCount = availableProducts.filter((p) => p.category === "Foils").length;
+  const wingsCount = availableProducts.filter((p) => p.category === "Wings").length;
 
   const filteredProducts = useMemo(() => {
     const parsePrice = (p: string) => {
@@ -177,56 +88,26 @@ const AfsCatalog = ({
       return isNaN(num) ? 0 : num;
     };
 
-    let list = afsProducts.filter((product) => {
-      const isAllowedCategory =
-        product.category === "Foils" || product.category === "Wings";
-      if (!isAllowedCategory) return false;
-
-      const matchComponent =
-        !selectedComponent ||
-        product.subCategory.toLowerCase() === selectedComponent.toLowerCase() ||
-        product.category.toLowerCase() === selectedComponent.toLowerCase();
-
+    let list = availableProducts.filter((product) => {
       const matchCategory =
         selectedCategory === "all" ||
         product.category.toLowerCase() === selectedCategory.toLowerCase();
 
-      const matchDiscipline =
-        !activeDiscipline ||
-        (activeDiscipline.toLowerCase() === "wings" &&
-          (product.category.toLowerCase() === "wings" ||
-            product.subCategory.toLowerCase() === "wings")) ||
-        (activeDiscipline.toLowerCase() === "parawing" &&
-          (product.name.toLowerCase().includes("parawing") ||
-            product.disciplines?.some((d) =>
-              d.toLowerCase().includes("parawing"),
-            ))) ||
-        (activeDiscipline.toLowerCase() === "foils" &&
-          product.category.toLowerCase() === "foils") ||
-        product.disciplines?.some(
-          (d) =>
-            d.toLowerCase().includes(activeDiscipline.toLowerCase()) ||
-            activeDiscipline.toLowerCase().includes(d.toLowerCase()),
-        );
+      if (!matchCategory) return false;
+
+      if (searchQuery.trim()) {
+        const query = searchQuery.toLowerCase();
+        const matchesName = product.name.toLowerCase().includes(query);
+        const matchesSubCategory = product.subCategory.toLowerCase().includes(query);
+        if (!matchesName && !matchesSubCategory) {
+          return false;
+        }
+      }
 
       const price = parsePrice(product.price);
-      const matchPrice = price <= maxPrice;
+      if (price > maxPrice) return false;
 
-      const query = searchQuery.trim().toLowerCase();
-      const matchSearch =
-        query === "" ||
-        product.name.toLowerCase().includes(query) ||
-        (product.badge && product.badge.toLowerCase().includes(query)) ||
-        (product.sizes &&
-          product.sizes.some((s) => s.toLowerCase().includes(query)));
-
-      return (
-        matchComponent &&
-        matchCategory &&
-        matchDiscipline &&
-        matchPrice &&
-        matchSearch
-      );
+      return true;
     });
 
     if (sortBy === "price-asc" || sortBy === "price-desc") {
@@ -238,41 +119,23 @@ const AfsCatalog = ({
     }
 
     return list;
-  }, [
-    selectedCategory,
-    selectedComponent,
-    activeDiscipline,
-    maxPrice,
-    searchQuery,
-    sortBy,
-  ]);
+  }, [availableProducts, selectedCategory, maxPrice, searchQuery, sortBy]);
 
   const groupedProducts = useMemo(() => {
-    if (selectedComponent) {
+    if (selectedCategory === "foils") {
       return [
         {
-          title: selectedComponent,
+          title: "Foils",
           count: filteredProducts.length,
           products: filteredProducts,
         },
       ];
     }
 
-    if (activeDiscipline) {
+    if (selectedCategory === "wings") {
       return [
         {
-          title: activeDiscipline,
-          count: filteredProducts.length,
-          products: filteredProducts,
-        },
-      ];
-    }
-
-    if (selectedCategory !== "all") {
-      const found = afsCategories.find((c) => c.id === selectedCategory);
-      return [
-        {
-          title: found ? found.name : selectedCategory.toUpperCase(),
+          title: "Wings",
           count: filteredProducts.length,
           products: filteredProducts,
         },
@@ -280,23 +143,26 @@ const AfsCatalog = ({
     }
 
     const groups: { title: string; count: number; products: AfsProduct[] }[] = [];
-    componentsList.forEach((comp) => {
-      const prods = filteredProducts.filter(
-        (p) =>
-          p.subCategory.toLowerCase() === comp.name.toLowerCase() ||
-          p.category.toLowerCase() === comp.name.toLowerCase(),
-      );
-      if (prods.length > 0) {
-        groups.push({
-          title: comp.name,
-          count: prods.length,
-          products: prods,
-        });
-      }
-    });
+    const foils = filteredProducts.filter((p) => p.category === "Foils");
+    if (foils.length > 0) {
+      groups.push({
+        title: "Foils",
+        count: foils.length,
+        products: foils,
+      });
+    }
+
+    const wings = filteredProducts.filter((p) => p.category === "Wings");
+    if (wings.length > 0) {
+      groups.push({
+        title: "Wings",
+        count: wings.length,
+        products: wings,
+      });
+    }
 
     return groups;
-  }, [filteredProducts, selectedComponent, activeDiscipline, selectedCategory]);
+  }, [filteredProducts, selectedCategory]);
 
   return (
     <section id="catalog" className="relative w-full py-12 lg:py-16 bg-[#4A505B] text-white">
@@ -304,36 +170,21 @@ const AfsCatalog = ({
         <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-4 pb-4 border-b border-white/15">
           <div className="flex flex-wrap items-center gap-2">
             <h2 className="text-2xl sm:text-3xl font-extrabold uppercase tracking-tight text-white">
-              {selectedComponent ||
-                activeDiscipline ||
-                (selectedCategory === "all" ? "All products" : selectedCategory)}
+              {selectedCategory === "all" ? "All Products (Foils & Wings)" : selectedCategory === "foils" ? "Foils" : "Wings"}
             </h2>
             <span className="rounded-full bg-white/10 px-3 py-0.5 text-xs font-bold text-slate-200 border border-white/15">
               {filteredProducts.length} items
             </span>
 
-            {activeDiscipline && (
+            {selectedCategory !== "all" && (
               <span className="inline-flex items-center gap-1 rounded-full bg-[#ef0e0a] px-3 py-0.5 text-xs font-bold text-white shadow-xs">
-                <span>Discipline: {activeDiscipline}</span>
+                <span>Category: {selectedCategory.toUpperCase()}</span>
                 <button
                   type="button"
                   onClick={() => {
-                    setActiveDiscipline(null);
+                    setSelectedCategory("all");
                     onClearDiscipline();
                   }}
-                  className="hover:opacity-80 cursor-pointer ml-0.5"
-                >
-                  <X className="size-3.5" />
-                </button>
-              </span>
-            )}
-
-            {selectedComponent && (
-              <span className="inline-flex items-center gap-1 rounded-full bg-white/15 px-3 py-0.5 text-xs font-bold text-white shadow-xs border border-white/20">
-                <span>Component: {selectedComponent}</span>
-                <button
-                  type="button"
-                  onClick={() => setSelectedComponent(null)}
                   className="hover:opacity-80 cursor-pointer ml-0.5"
                 >
                   <X className="size-3.5" />
@@ -358,7 +209,7 @@ const AfsCatalog = ({
                 type="text"
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
-                placeholder="Search models or sizes..."
+                placeholder="Search foils or wings..."
                 className="h-10 w-full rounded-full border border-white/15 bg-white/10 pl-9 pr-8 text-xs text-white placeholder:text-white/40 focus:border-[#ef0e0a] focus:bg-white/15 focus:outline-hidden transition-all"
               />
               {searchQuery && (
@@ -405,7 +256,7 @@ const AfsCatalog = ({
               <div className="flex items-center gap-2">
                 <SlidersHorizontal className="size-4 text-[#ef0e0a]" />
                 <span className="text-xs font-bold uppercase tracking-wider text-white">
-                  Filters
+                  Categories
                 </span>
               </div>
               <button
@@ -417,153 +268,84 @@ const AfsCatalog = ({
               </button>
             </div>
 
-            <button
-              type="button"
-              onClick={handleResetAll}
-              className={cn(
-                "group flex items-center justify-between rounded-2xl px-4 py-3 text-sm font-bold transition-all cursor-pointer text-left w-full",
-                isAllActive
-                  ? "bg-[#ef0e0a] text-white shadow-md shadow-orange-950/30"
-                  : "bg-white/10 hover:bg-white/15 text-white/80 hover:text-white",
-              )}
-            >
-              <span>All products</span>
-              <span
-                className={cn(
-                  "text-xs px-2.5 py-0.5 rounded-full font-bold",
-                  isAllActive
-                    ? "bg-white/20 text-white"
-                    : "bg-white/10 text-white/60 group-hover:text-white",
-                )}
-              >
-                37
-              </span>
-            </button>
-
-            {showComponentSection && (
-              <div className="flex flex-col gap-2 pt-1">
-                <button
-                  type="button"
-                  onClick={() => setIsComponentOpen(!isComponentOpen)}
-                  className="flex items-center justify-between text-xs font-black uppercase tracking-wider text-slate-200 hover:text-white cursor-pointer py-1"
-                >
-                  <span>COMPONENT</span>
-                  {isComponentOpen ? (
-                    <ChevronUp className="size-4 text-white/60" />
-                  ) : (
-                    <ChevronDown className="size-4 text-white/60" />
-                  )}
-                </button>
-
-                {isComponentOpen && (
-                  <div className="flex flex-col gap-1.5 pt-1">
-                    {componentsList.map((comp) => {
-                      const isSelected = selectedComponent === comp.name;
-
-                      return (
-                        <button
-                          key={comp.id}
-                          type="button"
-                          onClick={() => handleComponentClick(comp.name)}
-                          className="group flex items-center justify-between text-xs sm:text-sm py-1 px-1 -mx-1 rounded-md hover:bg-white/5 cursor-pointer text-left transition-colors"
-                        >
-                          <div className="flex items-center gap-2.5">
-                            <span
-                              className={cn(
-                                "size-4 rounded-[3px] border flex items-center justify-center transition-colors shrink-0",
-                                isSelected
-                                  ? "bg-[#ef0e0a] border-[#ef0e0a] text-white"
-                                  : "border-white/30 bg-white/5 group-hover:border-white/50",
-                              )}
-                            >
-                              {isSelected && (
-                                <Check className="size-2.5 stroke-[3]" />
-                              )}
-                            </span>
-                            <span
-                              className={cn(
-                                "transition-colors",
-                                isSelected
-                                  ? "text-white font-bold"
-                                  : "text-slate-300 group-hover:text-white",
-                              )}
-                            >
-                              {comp.name}
-                            </span>
-                          </div>
-                          <span className="text-xs font-semibold text-slate-400 group-hover:text-slate-200">
-                            {comp.count}
-                          </span>
-                        </button>
-                      );
-                    })}
-                  </div>
-                )}
-              </div>
-            )}
-
-            {showComponentSection && (
-              <div className="w-full border-b border-dashed border-white/20" />
-            )}
-
-            <div className="flex flex-col gap-2 pt-1">
+            <div className="flex flex-col gap-2">
               <button
                 type="button"
-                onClick={() => setIsDisciplineOpen(!isDisciplineOpen)}
-                className="flex items-center justify-between text-xs font-black uppercase tracking-wider text-slate-200 hover:text-white cursor-pointer py-1"
-              >
-                <span>DISCIPLINE</span>
-                {isDisciplineOpen ? (
-                  <ChevronUp className="size-4 text-white/60" />
-                ) : (
-                  <ChevronDown className="size-4 text-white/60" />
+                onClick={() => {
+                  setSelectedCategory("all");
+                  onClearDiscipline();
+                }}
+                className={cn(
+                  "group flex items-center justify-between rounded-2xl px-4 py-3 text-sm font-bold transition-all cursor-pointer text-left w-full",
+                  isAllActive
+                    ? "bg-[#ef0e0a] text-white shadow-md shadow-orange-950/30"
+                    : "bg-white/10 hover:bg-white/15 text-white/80 hover:text-white",
                 )}
+              >
+                <span>All Products</span>
+                <span
+                  className={cn(
+                    "text-xs px-2.5 py-0.5 rounded-full font-bold",
+                    isAllActive
+                      ? "bg-white/20 text-white"
+                      : "bg-white/10 text-white/60 group-hover:text-white",
+                  )}
+                >
+                  {totalCount}
+                </span>
               </button>
 
-              {isDisciplineOpen && (
-                <div className="flex flex-col gap-1.5 pt-1">
-                  {disciplinesList.map((disc) => {
-                    const isSelected = activeDiscipline === disc.name;
+              <button
+                type="button"
+                onClick={() => {
+                  setSelectedCategory("foils");
+                  onClearDiscipline();
+                }}
+                className={cn(
+                  "group flex items-center justify-between rounded-2xl px-4 py-3 text-sm font-bold transition-all cursor-pointer text-left w-full",
+                  selectedCategory === "foils"
+                    ? "bg-[#ef0e0a] text-white shadow-md shadow-orange-950/30"
+                    : "bg-white/10 hover:bg-white/15 text-white/80 hover:text-white",
+                )}
+              >
+                <span>Foils</span>
+                <span
+                  className={cn(
+                    "text-xs px-2.5 py-0.5 rounded-full font-bold",
+                    selectedCategory === "foils"
+                      ? "bg-white/20 text-white"
+                      : "bg-white/10 text-white/60 group-hover:text-white",
+                  )}
+                >
+                  {foilsCount}
+                </span>
+              </button>
 
-                    return (
-                      <button
-                        key={disc.id}
-                        type="button"
-                        onClick={() => handleDisciplineClick(disc.name)}
-                        className="group flex items-center justify-between text-xs sm:text-sm py-1 px-1 -mx-1 rounded-md hover:bg-white/5 cursor-pointer text-left transition-colors"
-                      >
-                        <div className="flex items-center gap-2.5">
-                          <span
-                            className={cn(
-                              "size-4 rounded-[3px] border flex items-center justify-center transition-colors shrink-0",
-                              isSelected
-                                ? "bg-[#ef0e0a] border-[#ef0e0a] text-white"
-                                : "border-white/30 bg-white/5 group-hover:border-white/50",
-                            )}
-                          >
-                            {isSelected && (
-                              <Check className="size-2.5 stroke-[3]" />
-                            )}
-                          </span>
-                          <span
-                            className={cn(
-                              "transition-colors",
-                              isSelected
-                                ? "text-white font-bold"
-                                : "text-slate-300 group-hover:text-white",
-                            )}
-                          >
-                            {disc.name}
-                          </span>
-                        </div>
-                        <span className="text-xs font-semibold text-slate-400 group-hover:text-slate-200">
-                          {disc.count}
-                        </span>
-                      </button>
-                    );
-                  })}
-                </div>
-              )}
+              <button
+                type="button"
+                onClick={() => {
+                  setSelectedCategory("wings");
+                  onClearDiscipline();
+                }}
+                className={cn(
+                  "group flex items-center justify-between rounded-2xl px-4 py-3 text-sm font-bold transition-all cursor-pointer text-left w-full",
+                  selectedCategory === "wings"
+                    ? "bg-[#ef0e0a] text-white shadow-md shadow-orange-950/30"
+                    : "bg-white/10 hover:bg-white/15 text-white/80 hover:text-white",
+                )}
+              >
+                <span>Wings</span>
+                <span
+                  className={cn(
+                    "text-xs px-2.5 py-0.5 rounded-full font-bold",
+                    selectedCategory === "wings"
+                      ? "bg-white/20 text-white"
+                      : "bg-white/10 text-white/60 group-hover:text-white",
+                  )}
+                >
+                  {wingsCount}
+                </span>
+              </button>
             </div>
 
             <div className="w-full border-b border-dashed border-white/20" />
@@ -720,7 +502,7 @@ const AfsCatalog = ({
 
                             <div className="p-4 pt-1 mt-auto">
                               <Link
-                                href={contactHref}
+                                href={productHref}
                                 className={cn(
                                   "w-full h-11 rounded-xl text-xs sm:text-sm font-semibold tracking-wide uppercase flex items-center justify-center transition-all cursor-pointer",
                                   product.actionText === "GRAB THE DEAL"

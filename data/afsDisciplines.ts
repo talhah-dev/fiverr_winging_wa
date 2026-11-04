@@ -16,6 +16,6 @@ export const afsDisciplines: AfsDiscipline[] = [
     id: "wings",
     name: "Wings",
     count: 4,
-    image: "https://api.afs-foiling.com/wp-content/uploads/2026/06/WhatsApp-Image-2026-06-26-at-19.56.47-1024x682.jpeg",
+    image: "/wing-photo.png",
   },
 ];

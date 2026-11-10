@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useMemo } from "react";
+import { useState, useMemo, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import {
@@ -31,10 +31,8 @@ import { Skeleton } from "@/components/ui/skeleton";
 import { cn } from "@/lib/utils";
 
 export function EquipmentList() {
-  const [equipment, setEquipment] = useState<DashboardEquipmentItem[]>(
-    initialDashboardEquipment
-  );
-  const [isLoading, setIsLoading] = useState(false);
+  const [equipment, setEquipment] = useState<DashboardEquipmentItem[]>([]);
+  const [isLoading, setIsLoading] = useState(true);
   const [searchTerm, setSearchTerm] = useState("");
   const [selectedCategory, setSelectedCategory] = useState("All");
   const [filterFeatured, setFilterFeatured] = useState<"all" | "featured" | "in-stock">("all");
@@ -45,6 +43,23 @@ export function EquipmentList() {
   const [itemToView, setItemToView] = useState<DashboardEquipmentItem | null>(null);
   const [toastMessage, setToastMessage] = useState<string | null>(null);
 
+  const fetchEquipment = () => {
+    setIsLoading(true);
+    fetch("/api/equipment")
+      .then((res) => res.json())
+      .then((res) => {
+        if (res.success && res.data) {
+          setEquipment(res.data);
+        }
+      })
+      .catch((err) => console.error(err))
+      .finally(() => setIsLoading(false));
+  };
+
+  useEffect(() => {
+    fetchEquipment();
+  }, []);
+
   const showToast = (msg: string) => {
     setToastMessage(msg);
     setTimeout(() => {
@@ -53,10 +68,7 @@ export function EquipmentList() {
   };
 
   const handleSimulateLoading = () => {
-    setIsLoading(true);
-    setTimeout(() => {
-      setIsLoading(false);
-    }, 600);
+    fetchEquipment();
   };
 
   const filteredEquipment = useMemo(() => {
@@ -92,42 +104,68 @@ export function EquipmentList() {
     return { total, inStock, featuredCount, totalValue };
   }, [equipment]);
 
-  const toggleFeatured = (id: string, e?: React.MouseEvent) => {
+  const toggleFeatured = async (id: string, e?: React.MouseEvent) => {
     if (e) e.stopPropagation();
+    let nextValue = false;
     setEquipment((prev) =>
       prev.map((item) => {
         if (item.id === id) {
-          const next = !item.featuredOnHome;
+          nextValue = !item.featuredOnHome;
           showToast(
-            next
+            nextValue
               ? `"${item.name}" added to Home Page carousel`
               : `"${item.name}" removed from Home Page carousel`
           );
-          return { ...item, featuredOnHome: next };
+          return { ...item, featuredOnHome: nextValue };
         }
         return item;
       })
     );
+    try {
+      await fetch("/api/equipment", {
+        method: "PATCH",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ id, featuredOnHome: nextValue }),
+      });
+    } catch (err) {
+      console.error(err);
+    }
   };
 
-  const confirmDelete = () => {
+  const confirmDelete = async () => {
     if (!itemToDelete) return;
+    const deletedId = itemToDelete.id;
     const deletedName = itemToDelete.name;
-    setEquipment((prev) => prev.filter((item) => item.id !== itemToDelete.id));
+    setEquipment((prev) => prev.filter((item) => item.id !== deletedId));
     setItemToDelete(null);
     showToast(`"${deletedName}" successfully removed from equipment inventory.`);
+    try {
+      await fetch(`/api/equipment?id=${deletedId}`, { method: "DELETE" });
+    } catch (err) {
+      console.error(err);
+    }
   };
 
-  const handleSaveEdit = (e: React.FormEvent) => {
+  const handleSaveEdit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!itemToEdit) return;
 
+    const payload = itemToEdit;
     setEquipment((prev) =>
-      prev.map((item) => (item.id === itemToEdit.id ? itemToEdit : item))
+      prev.map((item) => (item.id === payload.id ? payload : item))
     );
-    const updatedName = itemToEdit.name;
+    const updatedName = payload.name;
     setItemToEdit(null);
     showToast(`"${updatedName}" updated successfully.`);
+    try {
+      await fetch("/api/equipment", {
+        method: "PATCH",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(payload),
+      });
+    } catch (err) {
+      console.error(err);
+    }
   };
 
   return (

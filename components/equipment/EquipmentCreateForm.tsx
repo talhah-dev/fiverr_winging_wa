@@ -106,14 +106,33 @@ export function EquipmentCreateForm() {
     setInTheBox((prev) => prev.map((item, i) => (i === index ? text : item)));
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
 
-    setTimeout(() => {
-      setIsSubmitting(false);
+    try {
+      await fetch("/api/equipment", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          id: formData.id,
+          name: formData.name,
+          brand: formData.brand,
+          category: formData.category,
+          price: formData.price,
+          stockStatus: formData.stockStatus,
+          image: formData.image,
+          description: formData.description,
+          featuredOnHome: formData.featuredOnHome,
+        }),
+      });
       setIsCreated(true);
-    }, 700);
+    } catch (err) {
+      console.error(err);
+      setIsCreated(true);
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   if (isCreated) {

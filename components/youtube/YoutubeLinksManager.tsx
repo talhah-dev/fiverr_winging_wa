@@ -1,6 +1,7 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { Skeleton } from "@/components/ui/skeleton";
 import Link from "next/link";
 import {
   Video,
@@ -28,12 +29,25 @@ export function YoutubeLinksManager() {
   const [videos, setVideos] = useState<HomeYoutubeVideo[]>(
     initialHomeYoutubeVideos
   );
+  const [isLoading, setIsLoading] = useState(true);
   const [socialLinks, setSocialLinks] = useState({
     facebook: "https://www.facebook.com/WingingWA",
     instagram: "https://www.instagram.com/winging_wa",
   });
   const [toastMessage, setToastMessage] = useState<string | null>(null);
   const [isSaving, setIsSaving] = useState(false);
+
+  useEffect(() => {
+    fetch("/api/youtube-links")
+      .then((res) => res.json())
+      .then((res) => {
+        if (res.success && Array.isArray(res.data) && res.data.length > 0) {
+          setVideos(res.data);
+        }
+      })
+      .catch((err) => console.error(err))
+      .finally(() => setIsLoading(false));
+  }, []);
 
   const showToast = (msg: string) => {
     setToastMessage(msg);
@@ -79,12 +93,21 @@ export function YoutubeLinksManager() {
     );
   };
 
-  const handleSaveAll = () => {
+  const handleSaveAll = async () => {
     setIsSaving(true);
-    setTimeout(() => {
-      setIsSaving(false);
+    try {
+      await fetch("/api/youtube-links", {
+        method: "PUT",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(videos),
+      });
       showToast("Home page YouTube video links saved successfully!");
-    }, 600);
+    } catch (err) {
+      console.error(err);
+      showToast("Error saving YouTube links to database.");
+    } finally {
+      setIsSaving(false);
+    }
   };
 
   const handleResetDefaults = () => {

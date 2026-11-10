@@ -1,10 +1,12 @@
 "use client";
 
+import { useEffect, useState } from "react";
 import Link from "next/link";
 import { cn } from "@/lib/utils";
 import type { ComponentProps } from "react";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
+import { Skeleton } from "@/components/ui/skeleton";
 import {
 	Card,
 	CardContent,
@@ -13,14 +15,27 @@ import {
 	CardTitle,
 } from "@/components/ui/card";
 import { StatusIndicator } from "@/components/indicator";
-import { initialHomeYoutubeVideos } from "@/data/homeYoutubeVideos";
+import { initialHomeYoutubeVideos, HomeYoutubeVideo } from "@/data/homeYoutubeVideos";
 import { Video, ArrowRightIcon, ExternalLink, Play } from "lucide-react";
 
 export function TeamOnDuty({
 	className,
 	...props
 }: ComponentProps<typeof Card>) {
-	const videos = initialHomeYoutubeVideos;
+	const [videos, setVideos] = useState<HomeYoutubeVideo[]>(initialHomeYoutubeVideos);
+	const [isLoading, setIsLoading] = useState(true);
+
+	useEffect(() => {
+		fetch("/api/youtube-links")
+			.then((res) => res.json())
+			.then((res) => {
+				if (res.success && Array.isArray(res.data) && res.data.length > 0) {
+					setVideos(res.data);
+				}
+			})
+			.catch((err) => console.error(err))
+			.finally(() => setIsLoading(false));
+	}, []);
 
 	return (
 		<Card
@@ -50,46 +65,59 @@ export function TeamOnDuty({
 			</CardHeader>
 			<CardContent className="p-0">
 				<div className="divide-y divide-white/10">
-					{videos.map((v) => (
-						<div
-							key={v.id}
-							className="p-4 hover:bg-white/5 transition-colors flex items-start justify-between gap-3"
-						>
-							<div className="flex items-start gap-3 min-w-0">
-								<div className="size-9 rounded-lg bg-red-600/20 border border-red-500/30 flex items-center justify-center shrink-0 mt-0.5 text-red-400">
-									<Play className="size-4 fill-current" />
-								</div>
-								<div className="min-w-0 flex-1">
-									<div className="flex items-center gap-2">
-										<span className="text-[10px] font-bold uppercase tracking-wider text-slate-400">
-											Slot #{v.slotNumber}
-										</span>
-										<Badge variant="outline" className="text-[10px] py-0 px-1.5 border-white/15 text-slate-300">
-											{v.category}
-										</Badge>
-									</div>
-									<p className="font-semibold text-sm text-white truncate mt-0.5">
-										{v.title}
-									</p>
-									<p className="text-[11px] text-slate-400 flex items-center gap-1.5 mt-1">
-										<StatusIndicator color="emerald" pulse />
-										<span className="text-emerald-300">Active on Home</span>
-										<span className="text-slate-600">•</span>
-										<span className="font-mono text-slate-400">{v.videoId}</span>
-									</p>
+					{isLoading ? (
+						Array.from({ length: 2 }).map((_, i) => (
+							<div key={`skel-yt-${i}`} className="p-4 flex items-start gap-3">
+								<Skeleton className="size-9 rounded-lg bg-white/10 shrink-0" />
+								<div className="flex-1 space-y-2">
+									<Skeleton className="h-3 w-24 bg-white/10" />
+									<Skeleton className="h-4 w-48 bg-white/10" />
+									<Skeleton className="h-3 w-32 bg-white/5" />
 								</div>
 							</div>
-							<a
-								href={v.youtubeUrl}
-								target="_blank"
-								rel="noopener noreferrer"
-								className="text-slate-400 hover:text-white p-1 rounded-md hover:bg-white/10 transition-colors shrink-0"
-								title="Watch on YouTube"
+						))
+					) : (
+						videos.map((v) => (
+							<div
+								key={v.id}
+								className="p-4 hover:bg-white/5 transition-colors flex items-start justify-between gap-3"
 							>
-								<ExternalLink className="size-4" />
-							</a>
-						</div>
-					))}
+								<div className="flex items-start gap-3 min-w-0">
+									<div className="size-9 rounded-lg bg-red-600/20 border border-red-500/30 flex items-center justify-center shrink-0 mt-0.5 text-red-400">
+										<Play className="size-4 fill-current" />
+									</div>
+									<div className="min-w-0 flex-1">
+										<div className="flex items-center gap-2">
+											<span className="text-[10px] font-bold uppercase tracking-wider text-slate-400">
+												Slot #{v.slotNumber}
+											</span>
+											<Badge variant="outline" className="text-[10px] py-0 px-1.5 border-white/15 text-slate-300">
+												{v.category}
+											</Badge>
+										</div>
+										<p className="font-semibold text-sm text-white truncate mt-0.5">
+											{v.title}
+										</p>
+										<p className="text-[11px] text-slate-400 flex items-center gap-1.5 mt-1">
+											<StatusIndicator color="emerald" pulse />
+											<span className="text-emerald-300">Active on Home</span>
+											<span className="text-slate-600">•</span>
+											<span className="font-mono text-slate-400">{v.videoId}</span>
+										</p>
+									</div>
+								</div>
+								<a
+									href={v.youtubeUrl}
+									target="_blank"
+									rel="noopener noreferrer"
+									className="text-slate-400 hover:text-white p-1 rounded-md hover:bg-white/10 transition-colors shrink-0"
+									title="Watch on YouTube"
+								>
+									<ExternalLink className="size-4" />
+								</a>
+							</div>
+						))
+					)}
 				</div>
 				<div className="border-t border-white/10 p-3 bg-white/5 flex justify-center">
 					<Button

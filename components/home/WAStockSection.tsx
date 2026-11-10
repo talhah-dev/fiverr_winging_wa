@@ -75,9 +75,27 @@ const stockProducts: StockProduct[] = [
 
 const WAStockSection = () => {
   const [mounted, setMounted] = useState(false);
+  const [products, setProducts] = useState(stockProducts);
 
   useEffect(() => {
     setMounted(true);
+    fetch("/api/equipment?featured=true")
+      .then((res) => res.json())
+      .then((res) => {
+        if (res.success && Array.isArray(res.data) && res.data.length > 0) {
+          setProducts(
+            res.data.map((item: { id: string; name: string; price: string; image: string; brand?: string }) => ({
+              id: item.id,
+              name: item.name,
+              price: item.price,
+              image: item.image,
+              badge: item.brand?.startsWith("AFS") ? "AFS Carbon" : "Manta Foil",
+              badgeColor: "bg-[#ef0e0a]/15 text-orange-300 border border-[#ef0e0a]/30",
+            }))
+          );
+        }
+      })
+      .catch((err) => console.error(err));
   }, []);
 
   return (
@@ -149,7 +167,7 @@ const WAStockSection = () => {
               }}
               className="w-full"
             >
-              {stockProducts.map((product) => (
+              {products.map((product) => (
                 <SwiperSlide key={product.id}>
                   <Link
                     href={`/feature-equipment/${product.id}`}

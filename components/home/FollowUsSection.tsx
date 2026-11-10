@@ -1,20 +1,41 @@
+"use client";
+
+import { useEffect, useState } from "react";
 import Link from "next/link";
 import { FaFacebookF, FaInstagram } from "react-icons/fa6";
 
-const videos = [
+const defaultVideos = [
   {
     id: "ZMsgpieqSg0",
     title: "AFS Blackbird Wing Foil Review",
-    src: "https://www.youtube.com/embed/ZMsgpieqSg0?si=cEThxzlqGZyjm28t",
+    src: "https://www.youtube.com/embed/ZMsgpieqSg0",
   },
   {
     id: "TVg2BPqwQsk",
     title: "The TakeOff Flow & TakeOff Air | Manta Foils",
-    src: "https://www.youtube.com/embed/TVg2BPqwQsk?si=sHPgPqni-JHZDPW8",
+    src: "https://www.youtube.com/embed/TVg2BPqwQsk",
   },
 ];
 
 const FollowUsSection = () => {
+  const [videos, setVideos] = useState(defaultVideos);
+
+  useEffect(() => {
+    fetch("/api/youtube-links")
+      .then((res) => res.json())
+      .then((res) => {
+        if (res.success && Array.isArray(res.data) && res.data.length > 0) {
+          setVideos(
+            res.data.map((v: { id: string; title: string; embedSrc?: string; videoId?: string }) => ({
+              id: v.videoId || v.id,
+              title: v.title,
+              src: v.embedSrc || `https://www.youtube.com/embed/${v.videoId || v.id}`,
+            }))
+          );
+        }
+      })
+      .catch((err) => console.error(err));
+  }, []);
   return (
     <section className="relative w-full bg-[#4A505B] py-20 lg:py-24 text-white overflow-hidden border-t border-white/15">
       <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 xl:px-16 flex flex-col gap-10 sm:gap-12">

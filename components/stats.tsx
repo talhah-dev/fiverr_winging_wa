@@ -1,3 +1,6 @@
+"use client";
+
+import { useEffect, useState } from "react";
 import Link from "next/link";
 import { cn } from "@/lib/utils";
 import {
@@ -6,59 +9,69 @@ import {
 	CardHeader,
 	CardTitle,
 } from "@/components/ui/card";
+import { Skeleton } from "@/components/ui/skeleton";
 import { Delta, DeltaIcon, DeltaValue } from "@/components/delta";
 import { Mail, Package, Video, CalendarCheck } from "lucide-react";
 
-type Stat = {
-	label: string;
-	value: string;
-	delta: number;
-	footnote: string;
-	lowerIsBetter: boolean;
-	href: string;
-	icon: React.ReactNode;
-};
-
-const stats: readonly Stat[] = [
-	{
-		label: "Contact Inquiries",
-		value: "24",
-		delta: 18.2,
-		footnote: "vs last month (4 new today)",
-		lowerIsBetter: false,
-		href: "/dashboard/contacts",
-		icon: <Mail className="size-4 text-[#ef0e0a]" />,
-	},
-	{
-		label: "Featured Equipment",
-		value: "18 Items",
-		delta: 6,
-		footnote: "featured on home slider",
-		lowerIsBetter: false,
-		href: "/dashboard/equipment",
-		icon: <Package className="size-4 text-orange-400" />,
-	},
-	{
-		label: "Home YouTube Links",
-		value: "2 Active",
-		delta: 100,
-		footnote: "Slot 1: AFS • Slot 2: Manta",
-		lowerIsBetter: false,
-		href: "/dashboard/youtube-links",
-		icon: <Video className="size-4 text-red-500" />,
-	},
-	{
-		label: "WA Demo Bookings",
-		value: "9 Sessions",
-		delta: 28.5,
-		footnote: "Swan River & Woodman Pt",
-		lowerIsBetter: false,
-		href: "/dashboard/contacts",
-		icon: <CalendarCheck className="size-4 text-emerald-400" />,
-	},
-];
+interface StatsData {
+	totalContacts: number;
+	newContacts: number;
+	totalEquipment: number;
+	featuredEquipmentCount: number;
+	totalYoutube: number;
+}
 
 export function DashboardStats() {
+	const [data, setData] = useState<StatsData | null>(null);
+	const [isLoading, setIsLoading] = useState(true);
+
+	useEffect(() => {
+		fetch("/api/dashboard/stats")
+			.then((res) => res.json())
+			.then((res) => {
+				if (res.success && res.data) {
+					setData(res.data);
+				}
+			})
+			.catch((err) => console.error(err))
+			.finally(() => setIsLoading(false));
+	}, []);
+
+	const stats = [
+		{
+			label: "Contact Inquiries",
+			value: data ? String(data.totalContacts) : "...",
+			delta: 18.2,
+			footnote: data ? `${data.newContacts} new pending action` : "4 new today",
+			href: "/dashboard/contacts",
+			icon: <Mail className="size-4 text-[#ef0e0a]" />,
+		},
+		{
+			label: "Featured Equipment",
+			value: data ? `${data.totalEquipment} Items` : "...",
+			delta: data?.featuredEquipmentCount ?? 6,
+			footnote: data ? `${data.featuredEquipmentCount} active on home slider` : "6 on home slider",
+			href: "/dashboard/equipment",
+			icon: <Package className="size-4 text-orange-400" />,
+		},
+		{
+			label: "Home YouTube Links",
+			value: data ? `${data.totalYoutube} Active` : "...",
+			delta: 100,
+			footnote: "Slot 1: AFS • Slot 2: Manta",
+			href: "/dashboard/youtube-links",
+			icon: <Video className="size-4 text-red-500" />,
+		},
+		{
+			label: "WA Demo Bookings",
+			value: "9 Sessions",
+			delta: 28.5,
+			footnote: "Swan River & Woodman Pt",
+			href: "/dashboard/contacts",
+			icon: <CalendarCheck className="size-4 text-emerald-400" />,
+		},
+	];
+
 	return (
 		<>
 			{stats.map((s) => (
@@ -71,9 +84,13 @@ export function DashboardStats() {
 							{s.icon}
 						</CardHeader>
 						<CardContent className="flex flex-col gap-2">
-							<p className="font-bold text-2xl tabular-nums text-white group-hover:text-red-400 transition-colors">
-								{s.value}
-							</p>
+							{isLoading ? (
+								<Skeleton className="h-8 w-24 bg-white/10 rounded-md" />
+							) : (
+								<p className="font-bold text-2xl tabular-nums text-white group-hover:text-red-400 transition-colors">
+									{s.value}
+								</p>
+							)}
 							<div className="flex items-center gap-1.5 text-xs">
 								<Delta value={s.delta}>
 									<DeltaIcon />

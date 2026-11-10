@@ -1,9 +1,13 @@
+"use client";
+
+import { useEffect, useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { cn } from "@/lib/utils";
 import type { ComponentProps } from "react";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
+import { Skeleton } from "@/components/ui/skeleton";
 import {
 	Card,
 	CardContent,
@@ -11,14 +15,29 @@ import {
 	CardHeader,
 	CardTitle,
 } from "@/components/ui/card";
-import { initialDashboardEquipment } from "@/data/dashboardEquipment";
+import { initialDashboardEquipment, DashboardEquipmentItem } from "@/data/dashboardEquipment";
 import { Package, ArrowRightIcon, Sparkles } from "lucide-react";
 
 export function FeaturedEquipmentSpotlight({
 	className,
 	...props
 }: ComponentProps<typeof Card>) {
-	const homeItems = initialDashboardEquipment.filter((item) => item.featuredOnHome).slice(0, 4);
+	const [homeItems, setHomeItems] = useState<DashboardEquipmentItem[]>(
+		initialDashboardEquipment.filter((item) => item.featuredOnHome).slice(0, 4)
+	);
+	const [isLoading, setIsLoading] = useState(true);
+
+	useEffect(() => {
+		fetch("/api/equipment?featured=true")
+			.then((res) => res.json())
+			.then((res) => {
+				if (res.success && Array.isArray(res.data) && res.data.length > 0) {
+					setHomeItems(res.data.slice(0, 4));
+				}
+			})
+			.catch((err) => console.error(err))
+			.finally(() => setIsLoading(false));
+	}, []);
 
 	return (
 		<Card
@@ -43,57 +62,71 @@ export function FeaturedEquipmentSpotlight({
 					</div>
 					<Badge className="bg-orange-500/20 text-orange-300 border-orange-500/30 text-[11px] flex items-center gap-1">
 						<Sparkles className="size-3" />
-						6 On Home
+						Live Neon DB
 					</Badge>
 				</div>
 			</CardHeader>
 			<CardContent className="p-0">
 				<div className="divide-y divide-white/10">
-					{homeItems.map((item) => (
-						<div
-							key={item.id}
-							className="p-3.5 hover:bg-white/5 transition-colors flex items-center justify-between gap-3"
-						>
-							<div className="flex items-center gap-3 min-w-0">
-								<div className="size-11 rounded-lg bg-black/40 border border-white/10 overflow-hidden relative shrink-0">
-									<Image
-										src={item.image}
-										alt={item.name}
-										fill
-										sizes="44px"
-										className="object-contain p-1"
-									/>
+					{isLoading ? (
+						Array.from({ length: 4 }).map((_, i) => (
+							<div key={`skel-spot-${i}`} className="p-3.5 flex items-center gap-3">
+								<Skeleton className="size-11 rounded-lg bg-white/10 shrink-0" />
+								<div className="flex-1 space-y-2">
+									<Skeleton className="h-3 w-20 bg-white/10" />
+									<Skeleton className="h-4 w-40 bg-white/10" />
+									<Skeleton className="h-3 w-16 bg-white/5" />
 								</div>
-								<div className="min-w-0 flex-1">
-									<div className="flex items-center gap-2">
-										<span className="text-[10px] font-bold uppercase tracking-wider text-slate-400">
-											{item.brand}
-										</span>
-										<Badge variant="outline" className="text-[10px] py-0 px-1.5 border-white/15 text-slate-300">
-											{item.category}
-										</Badge>
-									</div>
-									<p className="font-semibold text-xs text-white truncate mt-0.5">
-										{item.name}
-									</p>
-									<span className="text-xs font-bold text-orange-400">
-										{item.price}
-									</span>
-								</div>
+								<Skeleton className="h-6 w-20 bg-white/10 rounded-md" />
 							</div>
-							<Badge
-								variant="outline"
-								className={cn(
-									"text-[10px] shrink-0 font-medium",
-									item.stockStatus.includes("In Stock")
-										? "border-emerald-500/30 text-emerald-300 bg-emerald-500/10"
-										: "border-sky-500/30 text-sky-300 bg-sky-500/10"
-								)}
+						))
+					) : (
+						homeItems.map((item) => (
+							<div
+								key={item.id}
+								className="p-3.5 hover:bg-white/5 transition-colors flex items-center justify-between gap-3"
 							>
-								{item.stockStatus}
-							</Badge>
-						</div>
-					))}
+								<div className="flex items-center gap-3 min-w-0">
+									<div className="size-11 rounded-lg bg-black/40 border border-white/10 overflow-hidden relative shrink-0">
+										<Image
+											src={item.image}
+											alt={item.name}
+											fill
+											sizes="44px"
+											className="object-contain p-1"
+										/>
+									</div>
+									<div className="min-w-0 flex-1">
+										<div className="flex items-center gap-2">
+											<span className="text-[10px] font-bold uppercase tracking-wider text-slate-400">
+												{item.brand}
+											</span>
+											<Badge variant="outline" className="text-[10px] py-0 px-1.5 border-white/15 text-slate-300">
+												{item.category}
+											</Badge>
+										</div>
+										<p className="font-semibold text-xs text-white truncate mt-0.5">
+											{item.name}
+										</p>
+										<span className="text-xs font-bold text-orange-400">
+											{item.price}
+										</span>
+									</div>
+								</div>
+								<Badge
+									variant="outline"
+									className={cn(
+										"text-[10px] shrink-0 font-medium",
+										item.stockStatus?.includes("In Stock")
+											? "border-emerald-500/30 text-emerald-300 bg-emerald-500/10"
+											: "border-sky-500/30 text-sky-300 bg-sky-500/10"
+									)}
+								>
+									{item.stockStatus}
+								</Badge>
+							</div>
+						))
+					)}
 				</div>
 				<div className="border-t border-white/10 p-3 bg-white/5 flex justify-center">
 					<Button

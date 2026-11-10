@@ -39,14 +39,37 @@ const ContactForm = () => {
   const [submitted, setSubmitted] = useState(false);
   const [loading, setLoading] = useState(false);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setLoading(true);
 
-    setTimeout(() => {
-      setLoading(false);
+    try {
+      let category = "foils";
+      if (formData.interest.includes("Manta")) category = "manta";
+      else if (formData.interest.includes("Demo")) category = "demo";
+      else if (formData.interest.includes("In-Stock")) category = "stock";
+      else if (formData.interest.includes("Other")) category = "other";
+
+      await fetch("/api/contacts", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          name: formData.name,
+          email: formData.email,
+          phone: formData.phone,
+          interest: formData.interest,
+          message: formData.message,
+          category,
+          location: "Western Australia",
+        }),
+      });
       setSubmitted(true);
-    }, 800);
+    } catch (err) {
+      console.error(err);
+      setSubmitted(true);
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (

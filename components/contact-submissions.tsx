@@ -1,6 +1,7 @@
 "use client";
 
-import { useState, useMemo } from "react";
+import { useState, useMemo, useEffect } from "react";
+import { Skeleton } from "@/components/ui/skeleton";
 import {
   Search,
   Phone,
@@ -18,6 +19,7 @@ import {
   Layers,
   Eye,
   Filter,
+  Trash2,
 } from "lucide-react";
 import {
   ContactSubmission,
@@ -51,14 +53,62 @@ const statusConfig = {
 } as const;
 
 export function ContactSubmissions() {
-  const [submissions, setSubmissions] = useState<ContactSubmission[]>(
-    initialContactSubmissions
-  );
+  const [submissions, setSubmissions] = useState<ContactSubmission[]>([]);
+  const [isLoading, setIsLoading] = useState(true);
   const [searchTerm, setSearchTerm] = useState("");
   const [categoryFilter, setCategoryFilter] = useState<string>("all");
   const [statusFilter, setStatusFilter] = useState<string>("all");
   const [selectedSubmission, setSelectedSubmission] =
     useState<ContactSubmission | null>(null);
+
+  useEffect(() => {
+    fetch("/api/contacts")
+      .then((res) => res.json())
+      .then((res) => {
+        if (res.success && res.data) {
+          setSubmissions(res.data);
+        }
+      })
+      .catch((err) => console.error(err))
+      .finally(() => setIsLoading(false));
+  }, []);
+
+  const updateStatus = async (
+    id: string,
+    newStatus: ContactSubmission["status"]
+  ) => {
+    setSubmissions((prev) =>
+      prev.map((sub) => (sub.id === id ? { ...sub, status: newStatus } : sub))
+    );
+    if (selectedSubmission && selectedSubmission.id === id) {
+      setSelectedSubmission((prev) =>
+        prev ? { ...prev, status: newStatus } : null
+      );
+    }
+    try {
+      await fetch("/api/contacts", {
+        method: "PATCH",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ id, status: newStatus }),
+      });
+    } catch (err) {
+      console.error(err);
+    }
+  };
+
+  const deleteSubmission = async (id: string, e: React.MouseEvent) => {
+    e.stopPropagation();
+    if (!confirm("Are you sure you want to delete this contact submission?")) return;
+    setSubmissions((prev) => prev.filter((s) => s.id !== id));
+    if (selectedSubmission && selectedSubmission.id === id) {
+      setSelectedSubmission(null);
+    }
+    try {
+      await fetch(`/api/contacts?id=${id}`, { method: "DELETE" });
+    } catch (err) {
+      console.error(err);
+    }
+  };
 
   const filteredSubmissions = useMemo(() => {
     return submissions.filter((item) => {
@@ -90,20 +140,6 @@ export function ContactSubmissions() {
     const mantaCount = submissions.filter((s) => s.category === "manta").length;
     return { total, newCount, demoCount, foilsCount, mantaCount };
   }, [submissions]);
-
-  const updateStatus = (
-    id: string,
-    newStatus: ContactSubmission["status"]
-  ) => {
-    setSubmissions((prev) =>
-      prev.map((sub) => (sub.id === id ? { ...sub, status: newStatus } : sub))
-    );
-    if (selectedSubmission && selectedSubmission.id === id) {
-      setSelectedSubmission((prev) =>
-        prev ? { ...prev, status: newStatus } : null
-      );
-    }
-  };
 
   const handleExportCSV = () => {
     const headers = [
@@ -366,7 +402,40 @@ export function ContactSubmissions() {
               </tr>
             </thead>
             <tbody className="divide-y divide-white/5">
-              {filteredSubmissions.length === 0 ? (
+              {isLoading ? (
+                Array.from({ length: 5 }).map((_, i) => (
+                  <tr key={`skel-row-${i}`} className="animate-pulse">
+                    <td className="py-3.5 px-4">
+                      <div className="flex items-center gap-3">
+                        <Skeleton className="size-9 rounded-full bg-white/10" />
+                        <div className="space-y-1.5">
+                          <Skeleton className="h-4 w-28 bg-white/10" />
+                          <Skeleton className="h-3 w-20 bg-white/5" />
+                        </div>
+                      </div>
+                    </td>
+                    <td className="py-3.5 px-4">
+                      <Skeleton className="h-6 w-36 bg-white/10 rounded-md" />
+                    </td>
+                    <td className="py-3.5 px-4 space-y-1">
+                      <Skeleton className="h-3 w-32 bg-white/10" />
+                      <Skeleton className="h-3 w-24 bg-white/5" />
+                    </td>
+                    <td className="py-3.5 px-4">
+                      <Skeleton className="h-4 w-48 bg-white/5" />
+                    </td>
+                    <td className="py-3.5 px-4">
+                      <Skeleton className="h-3 w-20 bg-white/10" />
+                    </td>
+                    <td className="py-3.5 px-4">
+                      <Skeleton className="h-6 w-20 bg-white/10 rounded-full" />
+                    </td>
+                    <td className="py-3.5 px-4 text-right">
+                      <Skeleton className="h-8 w-14 ml-auto bg-white/10 rounded-lg" />
+                    </td>
+                  </tr>
+                ))
+              ) : filteredSubmissions.length === 0 ? (
                 <tr>
                   <td
                     colSpan={7}
@@ -460,18 +529,29 @@ export function ContactSubmissions() {
                       </td>
 
                       <td className="py-3.5 px-4 text-right whitespace-nowrap">
-                        <Button
-                          size="sm"
-                          variant="ghost"
-                          onClick={(e) => {
-                            e.stopPropagation();
-                            setSelectedSubmission(sub);
-                          }}
-                          className="h-8 px-2.5 text-xs text-slate-300 hover:text-white hover:bg-white/10 cursor-pointer font-medium"
-                        >
-                          <Eye className="size-3.5 mr-1" />
-                          View
-                        </Button>
+                        <div className="flex items-center justify-end gap-1">
+                          <Button
+                            size="sm"
+                            variant="ghost"
+                            onClick={(e) => {
+                              e.stopPropagation();
+                              setSelectedSubmission(sub);
+                            }}
+                            className="h-8 px-2.5 text-xs text-slate-300 hover:text-white hover:bg-white/10 cursor-pointer font-medium"
+                          >
+                            <Eye className="size-3.5 mr-1" />
+                            View
+                          </Button>
+                          <Button
+                            size="icon-xs"
+                            variant="ghost"
+                            onClick={(e) => deleteSubmission(sub.id, e)}
+                            className="text-slate-400 hover:text-red-400 hover:bg-red-500/10 cursor-pointer"
+                            title="Delete submission"
+                          >
+                            <Trash2 className="size-3.5" />
+                          </Button>
+                        </div>
                       </td>
                     </tr>
                   );

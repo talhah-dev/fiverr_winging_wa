@@ -1,8 +1,12 @@
+"use client";
+
+import { useEffect, useState } from "react";
 import Link from "next/link";
 import { cn } from "@/lib/utils";
 import type { ComponentProps } from "react";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
+import { Skeleton } from "@/components/ui/skeleton";
 import {
 	Card,
 	CardContent,
@@ -38,7 +42,20 @@ export function RecentConversations({
 	className,
 	...props
 }: ComponentProps<typeof Card>) {
-	const recentInquiries = initialContactSubmissions.slice(0, 4);
+	const [inquiries, setInquiries] = useState<ContactSubmission[]>(initialContactSubmissions.slice(0, 4));
+	const [isLoading, setIsLoading] = useState(true);
+
+	useEffect(() => {
+		fetch("/api/contacts")
+			.then((res) => res.json())
+			.then((res) => {
+				if (res.success && Array.isArray(res.data)) {
+					setInquiries(res.data.slice(0, 4));
+				}
+			})
+			.catch((err) => console.error(err))
+			.finally(() => setIsLoading(false));
+	}, []);
 
 	return (
 		<Card
@@ -54,7 +71,7 @@ export function RecentConversations({
 						</CardDescription>
 					</div>
 					<Badge className="bg-[#ef0e0a]/20 text-red-300 border-[#ef0e0a]/30">
-						{initialContactSubmissions.length} Total
+						Live Database
 					</Badge>
 				</div>
 			</CardHeader>
@@ -69,7 +86,26 @@ export function RecentConversations({
 						</TableRow>
 					</TableHeader>
 					<TableBody>
-						{recentInquiries.map((inquiry) => (
+						{isLoading ? (
+							Array.from({ length: 4 }).map((_, i) => (
+								<TableRow key={`skel-inq-${i}`} className="h-14 border-white/5">
+									<TableCell className="pl-6">
+										<Skeleton className="h-4 w-28 bg-white/10 mb-1" />
+										<Skeleton className="h-3 w-20 bg-white/5" />
+									</TableCell>
+									<TableCell className="hidden sm:table-cell">
+										<Skeleton className="h-4 w-40 bg-white/10 mb-1" />
+										<Skeleton className="h-3 w-16 bg-white/5" />
+									</TableCell>
+									<TableCell>
+										<Skeleton className="h-5 w-16 bg-white/10 rounded-md" />
+									</TableCell>
+									<TableCell className="pr-6 text-right">
+										<Skeleton className="h-5 w-14 ml-auto bg-white/10 rounded-full" />
+									</TableCell>
+								</TableRow>
+							))
+						) : inquiries.map((inquiry) => (
 							<TableRow
 								className="h-14 hover:bg-white/5 border-white/5 transition-colors"
 								key={inquiry.id}
